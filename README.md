@@ -53,29 +53,32 @@ I am also a key contact for customers who have technical issues and provide them
 ## Certifications
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Microsoft Certified: Azure Solutions Architect Expert">
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Microsoft Certified: Azure Network Engineer Associate">
-  <img src="https://img.shields.io/badge/GitHub%20Partner%20Trainer-%23181717.svg?&style=for-the-badge&logo=github" alt="Accredited GitHub Partner Trainer Advanced Security">
   <img src="https://img.shields.io/badge/GitHub%20Partner%20Trainer-%23181717.svg?&style=for-the-badge&logo=github" alt="Accredited GitHub Partner Trainer GitHub Admin">
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Microsoft Certified: Cybersecurity Architect Expert">
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Microsoft Certified: Security Operations Analyst Associate">
   <img src="https://img.shields.io/badge/GitHub%20Actions%20Trainer-%23181717.svg?&style=for-the-badge&logo=github" alt="Accredited GitHub Actions Trainer">
   <img src="https://img.shields.io/badge/GitHub%20Developer%20Trainer-%23181717.svg?&style=for-the-badge&logo=github" alt="Accredited GitHub Developer Trainer">
   <img src="https://img.shields.io/badge/UGWG%20Using%20Git%20with%20GitHub-%23181717.svg?&style=for-the-badge&logo=github" alt="UGWG Using Git with GitHub">
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Microsoft Certified: Azure IoT Developer Specialty">
-  <img src="https://img.shields.io/badge/AZ%2D700%3A%20Designing%20and%20Implementing%20Microsoft%20Azure%20Networking%20Solutions-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="AZ-700: Designing and Implementing Microsoft Azure Networking Solutions">
-  <img src="https://img.shields.io/badge/AWARENESS%20FOR%20EQUALITY%20AND%20INCLUSIVE%20LANGUAGE-%23007ACC.svg?&style=for-the-badge" alt="AWARENESS FOR EQUALITY AND INCLUSIVE LANGUAGE">
-  <img src="https://img.shields.io/badge/AZ%2D304%3A%20Microsoft%20Azure%20Architect%20Design-%230078D4.svg?&style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="AZ-304: Microsoft Azure Architect Design">
 </p>
 
 
 <p align="center">
   <a href="https://www.credly.com/badges/70f4339c-6104-4d19-b0cf-40471e7cef1f/public_url" target="_blank">
-    <img src="https://images.credly.com/size/340x340/images/0ba22331-acf9-4e8a-8ce3-b4cc3d376040/image.png" alt="Microsoft Certified: Cybersecurity Architect Expert" width="200">
+    <img src="https://images.credly.com/size/340x340/images/0ba22331-acf9-4e8a-8ce3-b4cc3d376040/image.png" alt="Microsoft Certified: Cybersecurity Architect Expert" width="100">
   </a>
   <br>
   <a href="https://www.credly.com/badges/a0e819e8-4687-49d3-901d-48913c0970f8/public_url" target="_blank">
-    <img src="https://images.credly.com/size/340x340/images/987adb7e-49be-4e24-b67e-55986bd3fe66/azure-solutions-architect-expert-600x600.png" alt="Microsoft Certified: Azure Solutions Architect Expert" width="200">
+    <img src="https://images.credly.com/size/340x340/images/987adb7e-49be-4e24-b67e-55986bd3fe66/azure-solutions-architect-expert-600x600.png" alt="Microsoft Certified: Azure Solutions Architect Expert" width="100">
+  </a>
+  <br>
+  <a href="https://www.credly.com/badges/b11e48b3-e5e5-4e50-8eaf-5fcc6f2776aa/public_url" target="_blank">
+    <img src="https://images.credly.com/size/340x340/images/2711b780-c3f1-4678-a9ae-f6c49c379189/specialty-azure-iot-developer-600x600.png" alt="Microsoft Certified: Azure IoT Developer Specialty" width="100">
+  </a>
+  <br>
+  <a href="https://www.credly.com/badges/9bbc0db2-114a-48ac-a48c-6ef307ad9ce8/public_url" target="_blank">
+    <img src="https://images.credly.com/size/340x340/images/c3a2e51d-7984-48cc-a4cb-88d4e8487037/azure-network-engineer-associate-600x600.png" alt="Microsoft Certified: Azure Network Engineer Associate" width="100">
+  </a>
+  <br>
+  <a href="https://www.credly.com/badges/9a28d2be-bda6-4cd1-9800-17b8396bb89e/public_url" target="_blank">
+    <img src="https://images.credly.com/size/340x340/images/7e75516f-5149-4d19-8d09-aa3dab4907cb/security-operations-analyst-associate-600x600.png" alt="Microsoft Certified: Security Operations Analyst Associate" width="100">
   </a>
 </p>
 
@@ -91,18 +94,20 @@ I enjoy speaking about the following topics:
 
 Feel free to connect with me if you'd like to discuss any of these topics or learn more about my experience.
 
-<!-- Social Media Links -->
-## 🖇️ Let's connect!
-<p align="center">
-  <a href="https://www.linkedin.com/in/yourlinkedinprofile" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-%230072B1.svg?&style=for-the-badge&logo=linkedin" alt="LinkedIn">
-  </a>
-  <a href="https://twitter.com/yourtwitterprofile" target="_blank">
-    <img src="https://img.shields.io/badge/Twitter-Follow-%231DA1F2.svg?&style=for-the-badge&logo=twitter" alt="Twitter">
-  </a>
-</p>
+
 
 <!-- Stats -->
 ## ⚡ Stats
 
 ![Igor's GitHub stats](https://github-readme-stats.vercel.app/api?username=error505&show_icons=true&theme=tokyonight&hide_border=true)
+
+<!-- Social Media Links -->
+## 🖇️ Let's connect!
+<p align="center">
+  <a href="https://www.linkedin.com/in/igor-iric/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-%230072B1.svg?&style=for-the-badge&logo=linkedin" alt="LinkedIn">
+  </a>
+  <a href="https://twitter.com/devexigo" target="_blank">
+    <img src="https://img.shields.io/badge/Twitter-Follow-%231DA1F2.svg?&style=for-the-badge&logo=twitter" alt="Twitter">
+  </a>
+</p>
