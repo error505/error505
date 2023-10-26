@@ -100,4 +100,6 @@ Feel free to connect with me if you'd like to discuss any of these topics or lea
     <img src="https://img.shields.io/badge/Twitter-Follow-%231DA1F2.svg?&style=for-the-badge&logo=twitter" alt="Twitter">
   </a>
 </p>
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=radical)
+## ⚡Stats
+
+![Igor's GitHub stats](https://github-readme-stats.vercel.app/api?username=error505&show_icons=true&theme=tokyonight&hide_border=true)
