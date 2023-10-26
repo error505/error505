@@ -92,6 +92,7 @@ I enjoy speaking about the following topics:
 Feel free to connect with me if you'd like to discuss any of these topics or learn more about my experience.
 
 <!-- Social Media Links -->
+## 🖇️ Let's connect!
 <p align="center">
   <a href="https://www.linkedin.com/in/yourlinkedinprofile" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-%230072B1.svg?&style=for-the-badge&logo=linkedin" alt="LinkedIn">
@@ -100,6 +101,8 @@ Feel free to connect with me if you'd like to discuss any of these topics or lea
     <img src="https://img.shields.io/badge/Twitter-Follow-%231DA1F2.svg?&style=for-the-badge&logo=twitter" alt="Twitter">
   </a>
 </p>
-## ⚡Stats
+
+<!-- Stats -->
+## ⚡ Stats
 
 ![Igor's GitHub stats](https://github-readme-stats.vercel.app/api?username=error505&show_icons=true&theme=tokyonight&hide_border=true)
