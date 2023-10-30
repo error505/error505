@@ -149,3 +149,26 @@ document.querySelector(".open-sidebar1").addEventListener("click", function () {
     sidebar.style.width = "0px";
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main-content");
+
+  if (window.innerWidth <= 768) {
+    sidebar.style.transform = "translateX(-100%)";
+  }
+
+  document.querySelectorAll(".sidebar nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 768) {
+        sidebar.style.transform = "translateX(-100%)";
+      }
+    });
+  });
+
+  main.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      sidebar.style.transform = "translateX(-100%)";
+    }
+  });
+});

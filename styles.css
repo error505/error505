@@ -527,7 +527,7 @@ input:checked + .slider.round:before {
 }
 
 .service img {
-  width: 100px; /* Adjust the width of service images */
+  width: 100%; /* Adjust the width of service images */
   margin-bottom: 10px;
 }
 
@@ -651,11 +651,21 @@ input:checked + .slider.round:before {
   background-color: var(--main-theme-color);
   color: white;
 }
+.card-content {
+  padding: 1rem;
+}
+.card img {
+  width: 100%;
+  transition: transform 0.3s;
+}
 
+.card img:hover {
+  transform: scale(1.05);
+}
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 2rem;
 }
 
 .portfolio-item {
@@ -776,14 +786,33 @@ input:checked + .slider.round:before {
   background-color: #555; /* Darken button color on hover */
 }
 
-.get-in-touch-map > div {
-  flex: 1;
-  padding: 20px;
+.get-in-touch-map {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
   border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.map-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  width: 100%;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .contact-section {
   padding: 50px;
   background-color: #f8f8f8;
@@ -975,6 +1004,9 @@ img {
   display: none;
 }
 @media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
   .sidebar {
     display: none;
   }
@@ -1064,9 +1096,7 @@ img {
   }
 
   .services-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); /* 2 columns */
-    gap: 20px; /* space between rows and columns */
+    grid-template-columns: 1fr; /* 2 columns */
   }
 
   .portfolio-menu button {
@@ -1077,10 +1107,11 @@ img {
     max-width: 250px; /* Adjust button padding for smaller screens */
   }
   .portfolio-grid {
-    grid-template-columns: repeat(1, 1fr); /* 2 columns for smaller screens */
-    gap: 10px; /* Reduce gap between items for smaller screens */
+    grid-template-columns: 1fr; /* 2 columns for smaller screens */
   }
-
+  .blog-grid {
+    grid-template-columns: 1fr; /* 2 columns for smaller screens */
+  }
   .overlay {
     position: absolute;
     top: 50%;
