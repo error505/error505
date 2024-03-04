@@ -14,7 +14,7 @@
 <p align="center">
   <img src="https://github.com/error505/biographyii/blob/main/1674712595713-plava2.jpg" alt="Your Name" width="200">
 </p>
-<h3 align="center">Senior Software Engineer at Plain Concepts</h3>
+<h3 align="center">Senior Azure Cloud Solutins Architect</h3>
 <h4 align="center">📍 Frankfurt Rhine-Main Metropolitan Area</h4>
 
 <!-- About Me -->
