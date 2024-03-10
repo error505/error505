@@ -95,11 +95,44 @@ I enjoy speaking about the following topics:
 Feel free to connect with me if you'd like to discuss any of these topics or learn more about my experience.
 
 
+## 🌱 My Projects
+
+Below are some of the projects I'm most proud of. Check them out!
+
+### 🌟 Project 1: One Page Portfolio Website
+- **Description**: A sleek and responsive one-page portfolio website showcasing my skills, experiences, and projects.
+- **Technologies Used**: HTML, CSS, JavaScript
+- **[View Project](https://error505.github.io/error505/)**
+
+![One Page Portfolio Website](https://github.com/error505/MyFirstRepo/raw/main/images/one-page-portfolio.png)
+
+### 📚 Project 2: Space Invaders
+- **Description**: A dynamic, exciting and challenging shooting game set in space.
+- **Technologies Used**: HTML, CSS, JavaScript, GitHub Actions
+- **[View Project]([link-to-your-project](https://error505.github.io/SpaceInvaders/))**
+
+![Space Invaders](https://github.com/error505/SpaceInvaders/raw/main/images/spaceexplorer.jpg)
+
+
+
 
 <!-- Stats -->
-## ⚡ Stats
+## 📊 Stats
 
-![Igor's GitHub stats](https://github-readme-stats.vercel.app/api?username=error505&show_icons=true&theme=tokyonight&hide_border=true)
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=error505&show_icons=true&locale=en&layout=compact" alt="error505" /></p>
+
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=error505&show_icons=true&locale=en" alt="error505" /></p>
+
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=error505&" alt="error505" /></p>
+
+## 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=error505&theme=radical&no-frame=false&no-bg=true&margin-w=4)
+
+### ✍️ Random Dev Quote
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+
+### 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=error505&limit=5&theme=default&combine_all_yearly_contributions=true)
 
 <!-- Website -->
 ## Website
@@ -117,4 +150,6 @@ Link : [Igor iric](https://error505.github.io/error505/)
   </a>
 </p>
 
+---
+[![](https://visitcount.itsvg.in/api?id=error505&icon=0&color=1)](https://visitcount.itsvg.in)
 
