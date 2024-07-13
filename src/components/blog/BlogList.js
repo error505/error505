@@ -1,12 +1,14 @@
 // src/components/BlogList.js
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import blogPosts from '../../blogPosts.json';
-
+/* eslint-enable no-unused-vars */
 const BlogList = () => {
-  const [posts, setPosts] = useState([]);
+  /* eslint-enable no-unused-vars */
+  const [, setPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(6);
   const [searchTerm, setSearchTerm] = useState("");
@@ -37,8 +39,9 @@ const BlogList = () => {
 
   return (
     <section className="blog-list px-3 py-5 p-md-5">
-      <div className="blogheader d-flex justify-content-between align-items-center">
-      <div className="search-wrapper">
+      <div className="header d-flex justify-content-between align-items-center">
+        <h1>All Blog Posts</h1>
+        <div className="search-wrapper">
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
           <input 
             type="text" 
@@ -48,7 +51,6 @@ const BlogList = () => {
             onChange={handleSearch}
           />
         </div>
-        <h1>All Blog Posts</h1>
       </div>
       <div className="blog-grid container single-col-max-width">
         {displayedPosts.map((post) => (
@@ -65,7 +67,7 @@ const BlogList = () => {
                   <span className="date">{post.date}</span>
                   <span className="time">{post.readTime}</span>
                   <span className="comment">
-                    <a className="text-link" href="#">{post.comments}</a>
+                    <span className="text-link" href="#">{post.comments}</span>
                   </span>
                 </div>
                 <Link className="text-link" to={`/blog/${post.id}`}>Read more &rarr;</Link>
