@@ -39,18 +39,18 @@ const BlogList = () => {
 
   return (
     <section className="blog-list px-3 py-5 p-md-5">
+      <div className="search-wrapper">
+        <FontAwesomeIcon icon={faSearch} className="search-icon" />
+        <input 
+          type="text" 
+          className="form-control search-input" 
+          placeholder="Search posts..." 
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div>
       <div className="header d-flex justify-content-between align-items-center">
         <h1>All Blog Posts</h1>
-        <div className="search-wrapper">
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
-          <input 
-            type="text" 
-            className="form-control search-input" 
-            placeholder="Search posts..." 
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-        </div>
       </div>
       <div className="blog-grid container single-col-max-width">
         {displayedPosts.map((post) => (
