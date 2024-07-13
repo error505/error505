@@ -1,7 +1,7 @@
 // src/components/Sidebar.js
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
   return (
     <aside className={`sidebar ${isSidebarClosed ? 'sidebar-closed' : ''}`}>
