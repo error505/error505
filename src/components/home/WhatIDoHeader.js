@@ -22,7 +22,7 @@ const WhatIDoHeader = () => {
       </div>
       <img
         src="./static/images/baner.png"
-        alt="Igor's Image"
+        alt=""
         className="main-image"
       />
     </section>
