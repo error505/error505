@@ -3,7 +3,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set a branch that you want to deploy on push. Usually 'main' or 'master'.
+      - main 
 
 jobs:
   build-and-deploy:
@@ -23,6 +23,11 @@ jobs:
 
     - name: Build the project
       run: npm run build
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'error505'
+        git config --global user.email 'iric_i@hotmail.com'
 
     - name: Deploy to GitHub Pages
       run: npm run deploy
