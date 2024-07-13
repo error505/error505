@@ -30,6 +30,8 @@ jobs:
         git config --global user.email 'iric_i@hotmail.com'
 
     - name: Deploy to GitHub Pages
-      run: npm run deploy
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: |
+        git remote set-url origin https://${{ secrets.GTOKEN }}@github.com/${{ github.repository }}
+        npm run deploy
