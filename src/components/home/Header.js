@@ -1,7 +1,7 @@
 // src/components/Header.js
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const Header = () => {
   return (
     <header className="mobile-header">
