@@ -55,30 +55,26 @@ const BlogList = () => {
       <div className="blog-grid container single-col-max-width">
         {displayedPosts.map((post) => (
           <div key={post.id} className="blog-item mb-5">
-            <div className="row g-3 g-xl-0">
-              <div className="col-2 col-xl-3">
-                <img className="img-fluid post-thumb" src={post.image} alt={post.title} />
+            <Link to={`/blog/${post.id}`}>
+              <div className="blog-image" style={{ backgroundImage: `url(${post.image})` }}>               
+                <div className="card-content">
+                  <h4 className="title mb-1">{post.title}</h4>
+                  <div className="meta mb-1">
+                    <span className="date">{post.date}</span>
+                    <span className="time">{post.readTime}</span>
+                    <span className="comment">
+                      <span className="text-link" href="#">{post.comments}</span>
+                    </span>
+                  </div>
+                </div>               
               </div>
-              <div className="col">
-                <h3 className="title mb-1">
-                  <Link className="text-link" to={`/blog/${post.id}`}>{post.title}</Link>
-                </h3>
-                <div className="meta mb-1">
-                  <span className="date">{post.date}</span>
-                  <span className="time">{post.readTime}</span>
-                  <span className="comment">
-                    <span className="text-link" href="#">{post.comments}</span>
-                  </span>
-                </div>
-                <Link className="text-link" to={`/blog/${post.id}`}>Read more &rarr;</Link>
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
       {visibleCount < blogPosts.length && (
         <div className="text-center">
-          <button className="btn btn-primary" onClick={handleShowMore}>Show More</button>
+          <button className="btn back-button" onClick={handleShowMore}>Load More</button>
         </div>
       )}
       <Link to="/" className="back-button">Back to Home</Link>

@@ -6,7 +6,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
   return (
     <aside className={`sidebar ${isSidebarClosed ? 'sidebar-closed' : ''}`}>
       <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="profile-image" />
-      <h2 className="title">Igor Iric</h2>
+      <h2 className="sidebar-title">Igor Iric</h2>
       <p className="subtitle">Hi, my name is Igor Iric and I'm an Azure Solutions Architect Expert & Senior Software engineer.</p>
       <div className="social-icons">
         <a href="#"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
