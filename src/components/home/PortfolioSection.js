@@ -1,0 +1,133 @@
+// src/components/PortfolioSection.js
+import React, { useState, useEffect } from 'react';
+
+const PortfolioSection = () => {
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
+
+  useEffect(() => {
+    const menuButtons = document.querySelectorAll('.portfolio-menu button');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    menuButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = btn.textContent.trim().toLowerCase();
+
+        // Toggle active class
+        menuButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter items based on id
+        portfolioItems.forEach((item) => {
+          item.style.display =
+            item.id === category || category === 'all' ? 'block' : 'none';
+        });
+      });
+    });
+
+    return () => {
+      menuButtons.forEach((btn) => {
+        btn.removeEventListener('click', () => {});
+      });
+    };
+  }, []);
+
+  return (
+    <section className="portfolio-section" id="portfolio">
+      <h1>My PORTFOLIO</h1>
+      <div className="portfolio-menu">
+        <button
+          className={activeCategory === 'all' ? 'active' : ''}
+          onClick={() => handleCategoryClick('all')}
+        >
+          ALL
+        </button>
+        <button
+          className={activeCategory === 'design' ? 'active' : ''}
+          onClick={() => handleCategoryClick('design')}
+        >
+          DESIGN
+        </button>
+        <button
+          className={activeCategory === 'development' ? 'active' : ''}
+          onClick={() => handleCategoryClick('development')}
+        >
+          DEVELOPMENT
+        </button>
+        <button
+          className={activeCategory === 'graphics' ? 'active' : ''}
+          onClick={() => handleCategoryClick('graphics')}
+        >
+          GRAPHICS
+        </button>
+        <button
+          className={activeCategory === 'templates' ? 'active' : ''}
+          onClick={() => handleCategoryClick('templates')}
+        >
+          TEMPLATES
+        </button>
+      </div>
+      <div className="portfolio-grid">
+        <div
+          className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+        <div
+          className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+        <div
+          className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+        <div
+          className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+        <div
+          className={`portfolio-item ${activeCategory === 'design' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+        <div
+          className={`portfolio-item ${activeCategory === 'design' || activeCategory === 'all' ? '' : 'hidden'}`}
+        >
+          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <div className="overlay">
+            <h3>3D Graphics</h3>
+            <h4>Templates</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PortfolioSection;
