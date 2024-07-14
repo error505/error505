@@ -15,10 +15,10 @@ import useScrollIntoView from './hooks/useScrollIntoView';
 import BlogList from './components/blog/BlogList';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-library.add(fab, faUser, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase);
+library.add(fab, faHome, faUser, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase);
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -43,6 +43,7 @@ function App() {
 
   useScrollIntoView({
     sidebar: [
+      '.sidebar .home-button',
       '.sidebar .portfolio-button',
       '.sidebar .about-button',
       '.sidebar .contact-button',
@@ -50,6 +51,7 @@ function App() {
       '.sidebar .service-button'
     ],
     header: [
+      '.mobile-header .home-button',
       '.mobile-header .portfolio-button',
       '.mobile-header .about-button',
       '.mobile-header .contact-button',

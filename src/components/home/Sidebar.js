@@ -16,6 +16,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
       </div>
       <nav className="navigation">
         <ul>
+          <li><a href="/" className="home-button"><FontAwesomeIcon icon="home" /><span> Home</span></a></li>
           <li><a href="#about" className="about-button"><FontAwesomeIcon icon="user" /><span> About Me</span></a></li>
           <li><a href="#portfolio" className="portfolio-button"><FontAwesomeIcon icon="briefcase" /><span> Portfolio</span></a></li>
           <li><a href="#services" className="service-button"><FontAwesomeIcon icon="dollar-sign" /><span> Services & Pricing</span></a></li>
