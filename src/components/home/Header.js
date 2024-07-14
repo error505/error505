@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Header = () => {
   return (
     <header className="mobile-header">
-      <a href="#home" className="home-button open-sidebar1">
+      <a href="/error505" className="home-button open-sidebar1">
         <FontAwesomeIcon icon="home" /><span></span>
       </a>
       <a href="#about" className="about-button open-sidebar1">
