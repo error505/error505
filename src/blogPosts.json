@@ -33,7 +33,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Operational_Excelence.png",
+        "src": "/error505/static/images/blog/Operational_Excelence.png",
         "alt": "Operational Excellence"
       },
       {
@@ -107,7 +107,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Mission_Critical_Workloads.png",
+        "src": "/error505/static/images/blog/Mission_Critical_Workloads.png",
         "alt": "Identify Workloads"
       },
       {
@@ -221,7 +221,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Messaging_Bridge_Pattern.jpg",
+        "src": "/error505/static/images/blog/Messaging_Bridge_Pattern.jpg",
         "alt": "Messaging Bridge Pattern"
       },
       {
@@ -552,7 +552,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/plan_for_security.png",
+        "src": "/error505/static/images/blog/plan_for_security.png",
         "alt": "Security Readiness"
       },
       {
@@ -639,7 +639,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Anti_Corruption_Layer_Pattern.jpg",
+        "src": "/error505/static/images/blog/Anti_Corruption_Layer_Pattern.jpg",
         "alt": "Anti-Corruption Layer Pattern"
       },
       {
@@ -791,7 +791,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/CQRS_Pattern.gif",
+        "src": "/error505/static/images/blog/CQRS_Pattern.gif",
         "alt": "CQRS Pattern"
       },
       {
@@ -946,7 +946,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Quarantine_Pattern.jpg",
+        "src": "/error505/static/images/blog/Quarantine_Pattern.jpg",
         "alt": "Quarantine Pattern"
       },
       {
@@ -1100,7 +1100,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Leader_Election_Pattern.gif",
+        "src": "/error505/static/images/blog/Leader_Election_Pattern.gif",
         "alt": "Leader Election Pattern"
       },
       {
@@ -1232,7 +1232,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Gateway_Routing_Pattern.jpg",
+        "src": "/error505/static/images/blog/Gateway_Routing_Pattern.jpg",
         "alt": "Gateway Routing Pattern"
       },
       {
@@ -1368,7 +1368,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Pipes_Filters_Pattern.jpg",
+        "src": "/error505/static/images/blog/Pipes_Filters_Pattern.jpg",
         "alt": "Pipes and Filters Pattern"
       },
       {
@@ -1510,7 +1510,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Event_Sourcing_Pattern.jpg",
+        "src": "/error505/static/images/blog/Event_Sourcing_Pattern.jpg",
         "alt": "Event Sourcing Pattern"
       },
       {
@@ -1661,7 +1661,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Federated_Identity_Pattern.jpg",
+        "src": "/error505/static/images/blog/Federated_Identity_Pattern.jpg",
         "alt": "Federated Identity Pattern"
       },
       {
@@ -1812,7 +1812,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Gatekeeper_Pattern.jpg",
+        "src": "/error505/static/images/blog/Gatekeeper_Pattern.jpg",
         "alt": "Gatekeeper Pattern"
       },
       {
@@ -1969,7 +1969,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Throttling_Pattern.jpg",
+        "src": "/error505/static/images/blog/Throttling_Pattern.jpg",
         "alt": "Throttling Pattern"
       },
       {
@@ -2103,7 +2103,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Gateway_Offloading_Pattern.jpg",
+        "src": "/error505/static/images/blog/Gateway_Offloading_Pattern.jpg",
         "alt": "Gateway Offloading Pattern"
       },
       {
@@ -2260,7 +2260,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Publisher_Subscriber_Pattern.png",
+        "src": "/error505/static/images/blog/Publisher_Subscriber_Pattern.png",
         "alt": "Publisher-Subscriber Pattern"
       },
       {
@@ -2397,7 +2397,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Gateway_Aggregation_Pattern.pg",
+        "src": "/error505/static/images/blog/Gateway_Aggregation_Pattern.pg",
         "alt": "Gateway Aggregation Pattern"
       },
       {
@@ -2554,7 +2554,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Develop_costs.png",
+        "src": "/error505/static/images/blog/Develop_costs.png",
         "alt": "Cost Optimization"
       },
       {
@@ -2680,7 +2680,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/N_Tier_Architecture.jpg",
+        "src": "/error505/static/images/blog/N_Tier_Architecture.jpg",
         "alt": "N-Tier Architecture"
       },
       {
@@ -2800,7 +2800,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Deployment_Stamps.jpg",
+        "src": "/error505/static/images/blog/Deployment_Stamps.jpg",
         "alt": "Deployment Stamps Pattern"
       },
       {
@@ -2928,7 +2928,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Materialized_View.jpg",
+        "src": "/error505/static/images/blog/Materialized_View.jpg",
         "alt": "Materialized View Pattern"
       },
       {
@@ -3047,7 +3047,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Sharding_Pattern.jpg",
+        "src": "/error505/static/images/blog/Sharding_Pattern.jpg",
         "alt": "Sharding Pattern"
       },
       {
@@ -3166,7 +3166,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Priority_Queue.jpg",
+        "src": "/error505/static/images/blog/Priority_Queue.jpg",
         "alt": "Priority Queue Pattern"
       },
       {
@@ -3295,7 +3295,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/RAG_Pattern.gif",
+        "src": "/error505/static/images/blog/RAG_Pattern.gif",
         "alt": "Retrieval-Augmented Generation Pattern"
       },
       {
@@ -3478,7 +3478,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Queue_Based_Load_Leveling.jpg",
+        "src": "/error505/static/images/blog/Queue_Based_Load_Leveling.jpg",
         "alt": "Queue-Based Load Leveling Pattern"
       },
       {
@@ -3561,7 +3561,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Index_Table_Pattern.jpg",
+        "src": "/error505/static/images/blog/Index_Table_Pattern.jpg",
         "alt": "Index Table Pattern"
       },
       {
@@ -3694,7 +3694,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/External_Configuration_Store.jpg",
+        "src": "/error505/static/images/blog/External_Configuration_Store.jpg",
         "alt": "External Configuration Store Pattern"
       },
       {
@@ -3827,7 +3827,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Compensating_Transaction_Pattern.jpg",
+        "src": "/error505/static/images/blog/Compensating_Transaction_Pattern.jpg",
         "alt": "Compensating Transaction Pattern"
       },
       {
@@ -3935,7 +3935,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Hub_Spoke_Topology.gif",
+        "src": "/error505/static/images/blog/Hub_Spoke_Topology.gif",
         "alt": "Hub-Spoke Topology"
       },
       {
@@ -4064,7 +4064,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Multi_Cloud_Integrations_Architecture.gif",
+        "src": "/error505/static/images/blog/Multi_Cloud_Integrations_Architecture.gif",
         "alt": "Multi-Cloud Integrations Architecture"
       },
       {
@@ -4194,7 +4194,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Scheduler_Agent_Supervisor_Pattern.jpg",
+        "src": "/error505/static/images/blog/Scheduler_Agent_Supervisor_Pattern.jpg",
         "alt": "Scheduler Agent Supervisor Pattern"
       },
       {
@@ -4318,7 +4318,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Saga_Pattern.jpg",
+        "src": "/error505/static/images/blog/Saga_Pattern.jpg",
         "alt": "Saga Pattern Diagram"
       },
       {
@@ -4439,7 +4439,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Valet_Key_Pattern.jpg",
+        "src": "/error505/static/images/blog/Valet_Key_Pattern.jpg",
         "alt": "Valet Key Pattern"
       },
       {
@@ -4572,7 +4572,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Health_Endpoint_Monitoring.jpg",
+        "src": "/error505/static/images/blog/Health_Endpoint_Monitoring.jpg",
         "alt": "Health Endpoint Monitoring Pattern"
       },
       {
@@ -4728,7 +4728,7 @@
       },
       {
         "type": "image",
-        "src": "../static/images/blog/Messaging_Bridge_Pattern.jpg",
+        "src": "/error505/static/images/blog/Messaging_Bridge_Pattern.jpg",
         "alt": "Messaging Bridge Pattern"
       },
       {
