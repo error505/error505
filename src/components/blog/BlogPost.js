@@ -50,6 +50,14 @@ const BlogPost = () => {
                 {section.text}
               </SyntaxHighlighter>
             );
+          case 'link':
+            return (
+              <p key={index}>
+                <a href={section.href} target="_blank" rel="noopener noreferrer">
+                  {section.text}
+                </a>
+              </p>
+            );
           default:
             return null;
         }
