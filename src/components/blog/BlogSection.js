@@ -19,7 +19,7 @@ const BlogSection = () => {
             <Link to={`/blog/${post.id}`}>
               <div className="blog-image" style={{ backgroundImage: `url(${post.image})` }}></div>
               <div className="card-content">
-              <p><span class="category">{post.category}</span></p>
+              <p><span className="category">{post.category}</span></p>
                 <h4>{post.title}</h4>
               </div>
             </Link>
