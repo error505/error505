@@ -78,7 +78,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/error505">
+    <Router >
       <div className={isDarkMode ? 'dark-mode' : ''}>
         <Header />
         <Sidebar isSidebarClosed={isSidebarClosed} toggleSidebar={toggleSidebar} />
