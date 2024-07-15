@@ -5553,6 +5553,11 @@
         "text": "Key Features of Azure SQL Database"
       },
       {
+        "type": "image",
+        "src": "/error505/static/images/blog/Azure_SQL_Comparison.jpg",
+        "alt": "Azure SQL Edge Features"
+      },
+      {
         "type": "list",
         "items": [
           "Automated Backups: Azure SQL Database handles automated backups, ensuring data recovery and peace of mind.",
@@ -5622,7 +5627,7 @@
       },
       {
         "type": "image",
-        "src": "/error505/static/images/blog/Azure_SQL_Edge_Features.jpg",
+        "src": "/error505/static/images/blog/Azure_SQL_Edge_Features.png",
         "alt": "Azure SQL Edge Features"
       },
       {
