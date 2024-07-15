@@ -18,18 +18,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
       </div>
       <nav className="navigation">
         <ul>
-        <li>
-            <ScrollLink
-              to="/error505"
-              smooth={true}
-              duration={500}
-              className="home-button"
-              onClick={toggleSidebar}
-            >
-              <FontAwesomeIcon icon="home" />
-              <span> Home</span>
-            </ScrollLink>
-          </li>
+        <li><a href="/" className="home-button"><FontAwesomeIcon icon="home" /><span> Home</span></a></li>
           <li>
             <ScrollLink
               to="about"
