@@ -2349,6 +2349,321 @@
     ]
   },
   {
+    "id": "sidecar-pattern",
+    "title": "Enhance Your Application with the Sidecar Pattern on Azure",
+    "category": "Cloud",
+    "image": "./static/images/blog/Sidecar_Pattern.jpg",
+    "date": "Published today",
+    "readTime": "15 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "In modern cloud architecture, the Sidecar Pattern is an essential approach for extending the functionality of your main application without modifying its core logic. By running additional services alongside the main application, this pattern provides a robust solution for handling cross-cutting concerns such as logging, monitoring, and configuration management."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Understanding the Sidecar Pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Sidecar Pattern encapsulates auxiliary tasks into a separate container that runs alongside the primary application. This auxiliary container, or 'sidecar', can manage tasks like logging, monitoring, configuration, and communication with other services. This separation of concerns ensures that the main application remains focused on its primary business logic while the sidecar handles the additional functionalities."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "How It Works"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here’s a detailed look at how the Sidecar Pattern operates based on our architectural diagram:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Main Application remains the core component, focused solely on executing its business logic without any interruptions or additional overhead.",
+          "Sidecar App is a separate container that runs alongside the main application. This app handles cross-cutting concerns such as logging, monitoring, configuration management, and more.",
+          "Azure Blob Storage integrates with the sidecar for efficient data management and storage. This allows for seamless data handling and retrieval operations.",
+          "Azure Monitor is integrated with the sidecar to log all activities and events. This ensures comprehensive monitoring without disrupting the main application’s operations.",
+          "Azure Metrics provides real-time performance and health checks, syncing with the sidecar to monitor the application's status continuously.",
+          "The main application continues to operate uninterrupted, efficiently writing to an SQL Elastic Pool, ensuring data consistency and reliability."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Sidecar_Pattern.jpg",
+        "alt": "Sidecar Pattern"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Benefits of the Sidecar Pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "Implementing the Sidecar Pattern offers several significant advantages:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Enhanced modularity: By separating auxiliary tasks from the main application, the Sidecar Pattern enhances the modularity of the system. Each component can be developed, deployed, and scaled independently.",
+          "Improved maintainability: The separation of concerns ensures that changes in logging, monitoring, or configuration management do not affect the main application. This makes the system easier to maintain and evolve.",
+          "Scalability: The sidecar can be scaled independently of the main application, allowing for more efficient resource utilization and management. This is particularly beneficial for handling varying workloads and improving performance.",
+          "Flexibility: The sidecar can be easily updated or replaced without impacting the main application, providing greater flexibility in managing and upgrading the system."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Detailed Implementation Steps"
+      },
+      {
+        "type": "paragraph",
+        "text": "Implementing the Sidecar Pattern involves several detailed steps. Here’s how to get started:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Step 1: Define the Main Application - Develop your main application focusing solely on the core business logic. Ensure it operates independently without any built-in logging or monitoring features.",
+          "Step 2: Develop the Sidecar Application - Create a separate application that handles cross-cutting concerns such as logging, monitoring, configuration, and communication with other services.",
+          "Step 3: Integrate with Azure Blob Storage - Configure the sidecar to manage data storage and retrieval operations using Azure Blob Storage. This ensures efficient data management and scalability.",
+          "Step 4: Configure Azure Monitor - Set up Azure Monitor to log all activities and events through the sidecar. This provides comprehensive monitoring and helps in tracking the application's performance and health.",
+          "Step 5: Set Up Azure Metrics - Use Azure Metrics to provide real-time performance and health checks. Integrate these metrics with the sidecar to continuously monitor the application’s status.",
+          "Step 6: Deploy the Applications - Deploy both the main application and the sidecar on Azure. Ensure they run in separate containers but operate alongside each other."
+        ]
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "text": "# Example Python code for setting up logging in the sidecar\nimport logging\nfrom azure.storage.blob import BlobServiceClient\n\n# Initialize the BlobServiceClient\nblob_service_client = BlobServiceClient.from_connection_string('<connection-string>')\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# Log an example message\nlogger.info('Sidecar logging initialized')"
+      },
+      {
+        "type": "code",
+        "language": "csharp",
+        "text": "// Example C# code for integrating Azure Monitor\nusing Microsoft.Extensions.Logging;\n\npublic class SidecarService\n{\n    private readonly ILogger<SidecarService> _logger;\n\n    public SidecarService(ILogger<SidecarService> logger)\n    {\n        _logger = logger;\n    }\n\n    public void LogActivity(string activity)\n    {\n        _logger.LogInformation($\"Activity logged: {activity}\");\n    }\n}"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Considerations"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Monitoring and Management: Regularly monitor and manage the sidecar application to ensure it operates effectively without introducing any overhead or bottlenecks.",
+          "Security: Ensure that communication between the main application and the sidecar is secure. Implement necessary authentication and authorization mechanisms to protect the data.",
+          "Performance: Continuously monitor the performance of both the main application and the sidecar to identify any potential issues and optimize resource utilization."
+        ],
+        "class": "cons"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Sidecar Pattern is a powerful architectural approach that enhances the functionality of your main application without altering its core logic. By running additional services in a sidecar container, you can manage cross-cutting concerns efficiently and maintain the modularity, flexibility, and scalability of your system. Implementing this pattern ensures that your application remains focused on its primary business logic while benefiting from enhanced logging, monitoring, and configuration management."
+      }
+    ]
+  },
+  {
+    "id": "strangler-fig-pattern",
+    "title": "Smoothly Transition from Legacy Systems with the Strangler Fig Pattern",
+    "category": "Cloud",
+    "image": "./static/images/blog/Strangler_Fig_Pattern.jpg",
+    "date": "Published today",
+    "readTime": "15 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Migrating from legacy systems to modern architectures can be challenging. The Strangler Fig Pattern offers a methodical approach to gradually transition from an old system to a new one without causing disruption. This pattern allows for the introduction of new functionalities while phasing out the legacy system over time."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Understanding the Strangler Fig Pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Strangler Fig Pattern is named after the way a strangler fig plant grows around a tree, eventually replacing it. Similarly, this pattern involves incrementally replacing parts of a legacy system with new services until the old system is completely replaced."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "How It Works"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here's a step-by-step guide on how to implement the Strangler Fig Pattern on Azure:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Identify the service or functionality in the legacy system that needs to be replaced.",
+          "Create a replacement service that replicates the functionality of the legacy feature.",
+          "Route traffic to the new service instead of the legacy one using an API Gateway or Router.",
+          "Maintain routes to legacy features that have not yet been replaced.",
+          "Use tools like Azure Advisor to ensure the new service is reliable, performant, and cost-effective.",
+          "Once all features have been replaced, the new system should be complete and fully functional.",
+          "After a period of parallel running and once confident in the new system's capabilities, decommission the legacy system."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Strangler_Fig_Pattern.jpg",
+        "alt": "Strangler Fig Pattern"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Benefits of the Strangler Fig Pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "Implementing the Strangler Fig Pattern offers several significant advantages:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Reduced Risk: By gradually replacing parts of the system, the risk of introducing errors and failures is minimized.",
+          "Continuous Operation: The legacy system continues to operate while new features are being introduced, ensuring uninterrupted service.",
+          "Incremental Improvement: New functionalities can be tested and optimized incrementally, leading to a more refined and efficient final system.",
+          "Cost-Effective: Resources can be allocated more effectively, as only parts of the system are replaced at a time."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Detailed Steps"
+      },
+      {
+        "type": "paragraph",
+        "text": "Let's delve deeper into the detailed steps involved in implementing the Strangler Fig Pattern:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Step 1: Identify Services - Begin by identifying the services or functionalities in the legacy system that need to be replaced. Prioritize these based on their impact and complexity.",
+          "Step 2: Develop Replacement Services - Develop new services that replicate the identified functionalities. These services should be designed to integrate seamlessly with the existing system.",
+          "Step 3: Route Traffic - Use an API Gateway or Router to route traffic to the new services. This ensures that the new functionalities are tested in a real-world scenario.",
+          "Step 4: Maintain Legacy Routes - Maintain routes to legacy features that have not yet been replaced. This ensures that the system remains functional during the transition.",
+          "Step 5: Use Azure Advisor - Utilize tools like Azure Advisor to monitor the performance, reliability, and cost-effectiveness of the new services. This helps in making informed decisions during the transition.",
+          "Step 6: Complete Transition - Once all features have been replaced, the new system should be complete and fully functional. Perform thorough testing to ensure that the new system meets all requirements.",
+          "Step 7: Decommission Legacy System - After a period of parallel running and once confident in the new system's capabilities, decommission the legacy system. Ensure that all data and functionalities are safely migrated to the new system."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Code Snippets for Implementation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Below are some example code snippets to illustrate how to implement the Strangler Fig Pattern in various languages and tools:"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Python Example"
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "text": "import azure.functions as func\nimport azure.eventgrid as eventgrid\n\n# Example function to route traffic to new service\nasync def route_to_new_service(req: func.HttpRequest) -> func.HttpResponse:\n    new_service_url = 'https://newservice.azurewebsites.net/api/endpoint'\n    response = await func.HttpRequest('GET', new_service_url)\n    return func.HttpResponse(response.content)"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "C# Example"
+      },
+      {
+        "type": "code",
+        "language": "csharp",
+        "text": "using System;\nusing System.Net.Http;\nusing Microsoft.Azure.WebJobs;\nusing Microsoft.Extensions.Logging;\n\npublic static class RouteToNewService\n{\n    private static readonly HttpClient client = new HttpClient();\n\n    [FunctionName(\"RouteToNewService\")]\n    public static async Task<HttpResponseMessage> Run(\n        [HttpTrigger(AuthorizationLevel.Function, \"get\", \"post\")] HttpRequestMessage req,\n        ILogger log)\n    {\n        var newServiceUrl = \"https://newservice.azurewebsites.net/api/endpoint\";\n        var response = await client.GetAsync(newServiceUrl);\n        return response;\n    }\n}"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Terraform Example"
+      },
+      {
+        "type": "code",
+        "language": "hcl",
+        "text": "provider \"azurerm\" {\n  features {}\n}\n\nresource \"azurerm_function_app\" \"example\" {\n  name                       = \"example-function-app\"\n  location                   = azurerm_resource_group.example.location\n  resource_group_name        = azurerm_resource_group.example.name\n  app_service_plan_id        = azurerm_app_service_plan.example.id\n  storage_account_name       = azurerm_storage_account.example.name\n  storage_account_access_key = azurerm_storage_account.example.primary_access_key\n}\n\nresource \"azurerm_api_management\" \"example\" {\n  name                = \"example-api\"\n  location            = azurerm_resource_group.example.location\n  resource_group_name = azurerm_resource_group.example.name\n  publisher_name      = \"example\"\n  publisher_email     = \"example@example.com\"\n  sku_name            = \"Developer_1\"\n}"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Bicep Example"
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource functionApp 'Microsoft.Web/sites@2021-02-01' = {\n  name: 'example-function-app'\n  location: resourceGroup().location\n  kind: 'functionapp'\n  properties: {\n    serverFarmId: appServicePlan.id\n    siteConfig: {\n      appSettings: [\n        {\n          name: 'AzureWebJobsStorage'\n          value: storageAccount.primaryConnectionString\n        }\n      ]\n    }\n  }\n}\n\nresource apiManagement 'Microsoft.ApiManagement/service@2020-06-01-preview' = {\n  name: 'example-api'\n  location: resourceGroup().location\n  sku: {\n    name: 'Developer'\n    capacity: 1\n  }\n  properties: {\n    publisherEmail: 'example@example.com'\n    publisherName: 'example'\n  }\n}"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Considerations for Implementation"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Setup Complexity: Implementing the Strangler Fig Pattern requires careful planning and setup, particularly in synchronizing data updates and routing traffic.",
+          "Data Consistency: Ensuring that the new services remain consistent with the legacy system is crucial. This requires effective monitoring and management.",
+          "Maintenance: Ongoing maintenance is needed to manage two systems during the transition period, which can add to the operational overhead."
+        ],
+        "class": "cons"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Strangler Fig Pattern provides a practical and low-risk approach to transitioning from legacy systems to modern architectures. By gradually introducing new functionalities and phasing out old ones, this pattern ensures continuous operation and reduces the risk of disruptions. Implementing the Strangler Fig Pattern can help organizations modernize their IT infrastructure while maintaining service reliability and performance."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Summary of Steps"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here’s a quick summary of how to implement the Strangler Fig Pattern:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Identify the service to replace in the legacy system.",
+          "Create a replacement service that replicates the functionality of the legacy feature.",
+          "Route traffic to the new service using an API Gateway or Router.",
+          "Maintain routes to legacy features that have not yet been replaced.",
+          "Use tools like Azure Advisor to ensure the new service is reliable, performant, and cost-effective.",
+          "Complete the transition once all features have been replaced and thoroughly tested.",
+          "Decommission the legacy system after ensuring the new system’s capabilities."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "For more detailed information and further reading, you can visit the official Microsoft documentation on the Strangler Fig Pattern:"
+      },
+      {
+        "type": "paragraph",
+        "text": "<a href=\"https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig\" target=\"_blank\" rel=\"noopener noreferrer\">Microsoft Learn - Strangler Fig Pattern</a>"
+      }
+    ]
+  },    
+  {
     "id": "publisher-subscriber-pattern",
     "title": "Mastering the Publisher-Subscriber Pattern on Azure",
     "category": "Cloud",
@@ -4985,6 +5300,228 @@
         "text": "The Messaging Bridge Pattern is a robust solution for managing and transferring messages in a cloud environment. By leveraging Azure services such as Service Bus, Topic Subscriptions, and Azure Functions, this pattern ensures reliable, scalable, and efficient message handling. Implementing this pattern can significantly improve the performance and reliability of your system, making it better equipped to handle high volumes of messages and complex processing requirements."
       }
     ]
+  },
+  {
+    "id": "azure-operator-insights-vs-network-watcher",
+    "title": "Comparing Azure Operator Insights and Azure Network Watcher: Key Differences and Use Cases",
+    "category": "Cloud",
+    "image": "./static/images/blog/Azure_Operator_Insights_vs_Network_Watcher.jpg",
+    "date": "Published today",
+    "readTime": "20 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Azure offers a variety of services to help manage, monitor, and analyze network and infrastructure resources. Two such services are Azure Operator Insights and Azure Network Watcher. While they both provide valuable insights and diagnostics, they are designed for different purposes and use cases. In this post, we will explore the key differences between Azure Operator Insights and Azure Network Watcher, their features, use cases, and when to use each service."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What is Azure Operator Insights?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Operator Insights is a fully managed service that collects and analyzes large quantities of network data from complex, multi-vendor network functions. It provides AI and machine learning-based insights for operator-specific workloads, helping understand network health and subscriber experiences in near real-time."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Key Features of Azure Operator Insights"
+      },
+      {
+        "type": "list",
+        "items": [
+          "High-scale ingestion for large data volumes from operator data sources.",
+          "Managed pipelines, operator privacy module, and compliance features.",
+          "Integration with Microsoft and non-Microsoft services through a common data model.",
+          "High-speed analytics for fast data exploration and correlation."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "When to Use Azure Operator Insights"
+      },
+      {
+        "type": "list",
+        "items": [
+          "When operators need to analyze and gain insights from large amounts of network data efficiently.",
+          "For environments where understanding the performance and health of multi-vendor network functions is critical."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Not Recommended For"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Scenarios not involving complex, multi-vendor network functions.",
+          "When detailed application-level monitoring is required."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What is Azure Network Watcher?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Network Watcher provides tools to monitor, diagnose, view metrics, and enable or disable logs for Azure IaaS resources, such as VMs, VNets, and more. It is not designed for PaaS monitoring or web analytics but focuses on infrastructure health and performance."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Key Features of Azure Network Watcher"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Network topology visualization and connection monitoring.",
+          "Diagnostic tools like IP flow verify, NSG diagnostics, packet capture, and more.",
+          "Flow logs and traffic analytics for visualizing and analyzing network traffic."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "When to Use Azure Network Watcher"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Essential for managing and troubleshooting Azure's virtual network infrastructure.",
+          "Offers detailed diagnostic tools for network performance issues, traffic analysis, and security group configurations."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Not Suitable For"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Monitoring non-IaaS resources.",
+          "Application-level insights."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Azure_Operator_Insights_vs_Network_Watcher.jpg",
+        "alt": "Azure Operator Insights vs Network Watcher"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Detailed Comparison"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Purpose and Use Cases"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Operator Insights is designed to handle and analyze vast amounts of data from diverse network functions efficiently. It is ideal for environments where understanding the performance and health of multi-vendor network functions is critical. On the other hand, Azure Network Watcher is meant for managing Azure's network infrastructure, providing in-depth tools for diagnosing and monitoring network health and traffic."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Key Features"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Azure Operator Insights offers high-scale ingestion, managed pipelines, operator privacy module, and integration with various services through a common data model. It also provides high-speed analytics for fast data exploration and correlation.",
+          "Azure Network Watcher provides network topology visualization, connection monitoring, diagnostic tools like IP flow verify, NSG diagnostics, packet capture, and flow logs and traffic analytics for visualizing and analyzing network traffic."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Integration and Compatibility"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Operator Insights integrates with Microsoft and non-Microsoft services through a common data model, making it versatile and adaptable to various network environments. Azure Network Watcher, however, is primarily focused on Azure's virtual network infrastructure, providing tools specific to managing and troubleshooting Azure resources."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Sample Code Snippets"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Python Example for Azure Operator Insights"
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "text": "import azure.functions as func\nimport azure.eventgrid as eventgrid\n\n# Example function to ingest data into Azure Operator Insights\nasync def ingest_data(req: func.HttpRequest) -> func.HttpResponse:\n    data = req.get_json()\n    # Process and ingest data into Operator Insights\n    return func.HttpResponse('Data ingested successfully')"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "C# Example for Azure Network Watcher"
+      },
+      {
+        "type": "code",
+        "language": "csharp",
+        "text": "using System;\nusing System.Net.Http;\nusing Microsoft.Azure.WebJobs;\nusing Microsoft.Extensions.Logging;\n\npublic static class NetworkDiagnostics\n{\n    private static readonly HttpClient client = new HttpClient();\n\n    [FunctionName(\"RunNetworkDiagnostics\")]\n    public static async Task<HttpResponseMessage> Run(\n        [HttpTrigger(AuthorizationLevel.Function, \"get\", \"post\")] HttpRequestMessage req,\n        ILogger log)\n    {\n        var networkWatcherUrl = \"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify?api-version=2021-02-01\";\n        var response = await client.GetAsync(networkWatcherUrl);\n        return response;\n    }\n}"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Terraform Example for Azure Network Watcher"
+      },
+      {
+        "type": "code",
+        "language": "hcl",
+        "text": "provider \"azurerm\" {\n  features {}\n}\n\nresource \"azurerm_network_watcher\" \"example\" {\n  name                = \"example-network-watcher\"\n  location            = azurerm_resource_group.example.location\n  resource_group_name = azurerm_resource_group.example.name\n}\n\nresource \"azurerm_network_watcher_flow_log\" \"example\" {\n  network_watcher_name = azurerm_network_watcher.example.name\n  resource_group_name  = azurerm_resource_group.example.name\n  storage_account_id   = azurerm_storage_account.example.id\n  enabled              = true\n}"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Operator Insights and Azure Network Watcher both provide powerful tools for managing and analyzing network resources, but they are designed for different use cases. Azure Operator Insights is ideal for environments that require deep insights into network performance and health across complex, multi-vendor environments. In contrast, Azure Network Watcher is best for Azure infrastructure monitoring, offering detailed network diagnostics and analysis tools for IT professionals managing Azure virtual networks."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Summary of Use Cases"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Use Azure Operator Insights for deep insights into network performance and health across complex, multi-vendor environments.",
+          "Azure Network Watcher is best for Azure infrastructure monitoring, offering detailed network diagnostics and analysis tools for IT professionals managing Azure virtual networks."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "For more detailed information and further reading, you can visit the official Microsoft documentation on Azure Operator Insights and Azure Network Watcher:"
+      },
+      {
+        "type": "paragraph",
+        "text": "<a href=\"https://learn.microsoft.com/en-us/azure/operator-insights/overview\" target=\"_blank\" rel=\"noopener noreferrer\">Microsoft Learn - Azure Operator Insights</a>"
+      },
+      {
+        "type": "paragraph",
+        "text": "<a href=\"https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-overview\" target=\"_blank\" rel=\"noopener noreferrer\">Microsoft Learn - Azure Network Watcher</a>"
+      }
+    ]
   }
+  
   
 ]
