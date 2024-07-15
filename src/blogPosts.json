@@ -4340,7 +4340,7 @@
     "id": "hub-spoke-topology",
     "title": "Mastering Azure's Hub-Spoke Topology for Efficient Network Management",
     "category": "Cloud",
-    "image": "./static/images/blog/Hub_Spoke_Topology.gif",
+    "image": "./static/images/blog/Hub_Spoke_Topology_Azure.gif",
     "date": "Published today",
     "readTime": "15 min read",
     "comments": "0 comments",
@@ -4382,7 +4382,7 @@
       },
       {
         "type": "image",
-        "src": "/error505/static/images/blog/Hub_Spoke_Topology.gif",
+        "src": "/error505/static/images/blog/Hub_Spoke_Topology_Azure.gif",
         "alt": "Hub-Spoke Topology"
       },
       {
