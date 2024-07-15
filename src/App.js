@@ -78,7 +78,7 @@ function App() {
   }, []);
 
   return (
-    <Router >
+    <Router>
       <div className={isDarkMode ? 'dark-mode' : ''}>
         <Header />
         <Sidebar isSidebarClosed={isSidebarClosed} toggleSidebar={toggleSidebar} />
