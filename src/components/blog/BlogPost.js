@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ReactPlayer from 'react-player';
 import blogPosts from '../../blogPosts.json';
 
 const BlogPost = () => {
@@ -58,6 +59,12 @@ const BlogPost = () => {
                 </a>
               </p>
             );
+            case 'video':
+              return (
+                <div key={index} className="video-wrapper">
+                  <ReactPlayer url={section.src} controls={section.controls || true} />
+                </div>
+              );
           default:
             return null;
         }
