@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { solarizedDarkAtom } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactPlayer from 'react-player';
 import blogPosts from '../../blogPosts.json';
 
@@ -47,7 +47,7 @@ const BlogPost = () => {
             );
           case 'code':
             return (
-              <SyntaxHighlighter key={index} language={section.language} style={solarizedlight}>
+              <SyntaxHighlighter key={index} language={section.language} style={solarizedDarkAtom}>
                 {section.text}
               </SyntaxHighlighter>
             );
