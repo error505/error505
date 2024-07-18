@@ -38,7 +38,7 @@ const BlogList = () => {
   };
 
   return (
-    <section className="blog-list px-3 py-5 p-md-5">
+    <section className="what-i-do px-3 py-5 p-md-5">
       <div className="search-wrapper">
         <FontAwesomeIcon icon={faSearch} className="search-icon" />
         <input 
@@ -52,7 +52,7 @@ const BlogList = () => {
       <div className="header d-flex justify-content-between align-items-center">
         <h1>All Blog Posts</h1>
       </div>
-      <div className="blog-grid container single-col-max-width">
+      <div className="services-grid ">
         {displayedPosts.map((post) => (
           <div key={post.id} className="blog-item mb-5">
             <Link to={`/blog/${post.id}`}>

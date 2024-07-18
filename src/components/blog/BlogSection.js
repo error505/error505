@@ -11,9 +11,9 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <section className="blog-section" id="blog">
+    <section className="what-i-do" id="blog">
       <h2>My Blog Posts</h2>
-      <div className="blog-grid">
+      <div className="services-grid">
         {posts.slice(0, 3).map((post) => (
           <div key={post.id} className="blog-item">
             <Link to={`/blog/${post.id}`}>
