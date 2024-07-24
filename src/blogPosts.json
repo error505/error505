@@ -1,6 +1,6 @@
 [
   {
-    "id": "tradeoffs-in-azure-well-architected-framework",
+    "id": "reliability-tradeoffs-in-azure-well-architected-framework",
     "title": "Balancing Reliability Tradeoffs in the Azure Well-Architected Framework",
     "category": "Cloud",
     "image": "./static/images/blog/Reliability_Tradeoffs.png",
