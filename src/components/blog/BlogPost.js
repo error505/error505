@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedDarkAtom } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactPlayer from 'react-player';
+import ReactMarkdown from 'react-markdown';
 import blogPosts from '../../blogPosts.json';
 
 const BlogPost = () => {
@@ -65,9 +66,11 @@ const BlogPost = () => {
                   <ReactPlayer url={section.src} controls={section.controls || true} />
                 </div>
               );
-          default:
-            return null;
-        }
+              case 'markdown':
+                return <ReactMarkdown key={index}>{section.text}</ReactMarkdown>;
+              default:
+                return null;
+            }
       })}
       <div className="blog-comments-section">
         <div id="disqus_thread"></div>
