@@ -37,37 +37,37 @@ const PortfolioSection = () => {
 
   return (
     <section className="portfolio-section" id="portfolio">
-      <h1>My PORTFOLIO</h1>
+      <h1>My Portfolio</h1>
       <div className="portfolio-menu">
         <button
           className={activeCategory === 'all' ? 'active' : ''}
           onClick={() => handleCategoryClick('all')}
         >
-          ALL
+          All
         </button>
         <button
-          className={activeCategory === 'design' ? 'active' : ''}
-          onClick={() => handleCategoryClick('design')}
+          className={activeCategory === 'cloud' ? 'active' : ''}
+          onClick={() => handleCategoryClick('cloud')}
         >
-          DESIGN
+          Cloud
         </button>
         <button
           className={activeCategory === 'development' ? 'active' : ''}
           onClick={() => handleCategoryClick('development')}
         >
-          DEVELOPMENT
+          Software Development
         </button>
         <button
-          className={activeCategory === 'graphics' ? 'active' : ''}
-          onClick={() => handleCategoryClick('graphics')}
+          className={activeCategory === 'ai' ? 'active' : ''}
+          onClick={() => handleCategoryClick('ai')}
         >
-          GRAPHICS
+          AI
         </button>
         <button
-          className={activeCategory === 'templates' ? 'active' : ''}
-          onClick={() => handleCategoryClick('templates')}
+          className={activeCategory === 'devops' ? 'active' : ''}
+          onClick={() => handleCategoryClick('devops')}
         >
-          TEMPLATES
+          DevOps
         </button>
       </div>
       <div className="portfolio-grid">
