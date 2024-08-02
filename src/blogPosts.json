@@ -93,7 +93,7 @@
       },
       {
         "type": "image",
-        "src": "./static/images/blog/Spending_Guardrails.png",
+        "src": "/error505/static/images/blog/Spending_Guardrails.png",
         "alt": "Spending Guardrails"
       },
       {
@@ -193,7 +193,7 @@
       },
       {
         "type": "image",
-        "src": "./static/images/blog/Optimize_Code_Costs.png",
+        "src": "/error505/static/images/blog/Optimize_Code_Costs.png",
         "alt": "Optimize Code Costs"
       },
       {
