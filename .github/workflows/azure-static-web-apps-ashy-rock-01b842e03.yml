@@ -27,7 +27,7 @@ jobs:
 
       - name: Update src paths in blogposts.json
         run: |
-          sed -i 's|"src": "/error505/|"src": "./|' blogposts.json
+          sed -i 's|"src": "/error505/|"src": "./|' src/blogposts.json
 
       - name: Update link in Header.js
         run: |
