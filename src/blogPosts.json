@@ -1,5 +1,552 @@
 [
   {
+    "id": "kickstart-azure-infrastructure-template",
+    "title": "Kickstart Your Azure Infrastructure with a Comprehensive ARM Template",
+    "category": "Cloud",
+    "image": "./static/images/blog/Azure_Infrastructure_Template.png",
+    "date": "Published 16.08.2024",
+    "readTime": "30 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Deploying a secure, scalable, and efficient infrastructure on Azure can be streamlined using an ARM template. This article explores a detailed template designed to kickstart your Azure environment, including a Static Web App, Azure App Service, Azure Function, Cosmos DB, Key Vault, Application Insights, and other essential components."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Azure_Infrastructure_Template.png",
+        "alt": "Azure Infra"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Overview of the Infrastructure"
+      },
+      {
+        "type": "paragraph",
+        "text": "This ARM template sets up a production-grade environment on Azure, emphasizing security, scalability, and monitoring. It includes a variety of services, each configured with best practices to ensure a robust deployment."
+      },
+      {
+        "type": "link",
+        "href": "https://github.com/error505/azure-starter-template",
+        "text": "Azure Template GitHub Repo"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Key Features"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Static Web App: Serves static content with IP whitelisting and two-factor authentication (2FA).",
+          "Azure App Service: Hosts the main web application with HTTPS-only access and Azure AD authentication.",
+          "Azure Function: Handles backend processing, integrated with Service Bus and Cosmos DB.",
+          "Azure Service Bus: Facilitates reliable communication between the App Service and Function App.",
+          "Azure Cosmos DB: Provides scalable, globally distributed database services with secure private endpoints.",
+          "Azure Key Vault: Manages secrets securely, accessible only by authorized applications.",
+          "Application Insights: Offers monitoring and diagnostics for both the App Service and Function App.",
+          "Network Security Groups (NSG): Controls traffic at the subnet level, ensuring that only authorized traffic is allowed."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Azure_Infrastructure_Overview.png",
+        "alt": "Overview Diagram"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Detailed Component Explanation"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "1. Static Web App"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Static Web App serves static content like HTML, CSS, and JavaScript. It is secured by restricting access to specific IP addresses and requiring two-factor authentication. This ensures that only authorized users can access the content."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "2. Azure App Service"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure App Service hosts the main web application. It is secured with HTTPS-only traffic and integrates with Azure Active Directory (AD) for user authentication. The app interacts with backend services like Azure Function and Cosmos DB."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "3. Azure Function App"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure Function App handles backend processing tasks. It operates on a pay-as-you-go consumption plan and processes messages from the Azure Service Bus, storing results in Cosmos DB. This setup ensures efficient processing and scalability."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "4. Azure Service Bus"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure Service Bus serves as a message hub, facilitating reliable communication between the Azure App Service and Azure Function. It enables decoupled, asynchronous processing, improving the scalability and reliability of the application."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "5. Azure Cosmos DB"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Cosmos DB provides globally distributed database services with session consistency. It is accessed through private endpoints, ensuring that data remains secure and compliant with regulatory requirements."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "6. Azure Key Vault"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Key Vault manages secrets such as connection strings and API keys. It ensures that sensitive information is securely stored and accessed only by authorized applications like the App Service and Function App."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "7. Application Insights"
+      },
+      {
+        "type": "paragraph",
+        "text": "Application Insights is integrated into both the Azure App Service and Azure Function App. It provides real-time monitoring and diagnostics, helping to detect and resolve issues quickly."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "8. Network Security"
+      },
+      {
+        "type": "paragraph",
+        "text": "Network Security Groups (NSGs) are applied to subnets to control traffic. NSGs allow only authorized traffic to reach the resources, enhancing the security of the entire infrastructure."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Azure_Detailed_Network_Security.png",
+        "alt": "Detailed Network and Security Diagram"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Getting Started with the ARM Template"
+      },
+      {
+        "type": "paragraph",
+        "text": "To deploy this template, follow these steps:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Clone the repository containing the ARM template.",
+          "Customize the parameters in the ARM template as needed.",
+          "Add your GitHub Access token and Repo URL for the Static Web Site deployment.",
+          "Register your app in Azure Active Directory (Azure AD) for 2FA.",
+          "Deploy the template using Azure CLI, PowerShell, or the Azure Portal."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Clone the repository containing the ARM template."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/GitHub Repo.png",
+        "alt": "GitHub Repo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Customize the parameters in the ARM template."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Customize_params.png",
+        "alt": "ARM Params"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add your GitHub Access token and Repo URL for the Static Web Site deployment."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/GitHub Repo and Token.png",
+        "alt": "GitHub Repo and token"
+      },
+      {
+        "type": "paragraph",
+        "text": "Register your app in Azure Active Directory (Azure AD) for 2FA."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/App Registration.png",
+        "alt": "Entra ID 2FA"
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Client ID.png",
+        "alt": "Entra ID 2FA"
+      },
+      {
+        "type": "paragraph",
+        "text": "Deploy the template using Azure CLI, PowerShell, or the Azure Portal. If you are using Azure Portal you can search for the Custom template deployement in the Search and then when found click on create."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Template Deploy.png",
+        "alt": "Template Deploy"
+      },
+      {
+        "type": "paragraph",
+        "text": "Click on Build your own template in editor"
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Build Template.png",
+        "alt": "Build Template"
+      },
+      {
+        "type": "paragraph",
+        "text": "Create resource group or choose one you already created and add your App Registration Client ID and click on review plus create."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Create Template.png",
+        "alt": "Create Template"
+      },
+      {
+        "type": "paragraph",
+        "text": "Your resources will be deployed in a moment."
+      },
+      {
+        "type": "image",
+        "src": "/error505/static/images/blog/Deployed Service.png",
+        "alt": "Deployed Service"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Deployment Commands"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here are the commands to deploy the template:"
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "Using Azure CLI"
+      },
+      {
+        "type": "code",
+        "language": "shell",
+        "text": "az deployment group create --resource-group <your-resource-group> --template-file azuredeploy.json"
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "Using PowerShell"
+      },
+      {
+        "type": "code",
+        "language": "shell",
+        "text": "New-AzResourceGroupDeployment -ResourceGroupName <your-resource-group> -TemplateFile azuredeploy.json"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Azure App Service - Service Bus Message Sender"
+      },
+      {
+        "type": "paragraph",
+        "text": "This Azure App Service hosts an API that sends messages to an Azure Service Bus topic. The service is designed to interact with backend components by sending messages that can be processed asynchronously."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Endpoints"
+      },
+      {
+        "type": "paragraph",
+        "text": "The service exposes an HTTP endpoint to trigger message sending:"
+      },
+      {
+        "type": "code",
+        "language": "shell",
+        "text": "POST /api/message/send"
+      },
+      {
+        "type": "paragraph",
+        "text": "This endpoint accepts a message in the request body and sends it to the configured Service Bus topic."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Request Example"
+      },
+      {
+        "type": "code",
+        "language": "shell",
+        "text": "curl -X POST \"https://yourappservice.azurewebsites.net/api/message/send\" -H \"Content-Type: application/json\" -d \"\\\"Your message content\\\"\""
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Response"
+      },
+      {
+        "type": "list",
+        "items": [
+          "200 OK: If the message is successfully sent.",
+          "500 Internal Server Error: If there is an issue with sending the message."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Configuration"
+      },
+      {
+        "type": "paragraph",
+        "text": "The following settings need to be configured in the App Service:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "ServiceBusConnectionString: The connection string for the Azure Service Bus namespace.",
+          "ServiceBusTopicName: The name of the Service Bus topic to which messages will be sent."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These settings can be configured in appsettings.json for local development or in the Azure Portal under the 'Configuration section' for the deployed App Service."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Example Code"
+      },
+      {
+        "type": "paragraph",
+        "text": "The core logic for sending messages to the Service Bus is found in the MessageController.cs file:"
+      },
+      {
+        "type": "code",
+        "language": "csharp",
+        "text": "private async Task SendMessageToServiceBusAsync(string messageContent)\n{\n    await using (var client = new ServiceBusClient(_serviceBusConnectionString))\n    {\n        ServiceBusSender sender = client.CreateSender(_topicName);\n        ServiceBusMessage message = new ServiceBusMessage(Encoding.UTF8.GetBytes(messageContent));\n        await sender.SendMessageAsync(message);\n    }\n}"
+      },
+      {
+        "type": "paragraph",
+        "text": "This method creates a ServiceBusClient, sends a message using a ServiceBusSender, and handles the process asynchronously."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Running the Service Locally"
+      },
+      {
+        "type": "paragraph",
+        "text": "To run the service locally, follow these steps:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Build and run the project: dotnet run",
+          "The service will be available at https://localhost:5001/api/message/send."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Deploying to Azure"
+      },
+      {
+        "type": "paragraph",
+        "text": "To deploy the service to Azure App Service, use the following steps:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Create an Azure App Service using the Azure Portal or Azure CLI.",
+          "Configure the application settings (ServiceBusConnectionString, ServiceBusTopicName).",
+          "Deploy the code using Visual Studio, GitHub Actions, or Azure CLI."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Azure Function - Service Bus Message Processor"
+      },
+      {
+        "type": "paragraph",
+        "text": "This Azure Function reads messages from an Azure Service Bus topic, processes them, and stores the results in both Azure Cosmos DB and Azure Blob Storage."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Features"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Service Bus Integration: Listens to messages from a specified Service Bus topic.",
+          "Cosmos DB Integration: Saves processed messages to an Azure Cosmos DB container.",
+          "Blob Storage Integration: Saves a confirmation text file to Azure Blob Storage after processing each message.",
+          "Scalable: Built on the Azure Functions consumption plan, allowing for automatic scaling based on demand."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Functionality"
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "Trigger"
+      },
+      {
+        "type": "paragraph",
+        "text": "The function is triggered by messages arriving on a Service Bus topic. The trigger is configured in the local.settings.json or the Azure Function App settings."
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "Processing"
+      },
+      {
+        "type": "paragraph",
+        "text": "Upon receiving a message, the function performs the following actions:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Save Message to Cosmos DB: The message is stored in the specified Cosmos DB container.",
+          "Save Confirmation to Blob Storage: A confirmation text file is created in Azure Blob Storage."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Example Code"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here is the core logic of the function:"
+      },
+      {
+        "type": "code",
+        "language": "csharp",
+        "text": "[FunctionName(\"ProcessServiceBusMessage\")]\npublic async Task Run(\n    [ServiceBusTrigger(\"YourTopicName\", \"YourSubscriptionName\", Connection = \"ServiceBusConnectionString\")] string mySbMsg,\n    ILogger log)\n{\n    log.LogInformation($\"C# ServiceBus topic trigger function processed message: {mySbMsg}\");\n\n    // Save to Cosmos DB\n    await SaveToCosmosDbAsync(mySbMsg);\n\n    // Save confirmation to Blob Storage\n    await SaveConfirmationToBlobAsync(mySbMsg);\n}\n\nprivate async Task SaveToCosmosDbAsync(string message)\n{\n    var container = _cosmosClient.GetContainer(_databaseId, _containerId);\n    dynamic document = JsonConvert.DeserializeObject(message);\n    await container.CreateItemAsync(document);\n}\n\nprivate async Task SaveConfirmationToBlobAsync(string message)\n{\n    BlobContainerClient containerClient = _blobServiceClient.GetBlobContainerClient(_blobContainerName);\n    await containerClient.CreateIfNotExistsAsync();\n\n    string blobName = $\"{Guid.NewGuid()}.txt\";\"    BlobClient blobClient = containerClient.GetBlobClient(blobName);\n\n    using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(\"Processed message: \" + message)))\n    {\n        await blobClient.UploadAsync(stream);\n    }\n}"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Configuration"
+      },
+      {
+        "type": "paragraph",
+        "text": "The following settings need to be configured:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "ServiceBusConnectionString: Connection string for the Azure Service Bus.",
+          "CosmosDBConnectionString: Connection string for Azure Cosmos DB.",
+          "AzureWebJobsStorage: Connection string for Azure Blob Storage (used by the Function App for internal storage)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These settings can be configured in the local.settings.json for local development or in the Azure Function App settings for a deployed function."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Running the Function Locally"
+      },
+      {
+        "type": "paragraph",
+        "text": "To run the function locally:"
+      },
+      {
+        "type": "code",
+        "language": "shell",
+        "text": "func start"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Deploying to Azure"
+      },
+      {
+        "type": "paragraph",
+        "text": "To deploy the Azure Function to your Azure environment:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Create an Azure Function App using the Azure Portal or Azure CLI.",
+          "Configure the application settings (ServiceBusConnectionString, CosmosDBConnectionString, AzureWebJobsStorage).",
+          "Deploy the function code using Visual Studio, GitHub Actions, or Azure CLI."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "For more detailed information and further reading, you can visit the official Microsoft documentation on each service used in this template:"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/app-service/overview",
+        "text": "Azure App Service Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
+        "text": "Azure Functions Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview",
+        "text": "Azure Service Bus Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
+        "text": "Azure Cosmos DB Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+        "text": "Azure Key Vault Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview",
+        "text": "Application Insights Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/network-security/network-security-groups-overview",
+        "text": "Network Security Groups Overview"
+      }
+    ]
+  },  
+  {
     "id": "securing-azure-workloads-key-recommendations-checklist",
     "title": "Securing Your Azure Workloads: Key Recommendations Checklist",
     "category": "Cloud",
