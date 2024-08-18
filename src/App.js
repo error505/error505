@@ -25,8 +25,26 @@ function App() {
   const [isSidebarClosed, setIsSidebarClosed] = useState(false);
   const [colorPanelVisible, setColorPanelVisible] = useState(false);
 
+  useEffect(() => {
+    // Retrieve stored settings on initial load
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    const savedColor = localStorage.getItem('themeColor');
+
+    if (savedDarkMode) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark-mode');
+    }
+
+    if (savedColor) {
+      document.documentElement.style.setProperty('--main-theme-color', savedColor);
+    }
+  }, []);
+
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    document.documentElement.classList.toggle('dark-mode', newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode);
   };
 
   const toggleSidebar = () => {
@@ -39,6 +57,7 @@ function App() {
 
   const changeColor = (color) => {
     document.documentElement.style.setProperty('--main-theme-color', color);
+    localStorage.setItem('themeColor', color);
   };
 
   useScrollIntoView({
@@ -105,7 +124,7 @@ function App() {
           <div className="color-option" data-color="#27ae60" onClick={() => changeColor('#27ae60')}></div>
           <h4>Dark Mode</h4>
           <label className="switch">
-            <input type="checkbox" id="dark-mode-toggle" onChange={toggleDarkMode} />
+            <input type="checkbox" id="dark-mode-toggle" checked={isDarkMode} onChange={toggleDarkMode} />
             <span className="slider round"></span>
           </label>
         </div>
