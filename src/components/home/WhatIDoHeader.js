@@ -1,8 +1,14 @@
 // src/components/WhatIDoHeader.js
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 
 const WhatIDoHeader = () => {
+  const navigate = useNavigate();
+
+  const goToResume = () => {
+    navigate('/resume');
+  };
   return (
     <section className="what-i-do-header" id="about">
       <div className="cta">
@@ -15,7 +21,7 @@ const WhatIDoHeader = () => {
           <button className="icon-button">
             <FontAwesomeIcon icon="eye" /> View Portfolio
           </button>
-          <button className="icon-button">
+          <button className="icon-button" onClick={goToResume}>
             <FontAwesomeIcon icon="file-alt" /> View Resume
           </button>
         </div>

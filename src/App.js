@@ -13,6 +13,7 @@ import ContactSection from './components/home/ContactSection';
 import BlogPost from './components/blog/BlogPost';
 import useScrollIntoView from './hooks/useScrollIntoView';
 import BlogList from './components/blog/BlogList';
+import Resume from './components/resume/Resume';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -105,6 +106,7 @@ function App() {
           <Routes>
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/blog/" element={<BlogList />} />
+            <Route path="/resume/" element={<Resume />} />
             <Route path="/" element={
               <>
                 <WhatIDoHeader />
@@ -113,6 +115,7 @@ function App() {
                 <PricingSection />
                 <PortfolioSection />
                 <ContactSection />
+                <Resume />
               </>
             } />
           </Routes>

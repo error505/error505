@@ -1790,3 +1790,77 @@ img {
   text-decoration: underline;
 }
 
+
+/* src/components/Resume.css */
+.resume {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.dark-mode .resume {
+  background-color: #151e29;
+  color: #ffffff;
+}
+.resume-header {
+  text-align: center;
+}
+
+.resume-contact {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.resume-contact p {
+  margin: 5px 0;
+}
+
+.resume-content h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.dark-mode .resume-content {
+  background-color: #151e29;
+  color: #ffffff;
+}
+.resume-job,
+.resume-education {
+  margin-bottom: 20px;
+}
+
+.resume-job h3,
+.resume-education h3 {
+  margin: 0;
+}
+
+.resume-job h4,
+.resume-education h4 {
+  margin: 5px 0 10px;
+  font-weight: normal;
+  color: #7f8c8d;
+}
+
+.resume-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resume-skill-list li {
+  margin-right: 15px;
+  list-style: none;
+}
+
+.resume-pdf {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-pdf h2 {
+  margin-bottom: 15px;
+}
+
+.resume-pdf canvas {
+  max-width: 100%;
+}
