@@ -115,7 +115,6 @@ function App() {
                 <PricingSection />
                 <PortfolioSection />
                 <ContactSection />
-                <Resume />
               </>
             } />
           </Routes>
