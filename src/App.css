@@ -94,8 +94,6 @@ nav li a {
 
 .main-content {
   margin-left: 240px; /* Adjusted to match sidebar width */
-  padding: 20px;
-  padding-left: 20px;
   transition: margin-left 0.3s ease; /* Transition for the margin-left property */
   flex: 1; /* This will ensure main content fills up the remaining space */
 }
