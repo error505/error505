@@ -630,6 +630,9 @@ input:checked + .slider.round:before {
 .color-option[data-color="#27ae60"] {
   background-color: #27ae60;
 }
+.color-option[data-color="#1a855f"] {
+  background-color: #1a855f;
+}
 .portfolio-section {
   padding: 50px;
   background-color: #f8f8f8;
@@ -891,20 +894,6 @@ input:checked + .slider.round:before {
   color: #ccc;
 }
 
-.back-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #0056b3;
-}
-
 .category {
   background-color: #5d5c5c7a; /* Light gray background */
   color: #d9d6d6; /* Darker text color for contrast */
@@ -914,8 +903,11 @@ input:checked + .slider.round:before {
 }
 
 .view-all {
-  margin-top: 30px;
-  align-items: center;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100%; /* Ensure the container takes up the full height if needed */
+  text-align: center; /* Fallback for text-based centering */
 }
 
 
@@ -1548,7 +1540,7 @@ img {
 }
 
 .back-button:hover {
-  background-color: #0078d4;
+  background-color: var(--main-theme-color-hover);
 }
 
 
@@ -2054,7 +2046,7 @@ img {
 }
 
 .text-primary {
-  color: #007bff;
+  color: var(--main-theme-color);
 }
 
 .fw-600 {

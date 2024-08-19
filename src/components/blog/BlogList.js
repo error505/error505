@@ -73,11 +73,14 @@ const BlogList = () => {
         ))}
       </div>
       {visibleCount < blogPosts.length && (
-        <div className="text-center">
+        <div className="view-all">
           <button className="btn back-button" onClick={handleShowMore}>Load More</button>
         </div>
       )}
+      <div className="view-all">
       <Link to="/" className="back-button">Back to Home</Link>
+        </div>
+      
     </section>
   );
 };

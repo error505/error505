@@ -124,6 +124,7 @@ function App() {
           <div className="color-option" data-color="#3498db" onClick={() => changeColor('#3498db')}></div>
           <div className="color-option" data-color="#e74c3c" onClick={() => changeColor('#e74c3c')}></div>
           <div className="color-option" data-color="#27ae60" onClick={() => changeColor('#27ae60')}></div>
+          <div className="color-option" data-color="#1a855f" onClick={() => changeColor('#1a855f')}></div>
           <h4>Dark Mode</h4>
           <label className="switch">
             <input type="checkbox" id="dark-mode-toggle" checked={isDarkMode} onChange={toggleDarkMode} />
