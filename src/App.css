@@ -337,9 +337,12 @@ input:checked + .slider.round:before {
 /* Default styles for larger screens */
 .what-i-do {
   padding: 50px;
-  text-align: center;
+  text-align: left;
 }
-
+.text-white-50 {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, .5) !important;
+}
 /* Default styles for larger screens */
 .what-i-do .service {
   flex-basis: calc(33% - 20px);
@@ -912,6 +915,7 @@ input:checked + .slider.round:before {
 
 .view-all {
   margin-top: 30px;
+  align-items: center;
 }
 
 
@@ -1540,6 +1544,7 @@ img {
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  align-items: center;
 }
 
 .back-button:hover {
@@ -1863,4 +1868,308 @@ img {
 
 .resume-pdf canvas {
   max-width: 100%;
+}
+
+/* src/components/HeroSection.css */
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.hero-wrap .hero-mask, .hero-wrap .hero-bg, .hero-wrap .hero-bg-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-wrap .hero-mask {
+  z-index: 1;
+}
+
+.hero-wrap .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-wrap .hero-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.hero-wrap .hero-bg-slideshow {
+  z-index: 0;
+}
+
+.hero-wrap .hero-bg {
+  z-index: 0;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  transition: background-image 300ms ease-in 200ms;
+}
+
+.hero-wrap .hero-bg.hero-bg-scroll {
+  background-attachment: scroll;
+}
+
+.hero-wrap .hero-bg-slideshow .hero-bg {
+  background-attachment: inherit;
+}
+
+.hero-wrap .hero-bg-slideshow.owl-carousel .owl-stage-outer, .hero-wrap .hero-bg-slideshow.owl-carousel .owl-stage, .hero-wrap .hero-bg-slideshow.owl-carousel .owl-item {
+  height: 100%;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.typed-strings {
+  display: none;
+}
+
+.text-7 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.text-16 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.scroll-down-arrow {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.scroll-down-arrow .animated {
+  position: relative;
+  animation: fadeInDown 1.5s infinite;
+  -webkit-animation: fadeInDown 1.5s infinite;
+  -moz-animation: fadeInDown 1.5s infinite;
+  -o-animation: fadeInDown 1.5s infinite;
+}
+
+@keyframes fadeInDown {
+  0% {
+    top: -25px;
+    opacity: 0;
+  }
+  100% {
+    top: 10px;
+    opacity: 1;
+  }
+}
+
+
+.btn {
+  padding: 0.8rem 2.6rem;
+  font-weight: 500;
+  border-width: 2px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.btn-outline-primary, .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active {
+  color: #20c997;
+  border-color: #20c997;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled).active:hover, .btn-outline-primary:not(:disabled):not(.disabled):active:hover {
+  background-color: #20c997;
+  border-color: #20c997;
+  color: #fff;
+}
+
+.rounded-pill {
+  border-radius: var(--bs-border-radius-pill) !important;
+}
+
+.btn .mt-2 {
+  margin-top: .5rem !important;
+}
+.btn .shadow-none {
+  box-shadow: none !important;
+}
+
+
+
+/* src/components/ResumeSection.css */
+
+.bg-dark-1 {
+  background-color: #2b2b2b;
+}
+
+.text-24 {
+  font-size: 24px;
+}
+
+.text-9 {
+  font-size: 2.5rem;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.p-4 {
+  padding: 1.5rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.bg-darka {
+  background-color: #343a40;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+}
+
+.progress {
+  height: 0.75rem;
+  overflow: hidden;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.progress-bar {
+  background-color: #007bff;
+  transition: width 0.6s ease;
+}
+
+.rounded-pill {
+  border-radius: 50rem;
+}
+
+.shadow-none {
+  box-shadow: none;
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* src/components/AboutSection.css */
+
+/* src/components/AboutSection.css */
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 200px; /* Adjust as needed based on your design */
+  margin-bottom: 5rem;
+}
+
+.heading-container h2 {
+  font-size: 10rem; /* Adjust as needed */
+  color: rgba(255, 255, 255, 0.05);
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.heading-container p {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative; /* Changed to relative for proper centering */
+  margin: 0;
+  text-align: center;
+  z-index: 1; /* Ensure it stays above the large text */
+}
+
+.heading-separator-line {
+  border-bottom: 3px solid #00bcd4; /* Adjust color to match the line */
+  display: block;
+  margin: 0.5rem auto 0 auto; /* Adjust spacing as needed */
+  width: 60px; /* Adjust width as needed */
 }

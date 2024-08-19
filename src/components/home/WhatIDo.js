@@ -5,13 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const WhatIDo = () => {
   return (
     <section className="what-i-do" id="what-i-do">
-      <div>
-        <h1>What I Do</h1>
-        <p>
-          I have more than 15 years' experience building software for clients
-          all over the world...
-        </p>
-      </div>
+        {/* Heading */}
+        <div className="heading-container">
+          <h2>About Me</h2>
+          <p>Know Me More<span className="heading-separator-line"></span></p>
+        </div>
+        {/* Heading end */}
+      <div class="row gy-5 about-content">
+          <h2 class="text-7 text-white fw-600 mb-3">I'm <span class="text-primary">Igor Iric,</span> a Cloud Solutions Architect</h2>
+         <p class="text-white-50">
+          I have more than 15 years' experience building software for clients all over the world. As an experienced Azure Solutions Architect Expert, I am responsible for making key decisions that relate to architecture, development, and continuous improvement of the product development cycle. I have a proven track record of leading and managing teams of highly skilled and motivated developers, and providing training and workshops to enhance their skills.
+          </p>
+        </div>
       <div className="services-grid">
         <div className="service">
           <div className="service-icon">

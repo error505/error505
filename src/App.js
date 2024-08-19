@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/home/Header';
 import Sidebar from './components/home/Sidebar';
-import WhatIDoHeader from './components/home/WhatIDoHeader';
 import WhatIDo from './components/home/WhatIDo';
 import PortfolioSection from './components/home/PortfolioSection';
 import PricingSection from './components/pricing/PricingSection';
@@ -14,6 +13,7 @@ import BlogPost from './components/blog/BlogPost';
 import useScrollIntoView from './hooks/useScrollIntoView';
 import BlogList from './components/blog/BlogList';
 import Resume from './components/resume/Resume';
+import HeroSection from './components/home/HeroSection';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -109,7 +109,7 @@ function App() {
             <Route path="/resume/" element={<Resume />} />
             <Route path="/" element={
               <>
-                <WhatIDoHeader />
+              <HeroSection />
                 <WhatIDo />
                 <BlogSection />
                 <PricingSection />
