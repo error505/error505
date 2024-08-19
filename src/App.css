@@ -2187,3 +2187,113 @@ img {
   margin: 0.5rem auto 0 auto; /* Adjust spacing as needed */
   width: 60px; /* Adjust width as needed */
 }
+
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .heading-container {
+    height: 120px; /* Further reduce height for mobile screens */
+    margin-bottom: 3rem;
+  }
+
+  .heading-container h2 {
+    font-size: 5rem; /* Further reduce font size for mobile devices */
+  }
+
+  .heading-container p {
+    font-size: 1.8rem; /* Reduce font size for mobile devices */
+  }
+
+  .heading-separator-line {
+    width: 50px; /* Adjust width of the line for smaller screens */
+  }
+}
+
+/* For small mobile devices */
+@media (max-width: 576px) {
+  .heading-container {
+    height: 100px; /* Further reduce height for small mobile screens */
+    margin-bottom: 2rem;
+  }
+
+  .heading-container h2 {
+    font-size: 3.5rem; /* Further reduce font size for small mobile devices */
+  }
+
+  .heading-container p {
+    font-size: 1.5rem; /* Further reduce font size for small mobile devices */
+  }
+
+  .heading-separator-line {
+    width: 40px; /* Adjust width of the line for small mobile screens */
+  }
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and below */
+@media (max-width: 992px) {
+  .hero-wrap {
+    height: 90vh;
+  }
+
+  .text-7 {
+    font-size: 2rem;
+  }
+
+  .text-16 {
+    font-size: 3rem;
+  }
+
+  .scroll-down-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .hero-wrap {
+    height: 80vh;
+  }
+
+  .text-7 {
+    font-size: 1.8rem;
+  }
+
+  .text-16 {
+    font-size: 2.5rem;
+  }
+
+  .scroll-down-arrow {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+}
+
+/* For small mobile devices */
+@media (max-width: 576px) {
+  .hero-wrap {
+    height: 70vh;
+  }
+
+  .text-7 {
+    font-size: 1.5rem;
+  }
+
+  .text-16 {
+    font-size: 2rem;
+  }
+
+  .scroll-down-arrow {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 0.6rem 2rem;
+  }
+}
