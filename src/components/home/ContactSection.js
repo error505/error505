@@ -4,7 +4,13 @@ import React from 'react';
 const ContactSection = () => {
   return (
     <section className="contact-section" id="contact">
-      <h2>Get in Touch</h2>
+              {/* Heading */}
+       <div className="heading-container">
+        <h2 className='text-light'>Contact me</h2>
+          <p>Get in Touch<span className="heading-separator-line"></span></p>
+        </div>
+        {/* Heading end */}
+
       <div className="get-in-touch-map">
         <div className="map-container">
           <iframe

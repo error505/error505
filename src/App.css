@@ -2133,8 +2133,13 @@ img {
 
 /* src/components/AboutSection.css */
 
-.heading-container {
+.dark-mode .heading-container {
+  color: #dee3e4 !important;
+}
+
+.heading-container{
   display: flex;
+  color: rgba(255, 255, 255, 0.05);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -2143,9 +2148,9 @@ img {
   margin-bottom: 5rem;
 }
 
-.heading-container h2 {
+.heading-container h2{
   font-size: 10rem; /* Adjust as needed */
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(49, 49, 49, 0.333) !important;
   text-transform: uppercase;
   font-weight: 600;
   width: 100%;
@@ -2156,9 +2161,15 @@ img {
   text-align: center;
 }
 
+
+
+.dark-mode .heading-container h2 {
+  color: rgba(104, 104, 104, 0.333) !important;
+}
+
 .heading-container p {
   font-size: 2.5rem;
-  color: #ffffff;
+  color: #070707 !important;
   font-weight: 600;
   line-height: 1.5;
   position: relative; /* Changed to relative for proper centering */
@@ -2166,9 +2177,12 @@ img {
   text-align: center;
   z-index: 1; /* Ensure it stays above the large text */
 }
+.dark-mode .heading-container p {
+  color: #ffffff !important;
+}
 
 .heading-separator-line {
-  border-bottom: 3px solid #00bcd4; /* Adjust color to match the line */
+  border-bottom: 3px solid #1a855f;; /* Adjust color to match the line */
   display: block;
   margin: 0.5rem auto 0 auto; /* Adjust spacing as needed */
   width: 60px; /* Adjust width as needed */

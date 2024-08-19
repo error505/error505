@@ -10,7 +10,7 @@ const Header = () => {
         <FontAwesomeIcon icon="home" /><span></span>
       </a>
       <ScrollLink
-        to="about"
+        to="what-i-do"
         smooth={true}
         duration={500}
         className="about-button open-sidebar1"

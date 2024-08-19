@@ -12,7 +12,12 @@ const BlogSection = () => {
 
   return (
     <section className="what-i-do" id="blog">
-      <h2>My Blog Posts</h2>
+        {/* Heading */}
+        <div className="heading-container">
+          <h2 className='text-light'>Blog</h2>
+          <p>My Blog Posts<span className="heading-separator-line"></span></p>
+        </div>
+        {/* Heading end */}
       <div className="services-grid">
         {posts.slice(0, 3).map((post) => (
           <div key={post.id} className="blog-item">
