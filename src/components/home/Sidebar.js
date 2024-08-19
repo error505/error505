@@ -76,8 +76,8 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
           </li>
         </ul>
       </nav>
-      <button className="close-sidebar" onClick={toggleSidebar}><FontAwesomeIcon icon="x" /></button>
-      <button className="open-sidebar" onClick={toggleSidebar}><FontAwesomeIcon icon="bars" /></button>
+      {/* <button className="close-sidebar" onClick={toggleSidebar}><FontAwesomeIcon icon="x" /></button>
+      <button className="open-sidebar" onClick={toggleSidebar}><FontAwesomeIcon icon="bars" /></button> */}
     </aside>
   );
 };
