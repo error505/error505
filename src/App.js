@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/home/Header';
 import Sidebar from './components/home/Sidebar';
 import WhatIDo from './components/home/WhatIDo';
-import PortfolioSection from './components/home/PortfolioSection';
+// import PortfolioSection from './components/home/PortfolioSection';
 import PricingSection from './components/pricing/PricingSection';
 import BlogSection from './components/blog/BlogSection';
 import ContactSection from './components/home/ContactSection';
