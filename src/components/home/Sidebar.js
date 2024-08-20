@@ -14,7 +14,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
         <a href="#"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
         <a href="https://www.linkedin.com/in/igor-iric"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
         <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
-        <a href="#"><FontAwesomeIcon icon={['fab', 'instagram']} /></a>
+        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
       </div>
       <nav className="navigation">
         <ul>
