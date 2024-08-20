@@ -14,6 +14,7 @@ import useScrollIntoView from './hooks/useScrollIntoView';
 import BlogList from './components/blog/BlogList';
 import Resume from './components/resume/Resume';
 import HeroSection from './components/home/HeroSection';
+import Footer from './components/home/Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -115,6 +116,7 @@ function App() {
                 <PricingSection />
                 {/* <PortfolioSection /> */}
                 <ContactSection />
+                <Footer />
               </>
             } />
           </Routes>
