@@ -1099,7 +1099,7 @@ img {
 
   .main-content {
     margin-left: 0; /* remove the margin */
-    padding: 60px 20px 20px 20px; /* add padding at the top to avoid overlap with header */
+    padding: 50px 1px 1px 1px; /* add padding at the top to avoid overlap with header */
     transition: padding 0.3s ease;
   }
 
