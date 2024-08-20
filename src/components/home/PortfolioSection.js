@@ -37,7 +37,12 @@ const PortfolioSection = () => {
 
   return (
     <section className="portfolio-section" id="portfolio">
-      <h1>My Portfolio</h1>
+      {/* Heading */}
+          <div className="heading-container">
+          <h2 className='text-light'>Portfolio</h2>
+          <p>My Work<span className="heading-separator-line"></span></p>
+        </div>
+      {/* Heading end */}
       <div className="portfolio-menu">
         <button
           className={activeCategory === 'all' ? 'active' : ''}
@@ -74,19 +79,19 @@ const PortfolioSection = () => {
         <div
           className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
         >
-          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <img src="./static/images/nestle.png" alt="Description" />
           <div className="overlay">
-            <h3>3D Graphics</h3>
-            <h4>Templates</h4>
+            <h3>AI</h3>
+            <h4>Azure OpenAI</h4>
           </div>
         </div>
         <div
           className={`portfolio-item ${activeCategory === 'development' || activeCategory === 'all' ? '' : 'hidden'}`}
         >
-          <img src="https://via.placeholder.com/400x250" alt="Description" />
+          <img src="./static/images/cocacola.jpg" alt="Description" />
           <div className="overlay">
-            <h3>3D Graphics</h3>
-            <h4>Templates</h4>
+            <h3>AI</h3>
+            <h4>Azure OpenAI</h4>
           </div>
         </div>
         <div
