@@ -30,7 +30,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               <span> About Me</span>
             </ScrollLink>
           </li>
-          <li>
+          {/* <li>
             <ScrollLink
               to="portfolio"
               smooth={true}
@@ -40,7 +40,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               <FontAwesomeIcon icon="briefcase" />
               <span> Portfolio</span>
             </ScrollLink>
-          </li>
+          </li> */}
           <li>
             <ScrollLink
               to="services"

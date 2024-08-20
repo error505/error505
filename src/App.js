@@ -113,7 +113,7 @@ function App() {
                 <WhatIDo />
                 <BlogSection />
                 <PricingSection />
-                <PortfolioSection />
+                {/* <PortfolioSection /> */}
                 <ContactSection />
               </>
             } />

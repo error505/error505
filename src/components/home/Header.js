@@ -18,7 +18,7 @@ const Header = () => {
         <FontAwesomeIcon icon="user" />
         <span></span>
       </ScrollLink>
-      <ScrollLink
+      {/* <ScrollLink
         to="portfolio"
         smooth={true}
         duration={500}
@@ -26,7 +26,7 @@ const Header = () => {
       >
         <FontAwesomeIcon icon="briefcase" />
         <span></span>
-      </ScrollLink>
+      </ScrollLink> */}
       <ScrollLink
         to="services"
         smooth={true}
