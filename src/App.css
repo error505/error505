@@ -928,38 +928,39 @@ input:checked + .slider.round:before {
   content: '👁';
   margin-right: 5px;
 }
-
-
 .pricing-section {
   display: flex;
-  flex-wrap: wrap; /* Allow cards to wrap to the next line on small screens */
-  justify-content: space-around;
-  padding: 20px 0; /* Reduce top and bottom padding for small screens */
-  background-color: #f9f9f9; /* Or any light background color */
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #f9f9f9;
 }
 
 .dark-mode .pricing-section {
-  background-color: var(
-    --dark-mode-theme-collor
-  ); /* A darker background for the service in dark mode */
-  color: #ffffff; /* Light text color for better contrast against the dark background */
+  background-color: var(--dark-mode-theme-collor);
+  color: #ffffff;
 }
+
 .pricing-section h2 {
   font-size: 32px;
   margin-bottom: 40px;
 }
+
 .pricing-card {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 20%;
+  margin: 10px;
   text-align: center;
 }
+
 .dark-mode .pricing-card {
-  background-color: #1a2a3d; /* A darker background for the service in dark mode */
-  color: #ffffff; /* Light text color for better contrast against the dark background */
+  background-color: #1a2a3d;
+  color: #ffffff;
 }
+
 .pricing-card .icon {
   margin-bottom: 15px;
 }
@@ -977,22 +978,23 @@ input:checked + .slider.round:before {
 .pricing-card ul li {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
 .pricing-card ul li i {
-  margin-right: 10px; /* Space between the icon and the text */
-  color: #333; /* Adjust to match your desired icon color */
-  font-size: 1.2rem; /* Adjust to match your desired icon size */
+  margin-right: 10px;
+  color: #333;
+  font-size: 1.2rem;
 }
+
 .dark-mode .pricing-card ul li i {
-  margin-right: 10px; /* Space between the icon and the text */
-  color: #fff; /* Adjust to match your desired icon color */
-  font-size: 1.2rem; /* Adjust to match your desired icon size */
+  color: #fff;
 }
+
 .icon i {
-  font-size: 2rem; /* Adjust to your desired size */
-  color: var(--main-theme-color); /* This is a yellow color, adjust if needed */
+  font-size: 2rem;
+  color: var(--main-theme-color);
 }
 
 .pricing-card .price {
@@ -1185,12 +1187,18 @@ img {
     margin-bottom: 20px; /* Add some spacing between the services */
   }
 
-  .pricing-card {
-    width: 90%; /* Increase width for single-column layout on small screens */
-    margin: 10px auto; /* Center-align cards and add margin for spacing */
-    max-width: 400px;
+.pricing-card {
+    width: 90%; /* Take almost full width on smaller screens */
+    max-width: none; /* Remove max-width constraint */
+    margin: 20px auto; /* Add margin for spacing between cards */
   }
 
+  .dark-mode .pricing-card {
+    width: 90%; /* Take almost full width on smaller screens */
+    max-width: none; /* Remove max-width constraint */
+    margin: 20px auto; /* Add margin for spacing between cards */
+  }
+  
   .get-in-touch-grid {
     grid-template-columns: 1fr;
   }
@@ -1207,7 +1215,12 @@ img {
 }
 
 }
-
+@media only screen and (max-width: 576px) {
+  .pricing-card {
+    width: 100%; /* Take full width on smaller screens */
+    margin: 15px 0; /* Increase margin for better spacing */
+  }
+}
 /* Styles for small devices */
 @media (max-width: 600px) {
   .card-content {
@@ -1293,67 +1306,6 @@ img {
 .pricing-section h2 {
   font-size: 32px;
   margin-bottom: 40px;
-}
-
-.pricing-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 20%;
-  text-align: center;
-}
-
-.dark-mode .pricing-card {
-  background-color: #1a2a3d; /* A darker background for the service in dark mode */
-  color: #ffffff; /* Light text color for better contrast against the dark background */
-}
-
-.pricing-card .icon {
-  margin-bottom: 15px;
-}
-
-.pricing-card h2 {
-  margin-bottom: 20px;
-}
-
-.pricing-card ul {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.pricing-card ul li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.pricing-card ul li i {
-  margin-right: 10px; /* Space between the icon and the text */
-  color: #333; /* Adjust to match your desired icon color */
-  font-size: 1.2rem; /* Adjust to match your desired icon size */
-}
-
-.dark-mode .pricing-card ul li i {
-  margin-right: 10px; /* Space between the icon and the text */
-  color: #fff; /* Adjust to match your desired icon color */
-  font-size: 1.2rem; /* Adjust to match your desired icon size */
-}
-
-.icon i {
-  font-size: 2rem; /* Adjust to your desired size */
-  color: var(--main-theme-color); /* This is a yellow color, adjust if needed */
-}
-
-.pricing-card .price {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.pricing-card .users {
-  margin-bottom: 20px;
-  color: #888;
 }
 
 .signup-button {
