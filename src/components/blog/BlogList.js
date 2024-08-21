@@ -39,7 +39,11 @@ const BlogList = () => {
 
   return (
     <section className="what-i-do px-3 py-5 p-md-5">
-      <div className="search-wrapper">
+        {/* Heading */}
+        <div className="heading-container">
+          <h2 className='text-light'>Blog</h2>
+          <p>All Blog Posts<span className="heading-separator-line"></span></p>
+          <div className="search-wrapper">
         <FontAwesomeIcon icon={faSearch} className="search-icon" />
         <input 
           type="text" 
@@ -49,9 +53,9 @@ const BlogList = () => {
           onChange={handleSearch}
         />
       </div>
-      <div className="header d-flex justify-content-between align-items-center">
-        <h1>All Blog Posts</h1>
-      </div>
+        </div>
+        {/* Heading end */}
+
       <div className="services-grid ">
         {displayedPosts.map((post) => (
           <div key={post.id} className="blog-item mb-5">
