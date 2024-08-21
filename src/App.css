@@ -1101,7 +1101,7 @@ img {
 
   .main-content {
     margin-left: 0; /* remove the margin */
-    padding: 50px 1px 1px 1px; /* add padding at the top to avoid overlap with header */
+    padding: 45px 0px 0px 0px; /* add padding at the top to avoid overlap with header */
     transition: padding 0.3s ease;
   }
 
