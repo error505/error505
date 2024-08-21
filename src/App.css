@@ -1307,7 +1307,9 @@ img {
   font-size: 32px;
   margin-bottom: 40px;
 }
-
+.text-light{
+  color: white;
+}
 .signup-button {
   background-color: var(--main-theme-color); /* Adjust the color according to your design */
   color: #fff;
