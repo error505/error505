@@ -898,6 +898,11 @@
               ]
           },
           {
+            "type": "video",
+            "src": "https://youtu.be/4ZALBzRzWu4", 
+            "controls": true
+          },
+          {
               "type": "heading",
               "level": 2,
               "text": "Additional Resources"
