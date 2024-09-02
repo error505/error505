@@ -1,4 +1,191 @@
 [
+
+  {
+    "id": "chat-with-your-own-data-solution-accelerator",
+    "title": "Building a Secure and Scalable Chatbot with Your Data: Azure Solution Accelerator",
+    "category": "AI",
+    "image": "./static/images/blog/Chat_With_Your_Own_Data.png",
+    "date": "Published 02.09.2024",
+    "readTime": "15 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Creating a chatbot that uses your data while keeping control and ensuring security can be complex. The 'Chat with Your Own Data' Solution Accelerator on Azure provides a streamlined way to achieve this. It connects your documents directly to an Azure OpenAI-powered chat model, giving users answers based on your specific data."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "How the Solution Accelerator Works"
+      },
+      {
+        "type": "paragraph",
+        "text": "The 'Chat with Your Own Data' accelerator follows a systematic process to integrate your data into a chat model. Here's how it operates, step-by-step:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Admin configures document chunking and indexing and uploads them through a React frontend.",
+          "The Python Admin Backend triggers Azure Service Bus to handle the uploaded documents.",
+          "Azure Functions extract layout details and metadata from the documents.",
+          "Azure AI Document Intelligence generates embeddings that are indexed by Azure AI Search.",
+          "Azure OpenAI GPT Model uses this index to answer user questions, providing references to the correct documents.",
+          "Users interact through a React frontend, with responses tailored based on document access permissions."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Chat_With_Your_Own_Data_Flow.png",
+        "alt": "Chat with Your Own Data Architecture Diagram"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Understanding Key Components"
+      },
+      {
+        "type": "paragraph",
+        "text": "Several Azure services work together to make this accelerator effective, including Azure Service Bus, Azure Functions, Azure AI Document Intelligence, Azure AI Search, Azure OpenAI, and React Frontend. Each component has a specific role in the solution."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Using the Integrated Workbook"
+      },
+      {
+        "type": "markdown",
+        "text": "# Integrated Workbook\n\nThe integrated workbook in this solution accelerator helps visualize data flow, monitor processing stages, and analyze user interactions. It includes several sections:\n\n- **Overview**: Provides a summary of documents processed, user queries, and responses.\n- **Data Flow Monitoring**: Visualizes the flow of data from document ingestion to user interaction.\n- **Performance Metrics**: Displays processing time, response time, and other performance-related metrics.\n\n## How to Use the Workbook\n\n1. **Open the Workbook** in Azure Monitor.\n2. **Navigate through sections** to monitor and analyze various aspects of your data integration and user interaction.\n3. **Adjust parameters** to filter data for specific dates, document types, or user groups."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/workbook-json.png",
+        "alt": "Workbook"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Enhancing User Experience with Web Apps"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/chat-app.png",
+        "alt": "Chat App"
+      },
+      {
+        "type": "markdown",
+        "text": "# Web Applications for Chatbot Interaction\n\nThe web apps provided with this accelerator enable users to interact with the chatbot in a secure and responsive way. Key features include:\n\n- **User Authentication**: Ensures only authorized users can access the chatbot.\n- **Real-time Response**: Provides instant feedback based on data stored and indexed in Azure.\n- **Customizable Interface**: Allows for branding and user interface adjustments to fit your organization's needs.\n\n## Deployment Steps\n\n1. **Deploy the React Frontend** using the provided code in the repository.\n2. **Configure Azure AD B2C** for user authentication.\n3. **Integrate with Azure AI Search** to enable the chatbot to retrieve relevant information."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Adding app registration"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/web-app-authentication.png",
+        "alt": "App Authentication"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Admin app"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/admin-site.png",
+        "alt": "Admin App"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Integrating Microsoft Teams Extension"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/teams-cwyd.png",
+        "alt": "Your rag boot in Teams"
+      },
+      {
+        "type": "markdown",
+        "text": "# Microsoft Teams Extension\n\nThis solution accelerator includes an extension for Microsoft Teams, allowing users to interact with the chatbot directly within Teams. The integration supports:\n\n- **Chatbot Commands**: Enables predefined commands for quick access to data.\n- **Secure Access**: Utilizes Azure AD for secure authentication within Teams.\n- **Real-time Collaboration**: Facilitates team collaboration by providing shared access to chatbot responses.\n\n## Steps to Integrate\n\n1. **Deploy the Teams Extension** using the manifest file provided in the repository.\n2. **Configure Azure AD Permissions** to ensure secure access.\n3. **Test the Integration** to confirm that the chatbot responds correctly within the Teams environment."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/teams-deploy-env.png",
+        "alt": "Your rag boot in Teams"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/teams-20.png",
+        "alt": "Your rag boot in Teams"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Supported File Types for Processing"
+      },
+      {
+        "type": "markdown",
+        "text": "# Supported File Types\n\nThe solution supports multiple file types for document processing, including:\n\n- **PDF**: Processed through Azure AI Document Intelligence.\n- **Word (DOC/DOCX)**: Indexed for quick text retrieval.\n- **Excel (XLS/XLSX)**: Allows for data extraction and analysis.\n- **Text (TXT)**: Basic text files are processed for rapid search.\n\nThese formats are automatically detected and processed by the solution, ensuring compatibility with a wide range of data sources."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Advanced Image Processing and Speech-to-Text Capabilities"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/enable_advanced_image_processing.png",
+        "alt": "Advanced Image Processing"
+      },
+      {
+        "type": "markdown",
+        "text": "# Advanced Image Processing\n\nThe accelerator includes advanced image processing capabilities to extract text and metadata from images:\n\n- **OCR (Optical Character Recognition)**: Converts text in images to searchable text.\n- **AI-based Image Analysis**: Identifies objects, text, and other elements within images.\n\n# Speech-to-Text\n\n- **Azure Cognitive Services**: Converts speech in audio files to text.\n- **Integration with Azure AI Search**: Makes spoken content searchable, enabling chatbots to respond to voice queries.\n\n## Implementation Steps\n\n1. **Upload Images or Audio Files** to the system.\n2. **Configure Azure AI Services** to process these files.\n3. **Use the Processed Data** in chatbot responses."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Integrated Vectorization"
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/rag-accelerator/delete-search-index.png",
+        "alt": "Integrated Vectorization"
+      },
+      {
+        "type": "markdown",
+        "text": "# Integrated Vectorization\n\nVectorization plays a key role in making data searchable and understandable by AI models. This solution leverages:\n\n- **Azure AI Embeddings**: Creates vector representations of documents for faster retrieval.\n- **Custom Vector Search**: Allows for more accurate and context-aware search results.\n\n## How to Use Integrated Vectorization\n\n1. **Ensure Vector Indexing is Enabled** in Azure AI Search.\n2. **Run Vectorization Jobs** for all new and existing documents.\n3. **Optimize Your Search Queries** to take advantage of vector-based indexing."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "The 'Chat with Your Own Data' Solution Accelerator offers a powerful way to build secure, scalable, and responsive chatbots using your own data. By combining Azure's AI and cloud services, this solution provides a robust framework for integrating various data formats, supporting complex queries, and maintaining control over data access."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "For more detailed information and further reading, explore these resources:"
+      },
+      {
+        "type": "link",
+        "href": "https://github.com/error505/chat-with-your-data-solution-accelerator",
+        "text": "GitHub Repository for Chat with Your Data Solution Accelerator"
+      },
+      {
+        "type": "link",
+        "href": "https://github.com/error505/chat-with-your-data-solution-accelerator/tree/main/docs",
+        "text": "Documentation for the Solution Accelerator"
+      }
+    ]
+  },
   {
     "id": "comprehensive-microservices-architecture-on-azure",
     "title": "Building a Comprehensive Microservices Architecture on Azure with AKS, Azure Functions, and More!",
