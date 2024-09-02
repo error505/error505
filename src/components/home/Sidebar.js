@@ -11,10 +11,10 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
       <h2 className="sidebar-title">Igor Iric</h2>
       <p className="subtitle">Hi, my name is Igor Iric and I'm an Azure Solutions Architect Expert & Senior Software engineer.</p>
       <div className="social-icons">
-        <a href="#"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
         <a href="https://www.linkedin.com/in/igor-iric"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
         <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
         <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
+        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
       </div>
       <nav className="navigation">
         <ul>
