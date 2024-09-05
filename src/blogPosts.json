@@ -359,36 +359,6 @@
             "type": "link",
             "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
             "text": "Azure API Management Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://github.com/error505/Strangler-Fig-Azure",
-            "text": "Strangler Fig Azure GitHub Repository"
-          },
-          {
-            "type": "link",
-            "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/strangler-fig.html",
-            "text": "AWS Strangler Fig Pattern Documentation"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/app-service/overview",
-            "text": "Azure App Service Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
-            "text": "Azure Functions Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
-            "text": "Azure Cosmos DB Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
-            "text": "Azure API Management Overview"
           }
         ]
       }
