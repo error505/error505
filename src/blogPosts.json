@@ -10,7 +10,7 @@
         "content": [
           {
             "type": "paragraph",
-            "text": "Are you ready to take your portfolio website to the next level? In my book, GitHub for Next-Generation Coders, I guide you through building a modern portfolio website using React JS, one of the most popular JavaScript frameworks for web development. With this project, you'll not only learn how to build a dynamic web app but also how to deploy it for free using GitHub Pages and automate the process with GitHub Actions."
+            "text": "Are you ready to take your portfolio website to the next level? In my book, GitHub for Next-Generation Coders, I guide you through building a modern portfolio website using HTML, CSS and Javascript, but here we go one step further and we will build your web site with React JS, one of the most popular JavaScript frameworks for web development. With this project, you'll not only learn how to build a dynamic web app but also how to deploy it for free using GitHub Pages and automate the process with GitHub Actions."
           },
           {
             "type": "image",
