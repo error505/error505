@@ -1,5 +1,264 @@
 [
     {
+        "id": "build-your-personal-portfolio-website",
+        "title": "Build Your Personal Portfolio Website with React JS and GitHub Pages",
+        "category": "Web Development",
+        "image": "./static/images/blog/React_JS_Portfolio.png",
+        "date": "Published 10.09.2024",
+        "readTime": "30 min read",
+        "comments": "0 comments",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Are you ready to take your portfolio website to the next level? In my book, GitHub for Next-Generation Coders, I guide you through building a modern portfolio website using React JS, one of the most popular JavaScript frameworks for web development. With this project, you'll not only learn how to build a dynamic web app but also how to deploy it for free using GitHub Pages and automate the process with GitHub Actions."
+          },
+          {
+            "type": "image",
+            "src": "./static/images/intro.jpg",
+            "alt": "GitHub for Next Generation Coders"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Step 1: Clone the Ready-Made React Template"
+          },
+          {
+            "type": "paragraph",
+            "text": "To get started quickly, I've prepared a ready-made React JS template for your portfolio. You only need to clone this template and customise it to make it uniquely yours."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Fork the Repository: Go to the React JS Portfolio Template repository \"https://github.com/error505/Static-Web-App-React\" and click the \"Fork\" button to make your copy. This allows you to modify it without affecting the original."
+            ]
+          },
+          {
+            "type": "list",
+            "items": [
+              "Clone Your Forked Repository: On your repository page, click on the \"Code\" button and copy the URL. Then, open your terminal or Git Bash, navigate to your desired folder, and type:"
+            ]
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/fork_repo.png",
+            "alt": "Forking the repo"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "git clone <your-forked-repo-url>"
+          },
+          {
+            "type": "paragraph",
+            "text": "Install Dependencies and Customise Your Site: Change to the cloned directory:"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "cd <your-repo-name>"
+          },
+          {
+            "type": "paragraph",
+            "text": "Install the dependencies using:"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "npm install"
+          },
+          {
+            "type": "paragraph",
+            "text": "Now, you can start customizing the website. Open the project in your favourite code editor and modify components like Header.js, Footer.js, and Profile.js to reflect your personal information and style."
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/edit_in_vscode.png",
+            "alt": "Screenshot of the code editor with React components being edited"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Step 2: Deploy Your React Portfolio Using GitHub Pages"
+          },
+          {
+            "type": "paragraph",
+            "text": "Once your website is customised, it's time to deploy it using GitHub Pages. This way, your site will be live and accessible for anyone to see."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Push Your Changes to GitHub: After making changes, commit them and push them back to your repository:"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "git add .git commit -m \"Initial customisation of portfolio\""
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "git push origin main"
+          },
+          {
+            "type": "paragraph",
+            "text": "Install gh-pages Package: To deploy a React app to GitHub Pages, you'll need the gh-pages package. Install it by running:"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "npm install gh-pages --save-dev"
+          },
+          {
+            "type": "paragraph",
+            "text": "Configure Your package.json: Open package.json and add the following properties:"
+          },
+          {
+            "type": "paragraph",
+            "text": "Under \"scripts\", add:"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "\"predeploy\": \"npm run build\",\n\"deploy\": \"gh-pages -d build\""
+          },
+          {
+            "type": "paragraph",
+            "text": "At the top level, add:"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "\"homepage\": \"https://<your-username>.github.io/<your-repo-name>\""
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/gh_pages_deploy_package.png",
+            "alt": "Screenshot of modified package.json file"
+          },
+          {
+            "type": "paragraph",
+            "text": "Deploy the Site: Run the deploy script:"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "npm run deploy"
+          },
+          {
+            "type": "paragraph",
+            "text": "This command will build the app and push the compiled code to a special branch (gh-pages) that GitHub Pages uses to serve the website."
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/npm_run_deploy.png",
+            "alt": "Terminal screenshot showing npm run deploy command"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Step 3: Automate Deployment with GitHub Actions"
+          },
+          {
+            "type": "paragraph",
+            "text": "Every time you make changes to your site, you want those changes to be deployed automatically. That's where GitHub Actions come in handy."
+          },
+          {
+            "type": "paragraph",
+            "text": "Create a GitHub Action Workflow: In your repository, navigate to the “Actions” tab and choose “New workflow”. Start with a simple Node.js workflow."
+          },
+          {
+            "type": "paragraph",
+            "text": "Configure Your Workflow File: Replace the content with the following:"
+          },
+          {
+            "type": "code",
+            "language": "yaml",
+            "text": "name: Deploy React Portfolio\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v2\n\n      - name: Set up Node.js\n        uses: actions/setup-node@v2\n        with:\n          node-version: '14'\n\n      - name: Install dependencies\n        run: npm install\n\n      - name: Build project\n        run: npm run build\n\n      - name: Deploy to GitHub Pages\n        run: npm run deploy\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n"
+          },
+          {
+            "type": "paragraph",
+            "text": "This workflow triggers every time you push to the main branch, builds your React app, and deploys it to GitHub Pages automatically."
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/GitHub_Actions_Workflow.png",
+            "alt": "Screenshot of the GitHub Actions editor with the workflow code"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Step 4: Add a Custom Domain to Your GitHub Pages"
+          },
+          {
+            "type": "paragraph",
+            "text": "Want to use a custom domain for your portfolio? No problem!"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Buy a Domain: Purchase a domain name from any domain registrar (like Namecheap or GoDaddy).",
+              "Configure DNS Settings: Point your domain to GitHub Pages by adding A records for the following IP addresses:"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "text": "\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\n"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Add the Custom Domain in GitHub: Go to your repository’s “Settings” > “Pages” section and enter your custom domain under \"Custom domain.\" Save the changes."
+            ]
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/custom_domain.png",
+            "alt": "Screenshot of the GitHub Pages Custom Domain"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Your web page should be up and running now."
+            ]
+          },
+          {
+            "type": "image",
+            "src": "./static/images/blog/live_web_page.png",
+            "alt": "Screenshot of the Live Web Site"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Showcase Your React JS Skills"
+          },
+          {
+            "type": "paragraph",
+            "text": "By following these steps, you'll have a stunning personal portfolio website built with React JS, automatically deployed to GitHub Pages, and available under your own custom domain. This project will show off your web development skills and demonstrate your ability to use modern tools like GitHub and React."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Start Your Journey Today!"
+          },
+          {
+            "type": "paragraph",
+            "text": "Get started now with GitHub for Next-Generation Coders, and take your first steps in building a professional online presence. With this book, you'll learn to leverage the power of GitHub and React to create, deploy, and maintain your portfolio website effortlessly."
+          },
+          {
+            "type": "link",
+            "href": "https://www.packtpub.com/en-us/product/github-for-next-generation-coders-9781835463048",
+            "text": "Get Your Copy from Packt Web Site"
+          },
+          {
+            "type": "link",
+            "href": "https://a.co/d/er7sliR",
+            "text": "Get Your Copy from Amazon"
+          }
+        ]
+      },      
+    {
         "id": "strangler-fig-pattern-on-azure",
         "title": "Using the Strangler Fig Pattern on Azure: A Step-by-Step Guide to Modernizing Legacy Applications",
         "category": "Cloud",
@@ -361,9 +620,7 @@
             "text": "Azure API Management Overview"
           }
         ]
-      }
-      
-,      
+    },      
   {
     "id": "chat-with-your-own-data-solution-accelerator",
     "title": "Building a Secure and Scalable Chatbot with Your Data: Azure Solution Accelerator",
