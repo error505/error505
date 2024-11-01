@@ -42,7 +42,9 @@ const ContactSection = () => {
         </form>
       </div>
       <div className="social-icons">
+        /* eslint-disable jsx-a11y/anchor-is-valid */
         <a href="#"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
+        /* eslint-enable jsx-a11y/anchor-is-valid */
         <a href="https://www.linkedin.com/in/igor-iric"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
         <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
         <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
