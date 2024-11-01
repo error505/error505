@@ -11,8 +11,8 @@ const WhatIDo = () => {
           <p>Know Me More<span className="heading-separator-line"></span></p>
         </div>
         {/* Heading end */}
-      <div class="row gy-5 about-content">
-          <h2 class="text-7 fw-600 mb-3">I'm <span class="text-primary">Igor Iric,</span> a Cloud Solutions Architect</h2>
+      <div className="row gy-5 about-content">
+          <h2 className="text-7 fw-600 mb-3">I'm <span className="text-primary">Igor Iric,</span> a Cloud Solutions Architect</h2>
          <p>
           I have more than 15 years' experience building software for clients all over the world. As an experienced Azure Solutions Architect Expert, I am responsible for making key decisions that relate to architecture, development, and continuous improvement of the product development cycle. I have a proven track record of leading and managing teams of highly skilled and motivated developers, and providing training and workshops to enhance their skills.
           </p>

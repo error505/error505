@@ -1,1053 +1,1417 @@
-[
-    {
-        "id": "publisher-subscriber-pattern-on-azure",
-        "title": "Implementing the Publisher-Subscriber Pattern on Azure: A Complete Guide",
-        "category": "Cloud",
-        "image": "./static/images/blog/Azure_Pub_Sub_Pattern.png",
-        "date": "Published 12.09.2024",
-        "readTime": "85 min read",
-        "comments": "0 comments",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "The Publisher-Subscriber pattern is a messaging architecture that enables applications to handle high loads and process data efficiently. This pattern decouples the producer and consumer of messages, providing scalability, resilience, and flexibility in how applications handle events and data. In this blog, we will explore how to implement the Publisher-Subscriber pattern on Azure using Azure Service Bus, Azure Functions, and Application Insights for monitoring."
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Why Use the Publisher-Subscriber Pattern?"
-          },
-          {
-            "type": "paragraph",
-            "text": "The Publisher-Subscriber pattern offers several benefits for modern applications, particularly those that need to scale and adapt to varying loads."
-          },
-          {
-            "type": "list",
-            "items": [
-              "Scalability: The pattern allows independent scaling of publishers and subscribers, ensuring that the system can handle varying loads efficiently.",
-              "Resilience: By decoupling message production and consumption, the system is more resilient to failures. A failure in one part does not necessarily impact the entire system.",
-              "Flexibility: Each subscriber can perform different actions based on the same message, enabling diverse processing pathways and use cases."
-            ]
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Architecture Overview"
-          },
-          {
-            "type": "paragraph",
-            "text": "The architecture consists of a publisher that sends messages to an Azure Service Bus topic. Multiple subscribers listen to different subscriptions on this topic and process the messages independently."
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/Azure_Pub_Sub_Pattern.png",
-            "alt": "Architecture of Publisher-Subscriber Pattern on Azure"
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Publisher: Azure Function or App Service"
-          },
-          {
-            "type": "paragraph",
-            "text": "The publisher in this pattern is an Azure Function or an App Service that simulates an online webshop and sends order details to an Azure Service Bus topic. The publisher can be triggered by various events such as HTTP requests, timers, or other external events."
-          },
-          {
-            "type": "paragraph",
-            "text": "Azure Function as Publisher\n\nBelow is a sample Azure Function that sends order details to an Azure Service Bus topic"
-          },
-          {
-            "type": "code",
-            "language": "python",
-            "text": "\nimport logging\nimport azure.functions as func\nfrom azure.servicebus import ServiceBusClient, ServiceBusMessage\n\nSERVICE_BUS_CONNECTION_STRING = 'your_service_bus_connection_string'\nTOPIC_NAME = 'orders-topic'\n\nservicebus_client = ServiceBusClient.from_connection_string(conn_str=SERVICE_BUS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='PublishOrder')\ndef publish_order(req: func.HttpRequest) -> func.HttpResponse:\n    order_details = req.get_json()\n    try:\n        with servicebus_client.get_topic_sender(topic_name=TOPIC_NAME) as sender:\n            message = ServiceBusMessage(body=str(order_details))\n            sender.send_messages(message)\n            logging.info('Order details sent to Service Bus topic.')\n        return func.HttpResponse('Order published successfully.', status_code=200)\n    except Exception as e:\n        logging.error(f'Error sending message: {e}')\n        return func.HttpResponse('Failed to publish order.', status_code=500)\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This function retrieves order details from an HTTP request, creates a message, and sends it to an Azure Service Bus topic named 'orders-topic'. For complete details on the publisher function, refer to the [publisher function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/publisher/function_app.py)."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Azure Service Bus: Messaging Backbone"
-          },
-          {
-            "type": "paragraph",
-            "text": "Azure Service Bus acts as the messaging backbone in this architecture. It provides reliable message delivery and supports multiple communication protocols. The publisher sends messages to a topic, which can have multiple subscriptions. Each subscription can have different filters and rules to control which messages it receives."
-          },
-          {
-            "type": "markdown",
-            "text": "# Service Bus Topic Configuration\n\nAzure Service Bus topics allow multiple subscribers to receive copies of each message sent to the topic. You can create a topic and set up subscriptions using the Azure portal or through Infrastructure as Code using Bicep.\n"
-          },
-          {
-            "type": "code",
-            "language": "bicep",
-            "text": "resource serviceBus 'Microsoft.ServiceBus/namespaces@2022-01-01-preview' = {\n  name: 'myServiceBusNamespace'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard'\n    tier: 'Standard'\n  }\n}\n\nresource topic 'Microsoft.ServiceBus/namespaces/topics@2022-01-01-preview' = {\n  parent: serviceBus\n  name: 'orders-topic'\n  properties: {\n    enablePartitioning: true\n  }\n}\n\nresource subscription1 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription1'\n}\n\nresource subscription2 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription2'\n}\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This Bicep template creates a Service Bus namespace, a topic named 'orders-topic', and two subscriptions. For full details, refer to [azure-resources.bicep](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/infrastructure/azure-resources.bicep)."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Subscriber 1: Azure Function for Storing Orders in Cosmos DB"
-          },
-          {
-            "type": "paragraph",
-            "text": "The first subscriber is an Azure Function that listens to messages from Subscription 1. It processes each message and stores the order details in Azure Cosmos DB, providing efficient querying and data storage capabilities."
-          },
-          {
-            "type": "markdown",
-            "text": "# Azure Function for Subscriber 1\n\nBelow is a sample Azure Function that reads messages from the Service Bus subscription and stores them in Cosmos DB:"
-          },
-          {
-            "type": "code",
-            "language": "python",
-            "text": "import logging\nimport azure.functions as func\nfrom azure.cosmos import CosmosClient\n\nCOSMOS_CONNECTION_STRING = 'your_cosmos_db_connection_string'\ncosmos_client = CosmosClient.from_connection_string(COSMOS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='StoreOrderInCosmosDB')\ndef store_order_in_cosmosdb(msg: func.ServiceBusMessage) -> None:\n    order_details = msg.get_body().decode('utf-8')\n    container = cosmos_client.get_database_client('OrdersDB').get_container_client('Orders')\n    container.upsert_item(body=order_details)\n    logging.info('Order details stored in Cosmos DB.')\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This function retrieves messages from Subscription 1 of the 'orders-topic' and stores the order details in Azure Cosmos DB. For the complete code, refer to [subscriber1 function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber1/function_app.py)."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Subscriber 2: Azure Function for Saving Orders to Azure Storage"
-          },
-          {
-            "type": "paragraph",
-            "text": "The second subscriber is an Azure Function that listens to messages from Subscription 2. It processes each message and saves the order details as JSON files in an Azure Storage Account for logging or further processing."
-          },
-          {
-            "type": "markdown",
-            "text": "# Azure Function for Subscriber 2\n\nBelow is a sample Azure Function that reads messages from the Service Bus subscription and saves them to Azure Storage:"
-          },
-          {
-            "type": "code",
-            "language": "python",
-            "text": "\nimport logging\nimport azure.functions as func\nfrom azure.storage.blob import BlobServiceClient\n\nSTORAGE_CONNECTION_STRING = 'your_storage_account_connection_string'\nblob_service_client = BlobServiceClient.from_connection_string(STORAGE_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='SaveOrderToStorage')\ndef save_order_to_storage(msg: func.ServiceBusMessage) -> None:\n    order_details = msg.get_body().decode('utf-8')\n    blob_client = blob_service_client.get_blob_client(container='orders', blob=f'order_{msg.message_id}.json')\n    blob_client.upload_blob(order_details)\n    logging.info('Order details saved to Azure Storage.')\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This function retrieves messages from Subscription 2 of the 'orders-topic' and saves them as JSON files in an Azure Storage Account. For the complete code, refer to [subscriber2 function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber2/function_app.py)."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Monitoring and Logging with Application Insights"
-          },
-          {
-            "type": "paragraph",
-            "text": "Application Insights provides monitoring and logging capabilities to ensure visibility and troubleshoot issues in the Publisher-Subscriber architecture. It collects telemetry data from both the publisher and subscribers, offering insights into performance, failures, and usage patterns."
-          },
-          {
-            "type": "markdown",
-            "text": "# Configuring Application Insights\n\nTo enable Application Insights, configure the Instrumentation Key in the app settings of the publisher and subscriber Azure Functions. This setup allows you to monitor logs, metrics, and telemetry data in real-time.\n"
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/Application_Insights_Configuration.png",
-            "alt": "Application Insights Configuration for Azure Functions"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Points to Consider"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Ensure that the Service Bus connection string is properly configured in all app settings for secure communication.",
-              "Use Application Insights to monitor and log all activities, making it easier to identify and fix issues.",
-              "Scale the publisher and subscribers independently to handle varying loads and optimize performance."
-            ]
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Real-World Use Cases and Examples"
-          },
-          {
-            "type": "paragraph",
-            "text": "The Publisher-Subscriber pattern is widely used in various real-world scenarios where decoupling the production and consumption of messages is essential for scalability, flexibility, and resilience. Below are some practical use cases where this pattern proves effective."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Use Case 1: E-Commerce Order Processing"
-          },
-          {
-            "type": "paragraph",
-            "text": "In an e-commerce platform, the Publisher-Subscriber pattern can manage the flow of order data between different services. When a customer places an order, the order details are published to a topic in Azure Service Bus."
-          },
-          {
-            "type": "list",
-            "items": [
-              "A publisher Azure Function sends order details to the 'orders-topic' in Service Bus.",
-              "Subscriber 1 stores the order data in Azure Cosmos DB for fast retrieval and query operations, supporting customer service and real-time order tracking.",
-              "Subscriber 2 saves the order details as JSON files in Azure Storage, providing a backup for compliance or further data analysis."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/Ecommerce_Order_Processing.png",
-            "alt": "E-commerce Order Processing with Publisher-Subscriber Pattern"
-          },
-          {
-            "type": "paragraph",
-            "text": "This architecture allows each service to scale independently and perform specific tasks without depending on the state or performance of other services. It ensures that order processing is resilient to failures in downstream systems."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Use Case 2: IoT Data Ingestion and Processing"
-          },
-          {
-            "type": "paragraph",
-            "text": "The Publisher-Subscriber pattern is also ideal for IoT applications, where large volumes of data are generated by sensors and devices. These devices publish data to an Azure Service Bus topic, from which different subscribers can process the data as needed."
-          },
-          {
-            "type": "list",
-            "items": [
-              "A publisher service collects data from IoT devices and sends it to an Azure Service Bus topic.",
-              "Subscriber 1 aggregates and stores the data in Azure Cosmos DB, providing a centralized repository for analytics and reporting.",
-              "Subscriber 2 processes the data to detect anomalies or trigger alerts, saving relevant events in Azure Storage for historical analysis."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/IoT_Data_Ingestion.png",
-            "alt": "IoT Data Ingestion and Processing with Publisher-Subscriber Pattern"
-          },
-          {
-            "type": "paragraph",
-            "text": "This approach decouples data collection from data processing, allowing each component to scale based on the volume of incoming data and the complexity of processing tasks. It enhances the system's ability to handle bursts of data and ensures reliability."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Use Case 3: Multi-Tier Applications"
-          },
-          {
-            "type": "paragraph",
-            "text": "In a multi-tier application, different tiers can use the Publisher-Subscriber pattern to communicate efficiently. For instance, a backend service responsible for business logic can publish messages to a topic whenever a specific event occurs, such as a new user registration or a completed transaction."
-          },
-          {
-            "type": "list",
-            "items": [
-              "A backend service publishes a message to the 'events-topic' in Service Bus whenever an important event occurs.",
-              "Subscriber 1 sends a confirmation email or notification to the user by integrating with an email service.",
-              "Subscriber 2 updates a third-party CRM or analytics platform with the new event data for customer engagement and analysis."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/Multi_Tier_Applications.png",
-            "alt": "Multi-Tier Application Communication with Publisher-Subscriber Pattern"
-          },
-          {
-            "type": "paragraph",
-            "text": "By using the Publisher-Subscriber pattern, each tier in the application can perform its designated task independently. It provides a robust mechanism for event-driven communication, ensuring that the system is scalable and maintainable."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Use Case 4: Microservices Communication"
-          },
-          {
-            "type": "paragraph",
-            "text": "In a microservices architecture, the Publisher-Subscriber pattern is commonly used to handle communication between microservices. This pattern ensures that services remain loosely coupled and can be developed, deployed, and scaled independently."
-          },
-          {
-            "type": "list",
-            "items": [
-              "A microservice publishes domain events to a Service Bus topic whenever a significant change occurs, like updating a product inventory.",
-              "Subscriber 1, responsible for notifying users, listens to the topic and sends notifications through various channels.",
-              "Subscriber 2, responsible for syncing data across multiple regions, updates local databases or caches to ensure data consistency."
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "This setup ensures that microservices can respond to events asynchronously, reducing dependencies between them and improving the overall resilience and scalability of the system."
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Lessons Learned and Best Practices"
-          },
-          {
-            "type": "paragraph",
-            "text": "Implementing the Publisher-Subscriber pattern involves several best practices that can help ensure a smooth and efficient integration."
-          },
-          {
-            "type": "list",
-            "items": [
-              "Define Clear Boundaries: Clearly define the roles of publishers and subscribers. Ensure that each subscriber is responsible for a distinct set of tasks.",
-              "Monitor and Optimize Performance: Use tools like Application Insights to monitor the performance of publishers and subscribers. Optimize configurations and scale resources based on workload patterns.",
-              "Handle Failures Gracefully: Implement retry policies, dead-letter queues, and circuit breakers to manage failures and prevent message loss.",
-              "Secure Your Messaging Infrastructure: Ensure secure communication between publishers and subscribers by using Shared Access Signatures (SAS) and managed identities for authentication."
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "By following these best practices, you can maximize the benefits of the Publisher-Subscriber pattern and build applications that are scalable, resilient, and easy to maintain."
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Setting Up the Publisher-Subscriber Pattern on Azure: A Step-by-Step Tutorial"
-          },
-          {
-            "type": "paragraph",
-            "text": "This section provides a detailed, step-by-step guide to setting up the Publisher-Subscriber pattern on Azure. We will deploy the necessary Azure resources, configure the Azure Functions for the publisher and subscribers, and integrate monitoring with Application Insights. Follow these steps to build a fully functional Publisher-Subscriber architecture."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 1: Deploy Azure Resources with Bicep"
-          },
-          {
-            "type": "paragraph",
-            "text": "To get started, we'll deploy the necessary Azure resources using a Bicep template. The Bicep template will create an Azure Service Bus namespace, a topic with multiple subscriptions, a Cosmos DB account, and a Storage Account."
-          },
-          {
-            "type": "markdown",
-            "text": "# Deploying Azure Resources with Bicep\n\nThe following Bicep template defines all the required Azure resources:"
-          },
-          {
-            "type": "code",
-            "language": "bicep",
-            "text": "\nresource serviceBus 'Microsoft.ServiceBus/namespaces@2022-01-01-preview' = {\n  name: 'myServiceBusNamespace'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard'\n    tier: 'Standard'\n  }\n}\n\nresource topic 'Microsoft.ServiceBus/namespaces/topics@2022-01-01-preview' = {\n  parent: serviceBus\n  name: 'orders-topic'\n  properties: {\n    enablePartitioning: true\n  }\n}\n\nresource subscription1 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription1'\n}\n\nresource subscription2 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription2'\n}\n\nresource cosmosDb 'Microsoft.DocumentDB/databaseAccounts@2022-03-01' = {\n  name: 'ordersCosmosDb'\n  location: resourceGroup().location\n  properties: {\n    databaseAccountOfferType: 'Standard'\n  }\n}\n\nresource storageAccount 'Microsoft.Storage/storageAccounts@2022-01-01' = {\n  name: 'mystorageaccount'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard_LRS'\n  }\n  kind: 'StorageV2'\n}\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "To deploy the Bicep template, use Azure CLI or Azure PowerShell:"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "az deployment group create --resource-group myResourceGroup --template-file azure-resources.bicep"
-          },
-          {
-            "type": "paragraph",
-            "text": "This command deploys the resources defined in the Bicep template to the specified resource group."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 2: Set Up the Publisher Azure Function"
-          },
-          {
-            "type": "paragraph",
-            "text": "Next, set up the publisher, which is an Azure Function that simulates an online webshop and sends order details to the Azure Service Bus topic."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 3: Configure Subscriber 1 - Azure Function for Cosmos DB"
-          },
-          {
-            "type": "paragraph",
-            "text": "Set up Subscriber 1, an Azure Function that listens to messages from Subscription 1 and stores the order details in Azure Cosmos DB."
-          },
-          {
-            "type": "link",
-            "href": "https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber1/README.md",
-            "text": "Subscriber 1 Azure Functions Overview"
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 4: Configure Subscriber 2 - Azure Function for Azure Storage"
-          },
-          {
-            "type": "paragraph",
-            "text": "Set up Subscriber 2, another Azure Function that listens to messages from Subscription 2 and saves the order details as JSON files in Azure Storage."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 5: Set Up Monitoring with Application Insights"
-          },
-          {
-            "type": "paragraph",
-            "text": "Integrate Application Insights to monitor and log activities across the publisher and subscribers. This provides visibility into performance, errors, and usage patterns."
-          },
-          {
-            "type": "heading",
-            "level": 3,
-            "text": "Step 6: Deploy the Entire Setup Using GitHub Actions"
-          },
-          {
-            "type": "paragraph",
-            "text": "Automate the deployment process using GitHub Actions. The workflow file will deploy the infrastructure and Azure Functions to Azure."
-          },
-          {
-            "type": "markdown",
-            "text": "# GitHub Actions Workflow for Deployment\n\nBelow is a sample GitHub Actions workflow to deploy the Bicep template and Azure Functions:"
-          },
-          {
-            "type": "code",
-            "language": "yaml",
-            "text": "\nname: Deploy Publisher-Subscriber Pattern on Azure\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n    - name: Login to Azure\n      uses: azure/login@v1\n      with:\n        creds: ${{ secrets.AZURE_CREDENTIALS }}\n    - name: Deploy Azure Resources\n      run: az deployment group create --resource-group myResourceGroup --template-file infrastructure/azure-resources.bicep\n    - name: Deploy Publisher Function\n      run: func azure functionapp publish publishOrderFunction\n    - name: Deploy Subscriber 1 Function\n      run: func azure functionapp publish storeOrderInCosmosDB\n    - name: Deploy Subscriber 2 Function\n      run: func azure functionapp publish saveOrderToStorage\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This workflow automates the deployment process for the Publisher-Subscriber architecture on Azure."
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Additional Resources"
-          },
-          {
-            "type": "paragraph",
-            "text": "For more information, refer to the following resources:"
-          },
-          {
-            "type": "link",
-            "href": "https://github.com/error505/Publisher-Subscriber-Pattern",
-            "text": "Publisher-Subscriber Pattern GitHub Repository"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview",
-            "text": "Azure Service Bus Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
-            "text": "Azure Functions Overview"
-          },
-          {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/monitoring/monitoring-overview",
-            "text": "Application Insights Overview"
-          }
+[{
+    "id": "azure-gatekeeper-pattern",
+    "title": "Understanding the Azure Gatekeeper Pattern: A Comprehensive Guide",
+    "category": "Cloud",
+    "image": "./static/images/blog/Azure_Gatekeeper_Pattern.gif",
+    "date": "Published 01.11.2024",
+    "readTime": "15 min read",
+    "comments": "0 comments",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The Azure Gatekeeper Pattern is an architectural approach used to enhance the security, scalability, and manageability of cloud applications. It combines various Azure services such as Azure Front Door, API Management, and Azure Entra ID to enforce access control, manage traffic, and securely route requests. This post will explore the components of the Azure Gatekeeper Pattern, discuss how they work together, and provide guidance on implementing this pattern for your applications."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What is the Azure Gatekeeper Pattern?"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure Gatekeeper Pattern acts as a protective gateway that controls and secures access to backend services. It is designed to handle incoming requests by providing centralized security checks, rate limiting, and request routing. The core goal of this pattern is to protect backend resources from unauthorized access and malicious traffic while allowing legitimate users to reach backend services seamlessly."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Azure_Gatekeeper_Pattern.gif",
+        "alt": "Azure Gatekeeper Pattern Diagram"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Architecture Breakdown"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure Gatekeeper Pattern can be divided into several key components: Frontend, Security, Backend Services, Data, and Monitoring. Let's explore each component in detail."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Frontend: Azure Front Door"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Front Door serves as the global entry point for all incoming user requests. It provides a fast, secure, and reliable application delivery network and acts as a traffic distribution layer. Azure Front Door uses routes and filters to distribute incoming requests to various backend services and ensures low latency by utilizing Microsoft's global network. It also supports SSL termination, global load balancing, and DDoS protection, making it an essential part of this pattern."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Global Traffic Routing: Azure Front Door intelligently routes user traffic to the nearest backend region, reducing latency.",
+          "SSL Termination: It provides SSL termination, which helps secure user communication.",
+          "Protection Against DDoS: It also provides an extra layer of protection against DDoS attacks."
         ]
-      },      
-    {
-        "id": "build-your-personal-portfolio-website",
-        "title": "Build Your Personal Portfolio Website with React JS and GitHub Pages",
-        "category": "Web Development",
-        "image": "./static/images/blog/live_web_page.png",
-        "date": "Published 10.09.2024",
-        "readTime": "30 min read",
-        "comments": "0 comments",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Are you ready to take your portfolio website to the next level? In my book, GitHub for Next-Generation Coders, I guide you through building a modern portfolio website using HTML, CSS and Javascript, but here we go one step further and we will build your web site with React JS, one of the most popular JavaScript frameworks for web development. With this project, you'll not only learn how to build a dynamic web app but also how to deploy it for free using GitHub Pages and automate the process with GitHub Actions."
-          },
-          {
-            "type": "image",
-            "src": "./static/images/intro.jpg",
-            "alt": "GitHub for Next Generation Coders"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Step 1: Clone the Ready-Made React Template"
-          },
-          {
-            "type": "paragraph",
-            "text": "To get started quickly, I've prepared a ready-made React JS template for your portfolio. You only need to clone this template and customise it to make it uniquely yours."
-          },
-          {
-            "type": "list",
-            "items": [
-              "Fork the Repository: Go to the React JS Portfolio Template repository \"https://github.com/error505/Static-Web-App-React\" and click the \"Fork\" button to make your copy. This allows you to modify it without affecting the original."
-            ]
-          },
-          {
-            "type": "list",
-            "items": [
-              "Clone Your Forked Repository: On your repository page, click on the \"Code\" button and copy the URL. Then, open your terminal or Git Bash, navigate to your desired folder, and type:"
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/fork_repo.png",
-            "alt": "Forking the repo"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "git clone <your-forked-repo-url>"
-          },
-          {
-            "type": "paragraph",
-            "text": "Install Dependencies and Customise Your Site: Change to the cloned directory:"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "cd <your-repo-name>"
-          },
-          {
-            "type": "paragraph",
-            "text": "Install the dependencies using:"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "npm install"
-          },
-          {
-            "type": "paragraph",
-            "text": "Now, you can start customizing the website. Open the project in your favourite code editor and modify components like Header.js, Footer.js, and Profile.js to reflect your personal information and style."
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/edit_in_vscode.png",
-            "alt": "Screenshot of the code editor with React components being edited"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Step 2: Deploy Your React Portfolio Using GitHub Pages"
-          },
-          {
-            "type": "paragraph",
-            "text": "Once your website is customised, it's time to deploy it using GitHub Pages. This way, your site will be live and accessible for anyone to see."
-          },
-          {
-            "type": "list",
-            "items": [
-              "Push Your Changes to GitHub: After making changes, commit them and push them back to your repository:"
-            ]
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "git add .git commit -m \"Initial customisation of portfolio\""
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "git push origin main"
-          },
-          {
-            "type": "paragraph",
-            "text": "Install gh-pages Package: To deploy a React app to GitHub Pages, you'll need the gh-pages package. Install it by running:"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "npm install gh-pages --save-dev"
-          },
-          {
-            "type": "paragraph",
-            "text": "Configure Your package.json: Open package.json and add the following properties:"
-          },
-          {
-            "type": "paragraph",
-            "text": "Under \"scripts\", add:"
-          },
-          {
-            "type": "code",
-            "language": "json",
-            "text": "\"predeploy\": \"npm run build\",\n\"deploy\": \"gh-pages -d build\""
-          },
-          {
-            "type": "paragraph",
-            "text": "At the top level, add:"
-          },
-          {
-            "type": "code",
-            "language": "json",
-            "text": "\"homepage\": \"https://<your-username>.github.io/<your-repo-name>\""
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/gh_pages_deploy_package.png",
-            "alt": "Screenshot of modified package.json file"
-          },
-          {
-            "type": "paragraph",
-            "text": "Deploy the Site: Run the deploy script:"
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "npm run deploy"
-          },
-          {
-            "type": "paragraph",
-            "text": "This command will build the app and push the compiled code to a special branch (gh-pages) that GitHub Pages uses to serve the website."
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/npm_run_deploy.png",
-            "alt": "Terminal screenshot showing npm run deploy command"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Step 3: Automate Deployment with GitHub Actions"
-          },
-          {
-            "type": "paragraph",
-            "text": "Every time you make changes to your site, you want those changes to be deployed automatically. That's where GitHub Actions come in handy."
-          },
-          {
-            "type": "paragraph",
-            "text": "Create a GitHub Action Workflow: In your repository, navigate to the “Actions” tab and choose “New workflow”. Start with a simple Node.js workflow."
-          },
-          {
-            "type": "paragraph",
-            "text": "Configure Your Workflow File: Replace the content with the following:"
-          },
-          {
-            "type": "code",
-            "language": "yaml",
-            "text": "name: Deploy React Portfolio\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v2\n\n      - name: Set up Node.js\n        uses: actions/setup-node@v2\n        with:\n          node-version: '14'\n\n      - name: Install dependencies\n        run: npm install\n\n      - name: Build project\n        run: npm run build\n\n      - name: Deploy to GitHub Pages\n        run: npm run deploy\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n"
-          },
-          {
-            "type": "paragraph",
-            "text": "This workflow triggers every time you push to the main branch, builds your React app, and deploys it to GitHub Pages automatically."
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/GitHub_Actions_Workflow.png",
-            "alt": "Screenshot of the GitHub Actions editor with the workflow code"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Step 4: Add a Custom Domain to Your GitHub Pages"
-          },
-          {
-            "type": "paragraph",
-            "text": "Want to use a custom domain for your portfolio? No problem!"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Buy a Domain: Purchase a domain name from any domain registrar (like Namecheap or GoDaddy).",
-              "Configure DNS Settings: Point your domain to GitHub Pages by adding A records for the following IP addresses:"
-            ]
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "text": "\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\n"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Add the Custom Domain in GitHub: Go to your repository’s “Settings” > “Pages” section and enter your custom domain under \"Custom domain.\" Save the changes."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/custom_domain.png",
-            "alt": "Screenshot of the GitHub Pages Custom Domain"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Your web page should be up and running now."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./static/images/blog/live_web_page.png",
-            "alt": "Screenshot of the Live Web Site"
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Showcase Your React JS Skills"
-          },
-          {
-            "type": "paragraph",
-            "text": "By following these steps, you'll have a stunning personal portfolio website built with React JS, automatically deployed to GitHub Pages, and available under your own custom domain. This project will show off your web development skills and demonstrate your ability to use modern tools like GitHub and React."
-          },
-          {
-            "type": "heading",
-            "level": 2,
-            "text": "Start Your Journey Today!"
-          },
-          {
-            "type": "paragraph",
-            "text": "Get started now with GitHub for Next-Generation Coders, and take your first steps in building a professional online presence. With this book, you'll learn to leverage the power of GitHub and React to create, deploy, and maintain your portfolio website effortlessly."
-          },
-          {
-            "type": "link",
-            "href": "https://www.packtpub.com/en-us/product/github-for-next-generation-coders-9781835463048",
-            "text": "Get Your Copy from Packt Web Site"
-          },
-          {
-            "type": "link",
-            "href": "https://a.co/d/er7sliR",
-            "text": "Get Your Copy from Amazon"
-          }
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Security: Azure API Management and Azure Entra ID"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure API Management (APIM) acts as a security layer, managing and controlling access to backend services. It provides authentication, rate limiting, and throttling capabilities to ensure that only authenticated users can access backend resources. Additionally, it integrates with Azure Entra ID (previously Azure Active Directory) to manage user authentication, ensuring that requests come from valid users or applications."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Authentication and Authorization: Azure API Management integrates with Azure Entra ID to authenticate and authorize incoming requests.",
+          "Rate Limiting and Throttling: APIM implements rate limiting to control the flow of requests to backend services, preventing overloading.",
+          "Policy Enforcement: APIM policies can be used to enforce security rules, modify request and response data, and set up caching."
         ]
-    },      
-    {
-        "id": "strangler-fig-pattern-on-azure",
-        "title": "Using the Strangler Fig Pattern on Azure: A Step-by-Step Guide to Modernizing Legacy Applications",
-        "category": "Cloud",
-        "image": "./static/images/blog/Strangler_Fig_Azure.png",
-        "date": "Published 05.09.2024",
-        "readTime": "75 min read",
-        "comments": "0 comments",
-        "content": [
-            {
-            "type": "paragraph",
-            "text": "The Strangler Fig pattern is a powerful approach for modernizing legacy applications by gradually replacing them with newer components and services. Inspired by the way a strangler fig plant grows around a tree and eventually replaces it, this pattern allows incremental migration without disrupting existing functionality. In this blog post, we will explore how to apply the Strangler Fig pattern on Azure using Azure App Service for a legacy monolith application, Azure Functions to host new microservices, Azure Cosmos DB for data storage, and Azure API Management (APIM) to manage and redirect API traffic."
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Strangler_Fig_Azure.png",
-            "alt": "Strangler Fig Azure Architecture"
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Why Use the Strangler Fig Pattern?"
-            },
-            {
-            "type": "paragraph",
-            "text": "Migrating a monolithic application to a modern architecture can be challenging. A monolith is typically a single, tightly coupled codebase where all components are deployed together. While this simplifies deployment and monitoring in small applications, it can lead to significant drawbacks as the application grows, such as scalability issues, difficulty in maintenance, and limited flexibility in adopting new technologies."
-            },
-            {
-            "type": "paragraph",
-            "text": "The Strangler Fig pattern addresses these challenges by allowing the application to be modernized incrementally. Instead of rewriting the entire application from scratch (a risky 'big bang' approach), you gradually extract functionality from the monolith and replace it with new microservices. This approach minimizes risk, allows for parallel development, and provides continuous improvement opportunities. Companies like Netflix, Amazon, and Walmart have successfully used this pattern to transform their legacy systems into scalable, resilient architectures."
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Understanding the Monolithic to Microservices Journey"
-            },
-            {
-            "type": "paragraph",
-            "text": "A monolithic architecture consists of a single, unified codebase where all modules and functionalities are bundled together. When the application is small, this approach works well due to the simplicity of deployment and maintenance. However, as the application grows, the monolith becomes a bottleneck, hindering scalability, flexibility, and rapid development."
-            },
-            {
-            "type": "paragraph",
-            "text": "Microservices architecture, on the other hand, divides the application into independent, loosely coupled services. Each microservice handles a specific functionality and can be developed, deployed, and scaled independently. This approach enhances flexibility, scalability, and fault isolation, making it ideal for large and complex applications."
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Monolith_vs_Microservices.png",
-            "alt": "Comparison between Monolithic and Microservices Architectures"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Case Studies: Netflix, Amazon, and Walmart"
-            },
-            {
-            "type": "paragraph",
-            "text": "Several major companies have adopted the Strangler Fig pattern to transition from monolithic to microservices architectures."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Netflix transitioned from a monolithic architecture to microservices to achieve better scalability, availability, and speed. This change allowed Netflix to scale globally, deploy thousands of server instances simultaneously, and recover quickly from failures.",
-                "Amazon decoupled its monolithic codebase into microservices to resolve scalability and deployment challenges. This transformation enabled faster development cycles, independent service operation, and improved fault isolation.",
-                "Walmart moved from a monolith to microservices to handle increased traffic during peak events like Black Friday. The new architecture allowed Walmart to scale efficiently, resulting in zero downtime during high-traffic events."
-            ]
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Step-by-Step Guide to Applying the Strangler Fig Pattern on Azure"
-            },
-            {
-            "type": "paragraph",
-            "text": "To implement the Strangler Fig pattern on Azure, we will break down the process into manageable steps, leveraging Azure's cloud-native services to modernize our legacy application."
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "1. Analyze the Legacy Application"
-            },
-            {
-            "type": "paragraph",
-            "text": "Start by analyzing the existing monolithic application. Identify modules or functionalities that can be isolated and migrated to microservices. Look for components that are independent, have minimal dependencies on other parts of the application, and are critical to the application's functionality. Common candidates include modules like orders, payments, and customer management."
-            },
-            {
-            "type": "paragraph",
-            "text": "For example, in our scenario, we have identified the 'orders' functionality as a suitable candidate for migration. This module handles order processing, which is crucial but can be isolated from other parts of the system."
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Orders_Microservices.png",
-            "alt": "Orders Microservice"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "2. Set Up Azure Infrastructure"
-            },
-            {
-            "type": "paragraph",
-            "text": "To start the migration, provision the necessary Azure resources using Infrastructure as Code (IaC) with Bicep templates. This includes creating Azure App Service to host the existing monolith, Azure Functions to handle the extracted 'orders' microservice, Azure Cosmos DB for storing order data, and Azure API Management for managing API traffic."
-            },
-            {
-            "type": "code",
-            "language": "bicep",
-            "text": "resource appService 'Microsoft.Web/sites@2022-03-01' = {\n  name: 'legacyAppService'\n  location: resourceGroup().location\n  kind: 'app'\n  properties: {\n    serverFarmId: appServicePlan.id\n  }\n}\n\nresource functionApp 'Microsoft.Web/sites@2022-03-01' = {\n  name: 'ordersFunction'\n  location: resourceGroup().location\n  kind: 'functionapp'\n  properties: {\n    serverFarmId: functionAppPlan.id\n  }\n}\n\nresource cosmosDb 'Microsoft.DocumentDB/databaseAccounts@2022-03-01' = {\n  name: 'ordersCosmosDb'\n  location: resourceGroup().location\n  properties: {\n    databaseAccountOfferType: 'Standard'\n  }\n}\n"
-            },
-            {
-            "type": "paragraph",
-            "text": "For full deployment instructions and details on the Bicep template, refer to [azure-resources.bicep](https://github.com/error505/Strangler-Fig-Azure/blob/main/Infrastructure/azure-resources.bicep)."
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "3. Extract the 'Orders' Functionality to Azure Functions"
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Extract_Microservice.png",
-            "alt": "Extract Microservice"
-            },
-            {
-            "type": "markdown",
-            "text": "# Azure Function for Orders\n\nThe new Azure Function will handle all 'orders' related operations. Below is the Python code for the Azure Function"
-            },
-            {
-            "type": "code",
-            "language": "python",
-            "text": "import logging\nimport azure.functions as func\nfrom azure.cosmos import CosmosClient\n\nCOSMOS_CONNECTION_STRING = 'your_cosmos_db_connection_string'\ncosmos_client = CosmosClient.from_connection_string(COSMOS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='OrdersFunction')\ndef orders_function(req: func.HttpRequest) -> func.HttpResponse:\n    order_id = req.params.get('order_id')\n    if not order_id:\n        return func.HttpResponse(\"Order ID is required.\", status_code=400)\n\n    container = cosmos_client.get_database_client('OrdersDB').get_container_client('Orders')\n    order = container.read_item(item=order_id, partition_key=order_id)\n    return func.HttpResponse(body=str(order), status_code=200)\n"
-            },
-            {
-            "type": "paragraph",
-            "text": "This function retrieves order details from the Azure Cosmos DB. The function app is triggered by HTTP requests, making it easy to integrate with other services. For the complete code, refer to [function_app.py](https://github.com/error505/Strangler-Fig-Azure/blob/main/ExtractedFunction/function_app.py)."
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "4. Configure Azure API Management"
-            },
-            {
-            "type": "paragraph",
-            "text": "Azure API Management (APIM) plays a crucial role in managing the API calls from the legacy application and redirecting them to the new Azure Function. APIM provides a centralized interface to control, secure, and monitor API traffic, ensuring a smooth transition without impacting the user experience."
-            },
-            {
-            "type": "markdown",
-            "text": "# APIM Policy Configuration\n\nThe following policy snippet shows how to route requests to the new Azure Function:\n\n```xml\n<policies>\n    <inbound>\n        <base />\n        <set-backend-service base-url=\"https://ordersfunction.azurewebsites.net/api/ordersfunction\" />\n    </inbound>\n    <backend>\n        <base />\n    </backend>\n    <outbound>\n        <base />\n    </outbound>\n</policies>\n```\n"
-            },
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/API_Management_Security.png",
+        "alt": "Azure API Management Security Layer"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Backend Services: Azure Function Service, Azure Logic Apps, and Azure App Service"
+      },
+      {
+        "type": "paragraph",
+        "text": "Backend services in the Gatekeeper pattern consist of Azure Functions, Azure Logic Apps, and Azure App Services. These services perform various operations based on the incoming requests, such as data processing, workflow orchestration, and serving APIs or web apps."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Azure Function Service: Serverless functions that can be used to handle custom logic, data transformations, and API requests.",
+          "Azure Logic Apps: A cloud-based workflow orchestration service that allows integration with various systems, APIs, and SaaS products to automate processes.",
+          "Azure App Service: A fully managed platform for building, deploying, and scaling web apps and APIs. It serves as the application backend for dynamic content and handles user interactions."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Backend_Services.png",
+        "alt": "Backend Service"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure API Management routes requests to these backend services and applies rate limiting policies to protect services from getting overwhelmed. The Gatekeeper Pattern allows these services to operate independently, scale based on demand, and handle their specific responsibilities efficiently."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Data Layer: Azure SQL, Azure Cosmos DB, and Azure Cache for Redis"
+      },
+      {
+        "type": "paragraph",
+        "text": "The data layer comprises Azure SQL Database, Azure Cosmos DB, and Azure Cache for Redis, each serving a distinct purpose within the architecture."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Azure SQL Database: Stores structured data, such as user information, order history, or transactional data, and is often used by backend services.",
+          "Azure Cosmos DB: A globally distributed NoSQL database that provides scalability and low-latency access to unstructured data. It is used when high throughput and scalability are needed.",
+          "Azure Cache for Redis: Used for caching frequently accessed data to improve performance and reduce load on databases. This helps deliver data faster to users while reducing the need to repeatedly query the main databases."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Data_Layer.png",
+        "alt": "Azure Data Layer Services"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Monitoring: Log Analytics, Azure Monitor, and Application Insights"
+      },
+      {
+        "type": "paragraph",
+        "text": "Monitoring and observability are crucial components of the Azure Gatekeeper Pattern. They help track system health, detect issues, and ensure performance is consistent across the entire architecture."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Log Analytics: Collects and analyzes logs from different Azure resources to help identify trends and troubleshoot issues.",
+          "Azure Monitor: Provides a unified solution to monitor metrics, diagnose problems, and understand the performance of your services.",
+          "Application Insights: An application performance management service that monitors backend services, providing telemetry data such as request counts, failure rates, and response times. This helps developers identify and resolve issues quickly."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Monitoring_Tools.png",
+        "alt": "Monitoring Tools for Azure Gatekeeper Pattern"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Benefits of Using the Azure Gatekeeper Pattern"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Enhanced Security: The Gatekeeper Pattern centralizes security enforcement using Azure Front Door, API Management, and Entra ID, reducing the risk of unauthorized access.",
+          "Scalable Traffic Management: Azure Front Door and API Management handle the routing and rate limiting of requests, ensuring backend services scale efficiently.",
+          "Flexible Backend Integration: Backend services like Azure Functions, Logic Apps, and App Services can be easily integrated, scaled independently, and used for different processing tasks."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Step-by-Step Implementation"
+      },
+      {
+        "type": "paragraph",
+        "text": "To implement the Azure Gatekeeper Pattern, follow these steps:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Set up Azure Front Door to handle incoming requests, route traffic, and provide SSL termination.",
+          "Configure Azure API Management to authenticate requests using Azure Entra ID and enforce rate limiting and throttling policies.",
+          "Deploy backend services using Azure Functions, Azure Logic Apps, and Azure App Services.",
+          "Set up databases such as Azure SQL and Azure Cosmos DB, and implement caching using Azure Cache for Redis.",
+          "Enable monitoring with Log Analytics, Azure Monitor, and Application Insights to track performance and ensure system health."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Detailed Implementation with Bicep and Code Snippets"
+      },
+      {
+        "type": "paragraph",
+        "text": "In this section, we will walk through the implementation of the Azure Gatekeeper Pattern using Bicep for Infrastructure as Code (IaC). We'll set up Azure Front Door, API Management, Azure Functions, and other components to create a secure, scalable, and observable architecture. Using Bicep allows us to define and deploy the necessary Azure resources consistently and efficiently."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 1: Setting Up Azure Front Door"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure Front Door acts as the entry point for all incoming traffic, providing global routing and DDoS protection. We will define the necessary configuration using Bicep to deploy Azure Front Door for our application."
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource frontDoor 'Microsoft.Cdn/profiles@2021-06-01' = {\n  name: 'myFrontDoorProfile'\n  location: 'global'\n  sku: {\n    name: 'Standard_AzureFrontDoor'\n  }\n  properties: {}\n}\n\nresource frontDoorEndpoint 'Microsoft.Cdn/profiles/afdEndpoints@2021-06-01' = {\n  parent: frontDoor\n  name: 'myFrontDoorEndpoint'\n  properties: {\n    enabledState: 'Enabled'\n    origins: [\n      {\n        name: 'appServiceOrigin'\n        properties: {\n          hostName: 'myAppService.azurewebsites.net'\n        }\n      }\n    ]\n  }\n}\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "This Bicep snippet sets up an Azure Front Door profile and an endpoint that routes requests to an Azure App Service origin. Azure Front Door provides traffic routing capabilities and ensures that incoming requests are routed to the nearest available region for reduced latency."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 2: Configuring Azure API Management"
+      },
+      {
+        "type": "paragraph",
+        "text": "Azure API Management acts as the security gateway, providing rate limiting, authentication, and routing capabilities. Below is a Bicep template to create an API Management instance and configure it to integrate with Azure Front Door."
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource apiManagement 'Microsoft.ApiManagement/service@2021-08-01' = {\n  name: 'myApiManagement'\n  location: resourceGroup().location\n  sku: {\n    name: 'Developer'\n    capacity: 1\n  }\n  properties: {\n    publisherEmail: 'admin@example.com'\n    publisherName: 'MyAPIManagement'\n  }\n}\n\nresource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {\n  parent: apiManagement\n  name: 'myApi'\n  properties: {\n    displayName: 'My Backend API'\n    path: 'backend'\n    protocols: [ 'https' ]\n    serviceUrl: 'https://myAppService.azurewebsites.net'\n  }\n}\n\nresource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {\n  parent: api\n  name: 'policy'\n  properties: {\n    policyContent: '''\n    <policies>\n        <inbound>\n            <base />\n            <rate-limit-by-key calls='10' renewal-period='60' counter-key='@(context.Request.IpAddress)' />\n            <authentication-managed-identity>\n                <token value=\"@(\"https://my-audience-id/\")\" />\n            </authentication-managed-identity>\n        </inbound>\n        <backend>\n            <base />\n        </backend>\n        <outbound>\n            <base />\n        </outbound>\n    </policies>\n    '''\n  }\n}\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "This Bicep snippet creates an API Management instance with a sample API. It also configures a policy for rate limiting incoming requests and enforcing managed identity authentication to ensure only authorized requests are processed. API Management can be connected to Azure Front Door to form a secure boundary around backend services."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 3: Deploying Backend Services"
+      },
+      {
+        "type": "paragraph",
+        "text": "Backend services consist of Azure Functions, Logic Apps, and App Services. These services are used for processing requests, executing workflows, and delivering web content."
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource appService 'Microsoft.Web/sites@2021-02-01' = {\n  name: 'myAppService'\n  location: resourceGroup().location\n  properties: {\n    serverFarmId: appServicePlan.id\n  }\n}\n\nresource functionApp 'Microsoft.Web/sites@2021-02-01' = {\n  name: 'myFunctionApp'\n  location: resourceGroup().location\n  kind: 'functionapp'\n  properties: {\n    serverFarmId: functionAppPlan.id\n    siteConfig: {\n      appSettings: [\n        {\n          name: 'FUNCTIONS_EXTENSION_VERSION'\n          value: '~3'\n        }\n        {\n          name: 'AzureWebJobsStorage'\n          value: storageAccount.primaryEndpoints.blob\n        }\n      ]\n    }\n  }\n}\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Bicep code above deploys an Azure App Service and an Azure Function App, both connected to the appropriate App Service Plan. The function app is configured with the required app settings for runtime and storage access."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Backend_Deployment.png",
+        "alt": "Deploying Backend Services"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 4: Configuring the Data Layer"
+      },
+      {
+        "type": "paragraph",
+        "text": "The data layer consists of Azure SQL Database, Azure Cosmos DB, and Azure Cache for Redis. Each component serves a different purpose, such as structured data storage, NoSQL storage, and caching. Below are the Bicep templates to configure these services."
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource sqlServer 'Microsoft.Sql/servers@2021-02-01-preview' = {\n  name: 'mySqlServer'\n  location: resourceGroup().location\n  properties: {\n    administratorLogin: 'sqladmin'\n    administratorLoginPassword: 'P@ssw0rd!'\n  }\n}\n\nresource sqlDb 'Microsoft.Sql/servers/databases@2021-02-01-preview' = {\n  parent: sqlServer\n  name: 'myDatabase'\n  properties: {\n    maxSizeBytes: 2147483648\n  }\n}\n\nresource cosmosDb 'Microsoft.DocumentDB/databaseAccounts@2021-03-15' = {\n  name: 'myCosmosDb'\n  location: resourceGroup().location\n  properties: {\n    databaseAccountOfferType: 'Standard'\n  }\n}\n\nresource redisCache 'Microsoft.Cache/Redis@2021-06-01' = {\n  name: 'myRedisCache'\n  location: resourceGroup().location\n  properties: {\n    sku: {\n      name: 'Standard'\n      family: 'C'\n      capacity: 1\n    }\n  }\n}\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Bicep code above defines resources for an Azure SQL Server and database, an Azure Cosmos DB instance, and an Azure Redis Cache. Each service is deployed to handle different types of data requirements—structured data, unstructured data, and caching respectively."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 5: Enabling Monitoring with Application Insights"
+      },
+      {
+        "type": "paragraph",
+        "text": "To maintain observability, Application Insights and Azure Monitor are enabled to track metrics, logs, and request traces from backend services. Below is a Bicep template to create Application Insights."
+      },
+      {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource appInsights 'Microsoft.Insights/components@2021-05-01' = {\n  name: 'myAppInsights'\n  location: resourceGroup().location\n  properties: {\n    Application_Type: 'web'\n  }\n}\n\nresource monitorDiagnosticSetting 'Microsoft.Insights/diagnosticSettings@2021-05-01' = {\n  name: 'myDiagSettings'\n  scope: appService\n  properties: {\n    workspaceId: logAnalyticsWorkspace.id\n    logs: [\n      {\n        category: 'AppServiceHTTPLogs'\n        enabled: true\n      }\n    ]\n  }\n}\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "Application Insights and Log Analytics provide detailed insights into application performance and health. Monitoring diagnostics are configured to collect logs and metrics for further analysis, helping with troubleshooting and optimizing system performance."
+      },
+      {
+        "type": "image",
+        "src": "./static/images/blog/Monitoring_Deployment.png",
+        "alt": "Enabling Monitoring for Backend Services"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Deployment Using GitHub Actions"
+      },
+      {
+        "type": "paragraph",
+        "text": "To automate the deployment of all these Azure resources, GitHub Actions can be used. Below is an example GitHub Actions workflow for deploying the Bicep templates to Azure."
+      },
+      {
+        "type": "code",
+        "language": "yaml",
+        "text": "name: Deploy Azure Resources\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n    - name: Login to Azure\n      uses: azure/login@v1\n      with:\n        creds: ${{ secrets.AZURE_CREDENTIALS }}\n    - name: Deploy Bicep Templates\n      run: |\n        az deployment group create \\\n          --resource-group <your-resource-group> \\\n          --template-file azure-resources.bicep\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "This workflow logs into Azure using service principal credentials stored in GitHub secrets, and then deploys the Bicep templates to the specified resource group. This ensures that the infrastructure deployment is consistent, automated, and repeatable."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Azure Gatekeeper Pattern provides a structured approach to securing and managing your application’s entry point and backend resources. By leveraging Azure Front Door, API Management, and Entra ID, along with various Azure backend services and monitoring tools, you can create a secure, scalable, and observable architecture that meets modern application requirements. By following the detailed implementation outlined here, you can deploy the Azure Gatekeeper Pattern using Bicep and GitHub Actions. This approach ensures that your application is secure, scalable, and monitored effectively. The combination of Azure Front Door, API Management, backend services, and monitoring tools provides a comprehensive, cloud-native architecture that can meet modern application requirements."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "For more information, refer to the following resources:"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+        "text": "Azure Front Door Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+        "text": "Azure API Management Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
+        "text": "Azure Cosmos DB Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+        "text": "Azure Monitor Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+        "text": "Azure Front Door Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+        "text": "Azure API Management Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
+        "text": "Azure Cosmos DB Overview"
+      },
+      {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+        "text": "Azure Monitor Overview"
+      }
+    ]
+  },
+  
+  {
+    "id": "publisher-subscriber-pattern-on-azure",
+    "title": "Implementing the Publisher-Subscriber Pattern on Azure: A Complete Guide",
+    "category": "Cloud",
+    "image": "./static/images/blog/Azure_Pub_Sub_Pattern.png",
+    "date": "Published 12.09.2024",
+    "readTime": "85 min read",
+    "comments": "0 comments",
+    "content": [
         {
-            "type":"code",
-            "language":"yaml",
-            "text":"policies:\n  <inbound>\n    <set-backend-service base-url=\"https://ordersfunction.azurewebsites.net/api/ordersfunction\" />\n  </inbound>\n"
+        "type": "paragraph",
+        "text": "The Publisher-Subscriber pattern is a messaging architecture that enables applications to handle high loads and process data efficiently. This pattern decouples the producer and consumer of messages, providing scalability, resilience, and flexibility in how applications handle events and data. In this blog, we will explore how to implement the Publisher-Subscriber pattern on Azure using Azure Service Bus, Azure Functions, and Application Insights for monitoring."
         },
-            {
-            "type": "paragraph",
-            "text": "This configuration sets up APIM to redirect traffic for the 'orders' module to the new Azure Function. For a complete guide on configuring Azure APIM, refer to the [README](https://github.com/error505/Strangler-Fig-Azure/blob/main/README.md)."
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/APIM_Policy.png",
-            "alt": "APIM Cofig policy"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "5. Test and Monitor the New Setup"
-            },
-            {
-            "type": "paragraph",
-            "text": "Testing is a critical step in any migration. Set up comprehensive testing environments and scenarios to ensure that the new microservices function correctly and meet performance and reliability standards. Use Azure Monitor and Azure Application Insights to track the performance, errors, and usage patterns of both the new microservices and the legacy application. This allows you to identify issues early and make necessary adjustments."
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Ways_to_decomisson.png",
-            "alt": "Testing and Monitoring of Microservices"
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Common Challenges and Best Practices in Applying the Strangler Fig Pattern"
-            },
-            {
-            "type": "paragraph",
-            "text": "While the Strangler Fig pattern offers a pragmatic approach to modernizing legacy applications, it is not without its challenges. Successfully implementing this pattern requires careful planning, a good understanding of both the legacy system and the new architecture, and a thoughtful approach to managing data, dependencies, and deployment."
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Challenge 1: Managing Data Consistency Across Systems"
-            },
-            {
-            "type": "paragraph",
-            "text": "One of the biggest challenges when migrating a monolithic application to microservices is managing data consistency. In a monolithic architecture, all data is usually stored in a single database, making transactions and data consistency relatively straightforward. However, in a microservices architecture, each service typically manages its own database, leading to potential data inconsistency and synchronization issues."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Use a Database per Service pattern: This pattern ensures that each microservice has its own database, reducing coupling between services. However, this requires careful planning to handle data duplication and consistency across different databases.",
-                "Implement Event-Driven Architecture: Use events to communicate changes between microservices. For instance, when an order is created in the 'orders' microservice, it can publish an event to a message broker like Azure Service Bus or Event Grid, which other microservices can subscribe to and update their data accordingly.",
-                "Apply the Saga Pattern: This pattern is a way of managing distributed transactions across microservices. Instead of a single transaction, a saga is a series of local transactions where each transaction updates the state of a microservice and publishes an event or message. Compensating transactions are used to roll back changes if any part of the saga fails."
-            ]
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Event_Sourcing_Pattern.jpg",
-            "alt": "Event-Driven Architecture in Microservices"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Challenge 2: Ensuring Security Across Microservices"
-            },
-            {
-            "type": "paragraph",
-            "text": "As you transition from a monolithic application to microservices, the attack surface of your application expands, increasing the security risks. In a monolithic application, security measures can be applied at a single point. However, in a microservices architecture, each service must be individually secured."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Use API Gateways: An API Gateway like Azure API Management can act as a single entry point for all external API calls. It can provide a range of security features, such as authentication, rate limiting, and IP whitelisting, to protect your microservices.",
-                "Implement Mutual TLS and OAuth2: Secure communication between microservices using Mutual TLS (mTLS) for encrypted and authenticated traffic. Use OAuth2 or OpenID Connect for user authentication and authorization, ensuring that only authorized requests are processed.",
-                "Centralize Security Policies: Use Azure Key Vault to store and manage sensitive information, such as connection strings, API keys, and certificates. Ensure that each microservice accesses secrets securely and that security policies are enforced consistently across all services."
-            ]
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Gatekeeper_Pattern.jpg",
-            "alt": "Security Best Practices for Microservices"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Challenge 3: Handling Inter-Service Communication"
-            },
-            {
-            "type": "paragraph",
-            "text": "Inter-service communication is another key challenge in a microservices architecture. Unlike monolithic applications, where function calls are used for communication, microservices require network-based communication, which introduces latency, reliability issues, and complexity."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Use Asynchronous Messaging: Wherever possible, prefer asynchronous messaging over synchronous calls. Azure Service Bus, Event Grid, or Azure Functions can be used to facilitate asynchronous communication between services. This approach improves system resilience and scalability by decoupling services.",
-                "Implement Circuit Breakers: The Circuit Breaker pattern is used to handle faults that might take a variable amount of time to fix. It allows the system to detect faults and prevent a microservice from repeatedly trying to perform an operation that is likely to fail, enhancing overall stability.",
-                "Use Service Mesh: Consider implementing a service mesh, such as Azure's Open Service Mesh or Istio, for managing complex inter-service communication. A service mesh provides features like load balancing, service discovery, retries, failover, and telemetry, making it easier to manage microservice interactions."
-            ]
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Service_Mesh_Architecture.png",
-            "alt": "Service Mesh Architecture for Managing Microservices Communication"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Challenge 4: Observability and Monitoring"
-            },
-            {
-            "type": "paragraph",
-            "text": "In a monolithic application, monitoring and logging are often centralized and easier to manage. In a microservices architecture, observability becomes more challenging due to the distributed nature of the system. Each microservice might have its own logging mechanism, and failures can be harder to diagnose."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Implement Centralized Logging: Use tools like Azure Monitor, Log Analytics, or Application Insights to centralize logs from all microservices. This approach helps in consolidating logs in one place, making it easier to analyze and debug issues.",
-                "Use Distributed Tracing: Implement distributed tracing with tools like Azure Application Insights or Jaeger. Distributed tracing helps track a request as it travels through various microservices, providing visibility into the flow of the request and identifying bottlenecks.",
-                "Monitor Key Metrics: Set up monitoring for key performance metrics such as response time, error rates, and throughput for each microservice. Use Azure Monitor and Grafana for real-time monitoring and visualization of these metrics."
-            ]
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Health_Endpoint_Monitoring.jpg",
-            "alt": "Distributed Tracing in Microservices Architecture"
-            },
-            {
-            "type": "heading",
-            "level": 3,
-            "text": "Challenge 5: Managing Deployments and Rollbacks"
-            },
-            {
-            "type": "paragraph",
-            "text": "Deploying microservices independently can be challenging, especially when managing dependencies and ensuring that changes do not break other services. Rollback strategies also need to be considered in case of failures."
-            },
-            {
-            "type": "list",
-            "items": [
-                "Use Continuous Integration/Continuous Deployment (CI/CD) Pipelines: Implement CI/CD pipelines with tools like Azure DevOps or GitHub Actions to automate the build, test, and deployment processes. This ensures consistent deployments and reduces human errors.",
-                "Apply Canary Deployments and Feature Flags: Use canary deployments to roll out new features to a small subset of users before a full deployment. Feature flags allow you to toggle new features on or off without deploying new code, providing flexibility in controlling feature rollouts.",
-                "Implement Blue-Green Deployments: Blue-Green deployment is a technique that minimizes downtime and reduces risk by running two identical environments (Blue and Green). The live environment (Blue) is replaced by a new version (Green), and traffic is gradually shifted to the new version."
-            ]
-            },
-            {
-            "type": "image",
-            "src": "./static/images/blog/Deployment_Stamps.jpg",
-            "alt": "Deployment Strategies for Microservices"
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Best Practices for a Successful Transition"
-            },
-            {
-            "type": "paragraph",
-            "text": "To ensure a successful transition from a monolithic to a microservices architecture using the Strangler Fig pattern, consider the following best practices:"
-            },
-            {
-            "type": "list",
-            "items": [
-                "Start Small: Begin by migrating small, low-risk parts of the application to microservices. This allows your team to learn and adapt to the new architecture gradually.",
-                "Encapsulate Changes: Use feature toggles, proxies, or API gateways to route traffic to new microservices while maintaining the integrity of the monolithic application. This reduces the risk of breaking changes and allows for easier rollback.",
-                "Automate Everything: Automate testing, deployment, monitoring, and scaling processes to ensure consistency and reduce the risk of human error.",
-                "Monitor Continuously: Implement robust monitoring and alerting mechanisms to quickly identify and address issues. Continuous monitoring helps in maintaining the performance and reliability of your microservices.",
-                "Encourage a DevOps Culture: Foster a culture of collaboration between development and operations teams to streamline deployments, improve quality, and reduce time-to-market for new features."
-            ]
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Conclusion"
-            },
-            {
-            "type": "paragraph",
-            "text": "Applying the Strangler Fig pattern to migrate from a monolithic to a microservices architecture offers a manageable path to modernizing your legacy applications. By addressing common challenges such as data consistency, security, inter-service communication, observability, and deployment, and following best practices, you can achieve a successful transformation. Leveraging Azure's cloud-native services, such as Azure App Service, Azure Functions, Azure API Management, and Azure Monitor, can further streamline your journey and help you build a scalable, resilient architecture."
-            },
-            {
-            "type": "heading",
-            "level": 2,
-            "text": "Additional Resources"
-            },
-            {
-            "type": "paragraph",
-            "text": "For more information, refer to the following resources:"
-            },
-            {
-            "type": "link",
-            "href": "https://github.com/error505/Strangler-Fig-Azure",
-            "text": "Strangler Fig Azure GitHub Repository"
-            },
-            {
-            "type": "link",
-            "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/strangler-fig.html",
-            "text": "AWS Strangler Fig Pattern Documentation"
-            },
-            {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/app-service/overview",
-            "text": "Azure App Service Overview"
-            },
-            {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
-            "text": "Azure Functions Overview"
-            },
-            {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
-            "text": "Azure Cosmos DB Overview"
-            },
-            {
-            "type": "link",
-            "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
-            "text": "Azure API Management Overview"
-            }
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Why Use the Publisher-Subscriber Pattern?"
+        },
+        {
+        "type": "paragraph",
+        "text": "The Publisher-Subscriber pattern offers several benefits for modern applications, particularly those that need to scale and adapt to varying loads."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Scalability: The pattern allows independent scaling of publishers and subscribers, ensuring that the system can handle varying loads efficiently.",
+            "Resilience: By decoupling message production and consumption, the system is more resilient to failures. A failure in one part does not necessarily impact the entire system.",
+            "Flexibility: Each subscriber can perform different actions based on the same message, enabling diverse processing pathways and use cases."
         ]
-    },      
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Architecture Overview"
+        },
+        {
+        "type": "paragraph",
+        "text": "The architecture consists of a publisher that sends messages to an Azure Service Bus topic. Multiple subscribers listen to different subscriptions on this topic and process the messages independently."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Azure_Pub_Sub_Pattern.png",
+        "alt": "Architecture of Publisher-Subscriber Pattern on Azure"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Publisher: Azure Function or App Service"
+        },
+        {
+        "type": "paragraph",
+        "text": "The publisher in this pattern is an Azure Function or an App Service that simulates an online webshop and sends order details to an Azure Service Bus topic. The publisher can be triggered by various events such as HTTP requests, timers, or other external events."
+        },
+        {
+        "type": "paragraph",
+        "text": "Azure Function as Publisher\n\nBelow is a sample Azure Function that sends order details to an Azure Service Bus topic"
+        },
+        {
+        "type": "code",
+        "language": "python",
+        "text": "\nimport logging\nimport azure.functions as func\nfrom azure.servicebus import ServiceBusClient, ServiceBusMessage\n\nSERVICE_BUS_CONNECTION_STRING = 'your_service_bus_connection_string'\nTOPIC_NAME = 'orders-topic'\n\nservicebus_client = ServiceBusClient.from_connection_string(conn_str=SERVICE_BUS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='PublishOrder')\ndef publish_order(req: func.HttpRequest) -> func.HttpResponse:\n    order_details = req.get_json()\n    try:\n        with servicebus_client.get_topic_sender(topic_name=TOPIC_NAME) as sender:\n            message = ServiceBusMessage(body=str(order_details))\n            sender.send_messages(message)\n            logging.info('Order details sent to Service Bus topic.')\n        return func.HttpResponse('Order published successfully.', status_code=200)\n    except Exception as e:\n        logging.error(f'Error sending message: {e}')\n        return func.HttpResponse('Failed to publish order.', status_code=500)\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This function retrieves order details from an HTTP request, creates a message, and sends it to an Azure Service Bus topic named 'orders-topic'. For complete details on the publisher function, refer to the [publisher function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/publisher/function_app.py)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Azure Service Bus: Messaging Backbone"
+        },
+        {
+        "type": "paragraph",
+        "text": "Azure Service Bus acts as the messaging backbone in this architecture. It provides reliable message delivery and supports multiple communication protocols. The publisher sends messages to a topic, which can have multiple subscriptions. Each subscription can have different filters and rules to control which messages it receives."
+        },
+        {
+        "type": "markdown",
+        "text": "# Service Bus Topic Configuration\n\nAzure Service Bus topics allow multiple subscribers to receive copies of each message sent to the topic. You can create a topic and set up subscriptions using the Azure portal or through Infrastructure as Code using Bicep.\n"
+        },
+        {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource serviceBus 'Microsoft.ServiceBus/namespaces@2022-01-01-preview' = {\n  name: 'myServiceBusNamespace'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard'\n    tier: 'Standard'\n  }\n}\n\nresource topic 'Microsoft.ServiceBus/namespaces/topics@2022-01-01-preview' = {\n  parent: serviceBus\n  name: 'orders-topic'\n  properties: {\n    enablePartitioning: true\n  }\n}\n\nresource subscription1 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription1'\n}\n\nresource subscription2 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription2'\n}\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This Bicep template creates a Service Bus namespace, a topic named 'orders-topic', and two subscriptions. For full details, refer to [azure-resources.bicep](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/infrastructure/azure-resources.bicep)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Subscriber 1: Azure Function for Storing Orders in Cosmos DB"
+        },
+        {
+        "type": "paragraph",
+        "text": "The first subscriber is an Azure Function that listens to messages from Subscription 1. It processes each message and stores the order details in Azure Cosmos DB, providing efficient querying and data storage capabilities."
+        },
+        {
+        "type": "markdown",
+        "text": "# Azure Function for Subscriber 1\n\nBelow is a sample Azure Function that reads messages from the Service Bus subscription and stores them in Cosmos DB:"
+        },
+        {
+        "type": "code",
+        "language": "python",
+        "text": "import logging\nimport azure.functions as func\nfrom azure.cosmos import CosmosClient\n\nCOSMOS_CONNECTION_STRING = 'your_cosmos_db_connection_string'\ncosmos_client = CosmosClient.from_connection_string(COSMOS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='StoreOrderInCosmosDB')\ndef store_order_in_cosmosdb(msg: func.ServiceBusMessage) -> None:\n    order_details = msg.get_body().decode('utf-8')\n    container = cosmos_client.get_database_client('OrdersDB').get_container_client('Orders')\n    container.upsert_item(body=order_details)\n    logging.info('Order details stored in Cosmos DB.')\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This function retrieves messages from Subscription 1 of the 'orders-topic' and stores the order details in Azure Cosmos DB. For the complete code, refer to [subscriber1 function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber1/function_app.py)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Subscriber 2: Azure Function for Saving Orders to Azure Storage"
+        },
+        {
+        "type": "paragraph",
+        "text": "The second subscriber is an Azure Function that listens to messages from Subscription 2. It processes each message and saves the order details as JSON files in an Azure Storage Account for logging or further processing."
+        },
+        {
+        "type": "markdown",
+        "text": "# Azure Function for Subscriber 2\n\nBelow is a sample Azure Function that reads messages from the Service Bus subscription and saves them to Azure Storage:"
+        },
+        {
+        "type": "code",
+        "language": "python",
+        "text": "\nimport logging\nimport azure.functions as func\nfrom azure.storage.blob import BlobServiceClient\n\nSTORAGE_CONNECTION_STRING = 'your_storage_account_connection_string'\nblob_service_client = BlobServiceClient.from_connection_string(STORAGE_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='SaveOrderToStorage')\ndef save_order_to_storage(msg: func.ServiceBusMessage) -> None:\n    order_details = msg.get_body().decode('utf-8')\n    blob_client = blob_service_client.get_blob_client(container='orders', blob=f'order_{msg.message_id}.json')\n    blob_client.upload_blob(order_details)\n    logging.info('Order details saved to Azure Storage.')\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This function retrieves messages from Subscription 2 of the 'orders-topic' and saves them as JSON files in an Azure Storage Account. For the complete code, refer to [subscriber2 function code](https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber2/function_app.py)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Monitoring and Logging with Application Insights"
+        },
+        {
+        "type": "paragraph",
+        "text": "Application Insights provides monitoring and logging capabilities to ensure visibility and troubleshoot issues in the Publisher-Subscriber architecture. It collects telemetry data from both the publisher and subscribers, offering insights into performance, failures, and usage patterns."
+        },
+        {
+        "type": "markdown",
+        "text": "# Configuring Application Insights\n\nTo enable Application Insights, configure the Instrumentation Key in the app settings of the publisher and subscriber Azure Functions. This setup allows you to monitor logs, metrics, and telemetry data in real-time.\n"
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Application_Insights_Configuration.png",
+        "alt": "Application Insights Configuration for Azure Functions"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Points to Consider"
+        },
+        {
+        "type": "list",
+        "items": [
+            "Ensure that the Service Bus connection string is properly configured in all app settings for secure communication.",
+            "Use Application Insights to monitor and log all activities, making it easier to identify and fix issues.",
+            "Scale the publisher and subscribers independently to handle varying loads and optimize performance."
+        ]
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Real-World Use Cases and Examples"
+        },
+        {
+        "type": "paragraph",
+        "text": "The Publisher-Subscriber pattern is widely used in various real-world scenarios where decoupling the production and consumption of messages is essential for scalability, flexibility, and resilience. Below are some practical use cases where this pattern proves effective."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Use Case 1: E-Commerce Order Processing"
+        },
+        {
+        "type": "paragraph",
+        "text": "In an e-commerce platform, the Publisher-Subscriber pattern can manage the flow of order data between different services. When a customer places an order, the order details are published to a topic in Azure Service Bus."
+        },
+        {
+        "type": "list",
+        "items": [
+            "A publisher Azure Function sends order details to the 'orders-topic' in Service Bus.",
+            "Subscriber 1 stores the order data in Azure Cosmos DB for fast retrieval and query operations, supporting customer service and real-time order tracking.",
+            "Subscriber 2 saves the order details as JSON files in Azure Storage, providing a backup for compliance or further data analysis."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Ecommerce_Order_Processing.png",
+        "alt": "E-commerce Order Processing with Publisher-Subscriber Pattern"
+        },
+        {
+        "type": "paragraph",
+        "text": "This architecture allows each service to scale independently and perform specific tasks without depending on the state or performance of other services. It ensures that order processing is resilient to failures in downstream systems."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Use Case 2: IoT Data Ingestion and Processing"
+        },
+        {
+        "type": "paragraph",
+        "text": "The Publisher-Subscriber pattern is also ideal for IoT applications, where large volumes of data are generated by sensors and devices. These devices publish data to an Azure Service Bus topic, from which different subscribers can process the data as needed."
+        },
+        {
+        "type": "list",
+        "items": [
+            "A publisher service collects data from IoT devices and sends it to an Azure Service Bus topic.",
+            "Subscriber 1 aggregates and stores the data in Azure Cosmos DB, providing a centralized repository for analytics and reporting.",
+            "Subscriber 2 processes the data to detect anomalies or trigger alerts, saving relevant events in Azure Storage for historical analysis."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/IoT_Data_Ingestion.png",
+        "alt": "IoT Data Ingestion and Processing with Publisher-Subscriber Pattern"
+        },
+        {
+        "type": "paragraph",
+        "text": "This approach decouples data collection from data processing, allowing each component to scale based on the volume of incoming data and the complexity of processing tasks. It enhances the system's ability to handle bursts of data and ensures reliability."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Use Case 3: Multi-Tier Applications"
+        },
+        {
+        "type": "paragraph",
+        "text": "In a multi-tier application, different tiers can use the Publisher-Subscriber pattern to communicate efficiently. For instance, a backend service responsible for business logic can publish messages to a topic whenever a specific event occurs, such as a new user registration or a completed transaction."
+        },
+        {
+        "type": "list",
+        "items": [
+            "A backend service publishes a message to the 'events-topic' in Service Bus whenever an important event occurs.",
+            "Subscriber 1 sends a confirmation email or notification to the user by integrating with an email service.",
+            "Subscriber 2 updates a third-party CRM or analytics platform with the new event data for customer engagement and analysis."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Multi_Tier_Applications.png",
+        "alt": "Multi-Tier Application Communication with Publisher-Subscriber Pattern"
+        },
+        {
+        "type": "paragraph",
+        "text": "By using the Publisher-Subscriber pattern, each tier in the application can perform its designated task independently. It provides a robust mechanism for event-driven communication, ensuring that the system is scalable and maintainable."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Use Case 4: Microservices Communication"
+        },
+        {
+        "type": "paragraph",
+        "text": "In a microservices architecture, the Publisher-Subscriber pattern is commonly used to handle communication between microservices. This pattern ensures that services remain loosely coupled and can be developed, deployed, and scaled independently."
+        },
+        {
+        "type": "list",
+        "items": [
+            "A microservice publishes domain events to a Service Bus topic whenever a significant change occurs, like updating a product inventory.",
+            "Subscriber 1, responsible for notifying users, listens to the topic and sends notifications through various channels.",
+            "Subscriber 2, responsible for syncing data across multiple regions, updates local databases or caches to ensure data consistency."
+        ]
+        },
+        {
+        "type": "paragraph",
+        "text": "This setup ensures that microservices can respond to events asynchronously, reducing dependencies between them and improving the overall resilience and scalability of the system."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Lessons Learned and Best Practices"
+        },
+        {
+        "type": "paragraph",
+        "text": "Implementing the Publisher-Subscriber pattern involves several best practices that can help ensure a smooth and efficient integration."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Define Clear Boundaries: Clearly define the roles of publishers and subscribers. Ensure that each subscriber is responsible for a distinct set of tasks.",
+            "Monitor and Optimize Performance: Use tools like Application Insights to monitor the performance of publishers and subscribers. Optimize configurations and scale resources based on workload patterns.",
+            "Handle Failures Gracefully: Implement retry policies, dead-letter queues, and circuit breakers to manage failures and prevent message loss.",
+            "Secure Your Messaging Infrastructure: Ensure secure communication between publishers and subscribers by using Shared Access Signatures (SAS) and managed identities for authentication."
+        ]
+        },
+        {
+        "type": "paragraph",
+        "text": "By following these best practices, you can maximize the benefits of the Publisher-Subscriber pattern and build applications that are scalable, resilient, and easy to maintain."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Setting Up the Publisher-Subscriber Pattern on Azure: A Step-by-Step Tutorial"
+        },
+        {
+        "type": "paragraph",
+        "text": "This section provides a detailed, step-by-step guide to setting up the Publisher-Subscriber pattern on Azure. We will deploy the necessary Azure resources, configure the Azure Functions for the publisher and subscribers, and integrate monitoring with Application Insights. Follow these steps to build a fully functional Publisher-Subscriber architecture."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 1: Deploy Azure Resources with Bicep"
+        },
+        {
+        "type": "paragraph",
+        "text": "To get started, we'll deploy the necessary Azure resources using a Bicep template. The Bicep template will create an Azure Service Bus namespace, a topic with multiple subscriptions, a Cosmos DB account, and a Storage Account."
+        },
+        {
+        "type": "markdown",
+        "text": "# Deploying Azure Resources with Bicep\n\nThe following Bicep template defines all the required Azure resources:"
+        },
+        {
+        "type": "code",
+        "language": "bicep",
+        "text": "\nresource serviceBus 'Microsoft.ServiceBus/namespaces@2022-01-01-preview' = {\n  name: 'myServiceBusNamespace'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard'\n    tier: 'Standard'\n  }\n}\n\nresource topic 'Microsoft.ServiceBus/namespaces/topics@2022-01-01-preview' = {\n  parent: serviceBus\n  name: 'orders-topic'\n  properties: {\n    enablePartitioning: true\n  }\n}\n\nresource subscription1 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription1'\n}\n\nresource subscription2 'Microsoft.ServiceBus/namespaces/topics/subscriptions@2022-01-01-preview' = {\n  parent: topic\n  name: 'Subscription2'\n}\n\nresource cosmosDb 'Microsoft.DocumentDB/databaseAccounts@2022-03-01' = {\n  name: 'ordersCosmosDb'\n  location: resourceGroup().location\n  properties: {\n    databaseAccountOfferType: 'Standard'\n  }\n}\n\nresource storageAccount 'Microsoft.Storage/storageAccounts@2022-01-01' = {\n  name: 'mystorageaccount'\n  location: resourceGroup().location\n  sku: {\n    name: 'Standard_LRS'\n  }\n  kind: 'StorageV2'\n}\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "To deploy the Bicep template, use Azure CLI or Azure PowerShell:"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "az deployment group create --resource-group myResourceGroup --template-file azure-resources.bicep"
+        },
+        {
+        "type": "paragraph",
+        "text": "This command deploys the resources defined in the Bicep template to the specified resource group."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 2: Set Up the Publisher Azure Function"
+        },
+        {
+        "type": "paragraph",
+        "text": "Next, set up the publisher, which is an Azure Function that simulates an online webshop and sends order details to the Azure Service Bus topic."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 3: Configure Subscriber 1 - Azure Function for Cosmos DB"
+        },
+        {
+        "type": "paragraph",
+        "text": "Set up Subscriber 1, an Azure Function that listens to messages from Subscription 1 and stores the order details in Azure Cosmos DB."
+        },
+        {
+        "type": "link",
+        "href": "https://github.com/error505/Publisher-Subscriber-Pattern/blob/main/subscriber1/README.md",
+        "text": "Subscriber 1 Azure Functions Overview"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 4: Configure Subscriber 2 - Azure Function for Azure Storage"
+        },
+        {
+        "type": "paragraph",
+        "text": "Set up Subscriber 2, another Azure Function that listens to messages from Subscription 2 and saves the order details as JSON files in Azure Storage."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 5: Set Up Monitoring with Application Insights"
+        },
+        {
+        "type": "paragraph",
+        "text": "Integrate Application Insights to monitor and log activities across the publisher and subscribers. This provides visibility into performance, errors, and usage patterns."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 6: Deploy the Entire Setup Using GitHub Actions"
+        },
+        {
+        "type": "paragraph",
+        "text": "Automate the deployment process using GitHub Actions. The workflow file will deploy the infrastructure and Azure Functions to Azure."
+        },
+        {
+        "type": "markdown",
+        "text": "# GitHub Actions Workflow for Deployment\n\nBelow is a sample GitHub Actions workflow to deploy the Bicep template and Azure Functions:"
+        },
+        {
+        "type": "code",
+        "language": "yaml",
+        "text": "\nname: Deploy Publisher-Subscriber Pattern on Azure\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n    - name: Login to Azure\n      uses: azure/login@v1\n      with:\n        creds: ${{ secrets.AZURE_CREDENTIALS }}\n    - name: Deploy Azure Resources\n      run: az deployment group create --resource-group myResourceGroup --template-file infrastructure/azure-resources.bicep\n    - name: Deploy Publisher Function\n      run: func azure functionapp publish publishOrderFunction\n    - name: Deploy Subscriber 1 Function\n      run: func azure functionapp publish storeOrderInCosmosDB\n    - name: Deploy Subscriber 2 Function\n      run: func azure functionapp publish saveOrderToStorage\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This workflow automates the deployment process for the Publisher-Subscriber architecture on Azure."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+        },
+        {
+        "type": "paragraph",
+        "text": "For more information, refer to the following resources:"
+        },
+        {
+        "type": "link",
+        "href": "https://github.com/error505/Publisher-Subscriber-Pattern",
+        "text": "Publisher-Subscriber Pattern GitHub Repository"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview",
+        "text": "Azure Service Bus Overview"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
+        "text": "Azure Functions Overview"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/monitoring/monitoring-overview",
+        "text": "Application Insights Overview"
+        }
+    ]
+  },      
+  {
+    "id": "build-your-personal-portfolio-website",
+    "title": "Build Your Personal Portfolio Website with React JS and GitHub Pages",
+    "category": "Web Development",
+    "image": "./static/images/blog/live_web_page.png",
+    "date": "Published 10.09.2024",
+    "readTime": "30 min read",
+    "comments": "0 comments",
+    "content": [
+        {
+        "type": "paragraph",
+        "text": "Are you ready to take your portfolio website to the next level? In my book, GitHub for Next-Generation Coders, I guide you through building a modern portfolio website using HTML, CSS and Javascript, but here we go one step further and we will build your web site with React JS, one of the most popular JavaScript frameworks for web development. With this project, you'll not only learn how to build a dynamic web app but also how to deploy it for free using GitHub Pages and automate the process with GitHub Actions."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/intro.jpg",
+        "alt": "GitHub for Next Generation Coders"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Step 1: Clone the Ready-Made React Template"
+        },
+        {
+        "type": "paragraph",
+        "text": "To get started quickly, I've prepared a ready-made React JS template for your portfolio. You only need to clone this template and customise it to make it uniquely yours."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Fork the Repository: Go to the React JS Portfolio Template repository \"https://github.com/error505/Static-Web-App-React\" and click the \"Fork\" button to make your copy. This allows you to modify it without affecting the original."
+        ]
+        },
+        {
+        "type": "list",
+        "items": [
+            "Clone Your Forked Repository: On your repository page, click on the \"Code\" button and copy the URL. Then, open your terminal or Git Bash, navigate to your desired folder, and type:"
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/fork_repo.png",
+        "alt": "Forking the repo"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "git clone <your-forked-repo-url>"
+        },
+        {
+        "type": "paragraph",
+        "text": "Install Dependencies and Customise Your Site: Change to the cloned directory:"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "cd <your-repo-name>"
+        },
+        {
+        "type": "paragraph",
+        "text": "Install the dependencies using:"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "npm install"
+        },
+        {
+        "type": "paragraph",
+        "text": "Now, you can start customizing the website. Open the project in your favourite code editor and modify components like Header.js, Footer.js, and Profile.js to reflect your personal information and style."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/edit_in_vscode.png",
+        "alt": "Screenshot of the code editor with React components being edited"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Step 2: Deploy Your React Portfolio Using GitHub Pages"
+        },
+        {
+        "type": "paragraph",
+        "text": "Once your website is customised, it's time to deploy it using GitHub Pages. This way, your site will be live and accessible for anyone to see."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Push Your Changes to GitHub: After making changes, commit them and push them back to your repository:"
+        ]
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "git add .git commit -m \"Initial customisation of portfolio\""
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "git push origin main"
+        },
+        {
+        "type": "paragraph",
+        "text": "Install gh-pages Package: To deploy a React app to GitHub Pages, you'll need the gh-pages package. Install it by running:"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "npm install gh-pages --save-dev"
+        },
+        {
+        "type": "paragraph",
+        "text": "Configure Your package.json: Open package.json and add the following properties:"
+        },
+        {
+        "type": "paragraph",
+        "text": "Under \"scripts\", add:"
+        },
+        {
+        "type": "code",
+        "language": "json",
+        "text": "\"predeploy\": \"npm run build\",\n\"deploy\": \"gh-pages -d build\""
+        },
+        {
+        "type": "paragraph",
+        "text": "At the top level, add:"
+        },
+        {
+        "type": "code",
+        "language": "json",
+        "text": "\"homepage\": \"https://<your-username>.github.io/<your-repo-name>\""
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/gh_pages_deploy_package.png",
+        "alt": "Screenshot of modified package.json file"
+        },
+        {
+        "type": "paragraph",
+        "text": "Deploy the Site: Run the deploy script:"
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "npm run deploy"
+        },
+        {
+        "type": "paragraph",
+        "text": "This command will build the app and push the compiled code to a special branch (gh-pages) that GitHub Pages uses to serve the website."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/npm_run_deploy.png",
+        "alt": "Terminal screenshot showing npm run deploy command"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Step 3: Automate Deployment with GitHub Actions"
+        },
+        {
+        "type": "paragraph",
+        "text": "Every time you make changes to your site, you want those changes to be deployed automatically. That's where GitHub Actions come in handy."
+        },
+        {
+        "type": "paragraph",
+        "text": "Create a GitHub Action Workflow: In your repository, navigate to the “Actions” tab and choose “New workflow”. Start with a simple Node.js workflow."
+        },
+        {
+        "type": "paragraph",
+        "text": "Configure Your Workflow File: Replace the content with the following:"
+        },
+        {
+        "type": "code",
+        "language": "yaml",
+        "text": "name: Deploy React Portfolio\n\non:\n  push:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v2\n\n      - name: Set up Node.js\n        uses: actions/setup-node@v2\n        with:\n          node-version: '14'\n\n      - name: Install dependencies\n        run: npm install\n\n      - name: Build project\n        run: npm run build\n\n      - name: Deploy to GitHub Pages\n        run: npm run deploy\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This workflow triggers every time you push to the main branch, builds your React app, and deploys it to GitHub Pages automatically."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/GitHub_Actions_Workflow.png",
+        "alt": "Screenshot of the GitHub Actions editor with the workflow code"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Step 4: Add a Custom Domain to Your GitHub Pages"
+        },
+        {
+        "type": "paragraph",
+        "text": "Want to use a custom domain for your portfolio? No problem!"
+        },
+        {
+        "type": "list",
+        "items": [
+            "Buy a Domain: Purchase a domain name from any domain registrar (like Namecheap or GoDaddy).",
+            "Configure DNS Settings: Point your domain to GitHub Pages by adding A records for the following IP addresses:"
+        ]
+        },
+        {
+        "type": "code",
+        "language": "bash",
+        "text": "\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\n"
+        },
+        {
+        "type": "list",
+        "items": [
+            "Add the Custom Domain in GitHub: Go to your repository’s “Settings” > “Pages” section and enter your custom domain under \"Custom domain.\" Save the changes."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/custom_domain.png",
+        "alt": "Screenshot of the GitHub Pages Custom Domain"
+        },
+        {
+        "type": "list",
+        "items": [
+            "Your web page should be up and running now."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/live_web_page.png",
+        "alt": "Screenshot of the Live Web Site"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Showcase Your React JS Skills"
+        },
+        {
+        "type": "paragraph",
+        "text": "By following these steps, you'll have a stunning personal portfolio website built with React JS, automatically deployed to GitHub Pages, and available under your own custom domain. This project will show off your web development skills and demonstrate your ability to use modern tools like GitHub and React."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Start Your Journey Today!"
+        },
+        {
+        "type": "paragraph",
+        "text": "Get started now with GitHub for Next-Generation Coders, and take your first steps in building a professional online presence. With this book, you'll learn to leverage the power of GitHub and React to create, deploy, and maintain your portfolio website effortlessly."
+        },
+        {
+        "type": "link",
+        "href": "https://www.packtpub.com/en-us/product/github-for-next-generation-coders-9781835463048",
+        "text": "Get Your Copy from Packt Web Site"
+        },
+        {
+        "type": "link",
+        "href": "https://a.co/d/er7sliR",
+        "text": "Get Your Copy from Amazon"
+        }
+    ]
+  },      
+  {
+    "id": "strangler-fig-pattern-on-azure",
+    "title": "Using the Strangler Fig Pattern on Azure: A Step-by-Step Guide to Modernizing Legacy Applications",
+    "category": "Cloud",
+    "image": "./static/images/blog/Strangler_Fig_Azure.png",
+    "date": "Published 05.09.2024",
+    "readTime": "75 min read",
+    "comments": "0 comments",
+    "content": [
+        {
+        "type": "paragraph",
+        "text": "The Strangler Fig pattern is a powerful approach for modernizing legacy applications by gradually replacing them with newer components and services. Inspired by the way a strangler fig plant grows around a tree and eventually replaces it, this pattern allows incremental migration without disrupting existing functionality. In this blog post, we will explore how to apply the Strangler Fig pattern on Azure using Azure App Service for a legacy monolith application, Azure Functions to host new microservices, Azure Cosmos DB for data storage, and Azure API Management (APIM) to manage and redirect API traffic."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Strangler_Fig_Azure.png",
+        "alt": "Strangler Fig Azure Architecture"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Why Use the Strangler Fig Pattern?"
+        },
+        {
+        "type": "paragraph",
+        "text": "Migrating a monolithic application to a modern architecture can be challenging. A monolith is typically a single, tightly coupled codebase where all components are deployed together. While this simplifies deployment and monitoring in small applications, it can lead to significant drawbacks as the application grows, such as scalability issues, difficulty in maintenance, and limited flexibility in adopting new technologies."
+        },
+        {
+        "type": "paragraph",
+        "text": "The Strangler Fig pattern addresses these challenges by allowing the application to be modernized incrementally. Instead of rewriting the entire application from scratch (a risky 'big bang' approach), you gradually extract functionality from the monolith and replace it with new microservices. This approach minimizes risk, allows for parallel development, and provides continuous improvement opportunities. Companies like Netflix, Amazon, and Walmart have successfully used this pattern to transform their legacy systems into scalable, resilient architectures."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Understanding the Monolithic to Microservices Journey"
+        },
+        {
+        "type": "paragraph",
+        "text": "A monolithic architecture consists of a single, unified codebase where all modules and functionalities are bundled together. When the application is small, this approach works well due to the simplicity of deployment and maintenance. However, as the application grows, the monolith becomes a bottleneck, hindering scalability, flexibility, and rapid development."
+        },
+        {
+        "type": "paragraph",
+        "text": "Microservices architecture, on the other hand, divides the application into independent, loosely coupled services. Each microservice handles a specific functionality and can be developed, deployed, and scaled independently. This approach enhances flexibility, scalability, and fault isolation, making it ideal for large and complex applications."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Monolith_vs_Microservices.png",
+        "alt": "Comparison between Monolithic and Microservices Architectures"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Case Studies: Netflix, Amazon, and Walmart"
+        },
+        {
+        "type": "paragraph",
+        "text": "Several major companies have adopted the Strangler Fig pattern to transition from monolithic to microservices architectures."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Netflix transitioned from a monolithic architecture to microservices to achieve better scalability, availability, and speed. This change allowed Netflix to scale globally, deploy thousands of server instances simultaneously, and recover quickly from failures.",
+            "Amazon decoupled its monolithic codebase into microservices to resolve scalability and deployment challenges. This transformation enabled faster development cycles, independent service operation, and improved fault isolation.",
+            "Walmart moved from a monolith to microservices to handle increased traffic during peak events like Black Friday. The new architecture allowed Walmart to scale efficiently, resulting in zero downtime during high-traffic events."
+        ]
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Step-by-Step Guide to Applying the Strangler Fig Pattern on Azure"
+        },
+        {
+        "type": "paragraph",
+        "text": "To implement the Strangler Fig pattern on Azure, we will break down the process into manageable steps, leveraging Azure's cloud-native services to modernize our legacy application."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "1. Analyze the Legacy Application"
+        },
+        {
+        "type": "paragraph",
+        "text": "Start by analyzing the existing monolithic application. Identify modules or functionalities that can be isolated and migrated to microservices. Look for components that are independent, have minimal dependencies on other parts of the application, and are critical to the application's functionality. Common candidates include modules like orders, payments, and customer management."
+        },
+        {
+        "type": "paragraph",
+        "text": "For example, in our scenario, we have identified the 'orders' functionality as a suitable candidate for migration. This module handles order processing, which is crucial but can be isolated from other parts of the system."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Orders_Microservices.png",
+        "alt": "Orders Microservice"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "2. Set Up Azure Infrastructure"
+        },
+        {
+        "type": "paragraph",
+        "text": "To start the migration, provision the necessary Azure resources using Infrastructure as Code (IaC) with Bicep templates. This includes creating Azure App Service to host the existing monolith, Azure Functions to handle the extracted 'orders' microservice, Azure Cosmos DB for storing order data, and Azure API Management for managing API traffic."
+        },
+        {
+        "type": "code",
+        "language": "bicep",
+        "text": "resource appService 'Microsoft.Web/sites@2022-03-01' = {\n  name: 'legacyAppService'\n  location: resourceGroup().location\n  kind: 'app'\n  properties: {\n    serverFarmId: appServicePlan.id\n  }\n}\n\nresource functionApp 'Microsoft.Web/sites@2022-03-01' = {\n  name: 'ordersFunction'\n  location: resourceGroup().location\n  kind: 'functionapp'\n  properties: {\n    serverFarmId: functionAppPlan.id\n  }\n}\n\nresource cosmosDb 'Microsoft.DocumentDB/databaseAccounts@2022-03-01' = {\n  name: 'ordersCosmosDb'\n  location: resourceGroup().location\n  properties: {\n    databaseAccountOfferType: 'Standard'\n  }\n}\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "For full deployment instructions and details on the Bicep template, refer to [azure-resources.bicep](https://github.com/error505/Strangler-Fig-Azure/blob/main/Infrastructure/azure-resources.bicep)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "3. Extract the 'Orders' Functionality to Azure Functions"
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Extract_Microservice.png",
+        "alt": "Extract Microservice"
+        },
+        {
+        "type": "markdown",
+        "text": "# Azure Function for Orders\n\nThe new Azure Function will handle all 'orders' related operations. Below is the Python code for the Azure Function"
+        },
+        {
+        "type": "code",
+        "language": "python",
+        "text": "import logging\nimport azure.functions as func\nfrom azure.cosmos import CosmosClient\n\nCOSMOS_CONNECTION_STRING = 'your_cosmos_db_connection_string'\ncosmos_client = CosmosClient.from_connection_string(COSMOS_CONNECTION_STRING)\n\napp = func.FunctionApp()\n\n@app.function_name(name='OrdersFunction')\ndef orders_function(req: func.HttpRequest) -> func.HttpResponse:\n    order_id = req.params.get('order_id')\n    if not order_id:\n        return func.HttpResponse(\"Order ID is required.\", status_code=400)\n\n    container = cosmos_client.get_database_client('OrdersDB').get_container_client('Orders')\n    order = container.read_item(item=order_id, partition_key=order_id)\n    return func.HttpResponse(body=str(order), status_code=200)\n"
+        },
+        {
+        "type": "paragraph",
+        "text": "This function retrieves order details from the Azure Cosmos DB. The function app is triggered by HTTP requests, making it easy to integrate with other services. For the complete code, refer to [function_app.py](https://github.com/error505/Strangler-Fig-Azure/blob/main/ExtractedFunction/function_app.py)."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "4. Configure Azure API Management"
+        },
+        {
+        "type": "paragraph",
+        "text": "Azure API Management (APIM) plays a crucial role in managing the API calls from the legacy application and redirecting them to the new Azure Function. APIM provides a centralized interface to control, secure, and monitor API traffic, ensuring a smooth transition without impacting the user experience."
+        },
+        {
+        "type": "markdown",
+        "text": "# APIM Policy Configuration\n\nThe following policy snippet shows how to route requests to the new Azure Function:\n\n```xml\n<policies>\n    <inbound>\n        <base />\n        <set-backend-service base-url=\"https://ordersfunction.azurewebsites.net/api/ordersfunction\" />\n    </inbound>\n    <backend>\n        <base />\n    </backend>\n    <outbound>\n        <base />\n    </outbound>\n</policies>\n```\n"
+        },
+    {
+        "type":"code",
+        "language":"yaml",
+        "text":"policies:\n  <inbound>\n    <set-backend-service base-url=\"https://ordersfunction.azurewebsites.net/api/ordersfunction\" />\n  </inbound>\n"
+    },
+        {
+        "type": "paragraph",
+        "text": "This configuration sets up APIM to redirect traffic for the 'orders' module to the new Azure Function. For a complete guide on configuring Azure APIM, refer to the [README](https://github.com/error505/Strangler-Fig-Azure/blob/main/README.md)."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/APIM_Policy.png",
+        "alt": "APIM Cofig policy"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "5. Test and Monitor the New Setup"
+        },
+        {
+        "type": "paragraph",
+        "text": "Testing is a critical step in any migration. Set up comprehensive testing environments and scenarios to ensure that the new microservices function correctly and meet performance and reliability standards. Use Azure Monitor and Azure Application Insights to track the performance, errors, and usage patterns of both the new microservices and the legacy application. This allows you to identify issues early and make necessary adjustments."
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Ways_to_decomisson.png",
+        "alt": "Testing and Monitoring of Microservices"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Common Challenges and Best Practices in Applying the Strangler Fig Pattern"
+        },
+        {
+        "type": "paragraph",
+        "text": "While the Strangler Fig pattern offers a pragmatic approach to modernizing legacy applications, it is not without its challenges. Successfully implementing this pattern requires careful planning, a good understanding of both the legacy system and the new architecture, and a thoughtful approach to managing data, dependencies, and deployment."
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Challenge 1: Managing Data Consistency Across Systems"
+        },
+        {
+        "type": "paragraph",
+        "text": "One of the biggest challenges when migrating a monolithic application to microservices is managing data consistency. In a monolithic architecture, all data is usually stored in a single database, making transactions and data consistency relatively straightforward. However, in a microservices architecture, each service typically manages its own database, leading to potential data inconsistency and synchronization issues."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Use a Database per Service pattern: This pattern ensures that each microservice has its own database, reducing coupling between services. However, this requires careful planning to handle data duplication and consistency across different databases.",
+            "Implement Event-Driven Architecture: Use events to communicate changes between microservices. For instance, when an order is created in the 'orders' microservice, it can publish an event to a message broker like Azure Service Bus or Event Grid, which other microservices can subscribe to and update their data accordingly.",
+            "Apply the Saga Pattern: This pattern is a way of managing distributed transactions across microservices. Instead of a single transaction, a saga is a series of local transactions where each transaction updates the state of a microservice and publishes an event or message. Compensating transactions are used to roll back changes if any part of the saga fails."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Event_Sourcing_Pattern.jpg",
+        "alt": "Event-Driven Architecture in Microservices"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Challenge 2: Ensuring Security Across Microservices"
+        },
+        {
+        "type": "paragraph",
+        "text": "As you transition from a monolithic application to microservices, the attack surface of your application expands, increasing the security risks. In a monolithic application, security measures can be applied at a single point. However, in a microservices architecture, each service must be individually secured."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Use API Gateways: An API Gateway like Azure API Management can act as a single entry point for all external API calls. It can provide a range of security features, such as authentication, rate limiting, and IP whitelisting, to protect your microservices.",
+            "Implement Mutual TLS and OAuth2: Secure communication between microservices using Mutual TLS (mTLS) for encrypted and authenticated traffic. Use OAuth2 or OpenID Connect for user authentication and authorization, ensuring that only authorized requests are processed.",
+            "Centralize Security Policies: Use Azure Key Vault to store and manage sensitive information, such as connection strings, API keys, and certificates. Ensure that each microservice accesses secrets securely and that security policies are enforced consistently across all services."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Gatekeeper_Pattern.jpg",
+        "alt": "Security Best Practices for Microservices"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Challenge 3: Handling Inter-Service Communication"
+        },
+        {
+        "type": "paragraph",
+        "text": "Inter-service communication is another key challenge in a microservices architecture. Unlike monolithic applications, where function calls are used for communication, microservices require network-based communication, which introduces latency, reliability issues, and complexity."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Use Asynchronous Messaging: Wherever possible, prefer asynchronous messaging over synchronous calls. Azure Service Bus, Event Grid, or Azure Functions can be used to facilitate asynchronous communication between services. This approach improves system resilience and scalability by decoupling services.",
+            "Implement Circuit Breakers: The Circuit Breaker pattern is used to handle faults that might take a variable amount of time to fix. It allows the system to detect faults and prevent a microservice from repeatedly trying to perform an operation that is likely to fail, enhancing overall stability.",
+            "Use Service Mesh: Consider implementing a service mesh, such as Azure's Open Service Mesh or Istio, for managing complex inter-service communication. A service mesh provides features like load balancing, service discovery, retries, failover, and telemetry, making it easier to manage microservice interactions."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Service_Mesh_Architecture.png",
+        "alt": "Service Mesh Architecture for Managing Microservices Communication"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Challenge 4: Observability and Monitoring"
+        },
+        {
+        "type": "paragraph",
+        "text": "In a monolithic application, monitoring and logging are often centralized and easier to manage. In a microservices architecture, observability becomes more challenging due to the distributed nature of the system. Each microservice might have its own logging mechanism, and failures can be harder to diagnose."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Implement Centralized Logging: Use tools like Azure Monitor, Log Analytics, or Application Insights to centralize logs from all microservices. This approach helps in consolidating logs in one place, making it easier to analyze and debug issues.",
+            "Use Distributed Tracing: Implement distributed tracing with tools like Azure Application Insights or Jaeger. Distributed tracing helps track a request as it travels through various microservices, providing visibility into the flow of the request and identifying bottlenecks.",
+            "Monitor Key Metrics: Set up monitoring for key performance metrics such as response time, error rates, and throughput for each microservice. Use Azure Monitor and Grafana for real-time monitoring and visualization of these metrics."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Health_Endpoint_Monitoring.jpg",
+        "alt": "Distributed Tracing in Microservices Architecture"
+        },
+        {
+        "type": "heading",
+        "level": 3,
+        "text": "Challenge 5: Managing Deployments and Rollbacks"
+        },
+        {
+        "type": "paragraph",
+        "text": "Deploying microservices independently can be challenging, especially when managing dependencies and ensuring that changes do not break other services. Rollback strategies also need to be considered in case of failures."
+        },
+        {
+        "type": "list",
+        "items": [
+            "Use Continuous Integration/Continuous Deployment (CI/CD) Pipelines: Implement CI/CD pipelines with tools like Azure DevOps or GitHub Actions to automate the build, test, and deployment processes. This ensures consistent deployments and reduces human errors.",
+            "Apply Canary Deployments and Feature Flags: Use canary deployments to roll out new features to a small subset of users before a full deployment. Feature flags allow you to toggle new features on or off without deploying new code, providing flexibility in controlling feature rollouts.",
+            "Implement Blue-Green Deployments: Blue-Green deployment is a technique that minimizes downtime and reduces risk by running two identical environments (Blue and Green). The live environment (Blue) is replaced by a new version (Green), and traffic is gradually shifted to the new version."
+        ]
+        },
+        {
+        "type": "image",
+        "src": "./static/images/blog/Deployment_Stamps.jpg",
+        "alt": "Deployment Strategies for Microservices"
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Best Practices for a Successful Transition"
+        },
+        {
+        "type": "paragraph",
+        "text": "To ensure a successful transition from a monolithic to a microservices architecture using the Strangler Fig pattern, consider the following best practices:"
+        },
+        {
+        "type": "list",
+        "items": [
+            "Start Small: Begin by migrating small, low-risk parts of the application to microservices. This allows your team to learn and adapt to the new architecture gradually.",
+            "Encapsulate Changes: Use feature toggles, proxies, or API gateways to route traffic to new microservices while maintaining the integrity of the monolithic application. This reduces the risk of breaking changes and allows for easier rollback.",
+            "Automate Everything: Automate testing, deployment, monitoring, and scaling processes to ensure consistency and reduce the risk of human error.",
+            "Monitor Continuously: Implement robust monitoring and alerting mechanisms to quickly identify and address issues. Continuous monitoring helps in maintaining the performance and reliability of your microservices.",
+            "Encourage a DevOps Culture: Foster a culture of collaboration between development and operations teams to streamline deployments, improve quality, and reduce time-to-market for new features."
+        ]
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Conclusion"
+        },
+        {
+        "type": "paragraph",
+        "text": "Applying the Strangler Fig pattern to migrate from a monolithic to a microservices architecture offers a manageable path to modernizing your legacy applications. By addressing common challenges such as data consistency, security, inter-service communication, observability, and deployment, and following best practices, you can achieve a successful transformation. Leveraging Azure's cloud-native services, such as Azure App Service, Azure Functions, Azure API Management, and Azure Monitor, can further streamline your journey and help you build a scalable, resilient architecture."
+        },
+        {
+        "type": "heading",
+        "level": 2,
+        "text": "Additional Resources"
+        },
+        {
+        "type": "paragraph",
+        "text": "For more information, refer to the following resources:"
+        },
+        {
+        "type": "link",
+        "href": "https://github.com/error505/Strangler-Fig-Azure",
+        "text": "Strangler Fig Azure GitHub Repository"
+        },
+        {
+        "type": "link",
+        "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/strangler-fig.html",
+        "text": "AWS Strangler Fig Pattern Documentation"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/app-service/overview",
+        "text": "Azure App Service Overview"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
+        "text": "Azure Functions Overview"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
+        "text": "Azure Cosmos DB Overview"
+        },
+        {
+        "type": "link",
+        "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+        "text": "Azure API Management Overview"
+        }
+    ]
+  },      
   {
     "id": "chat-with-your-own-data-solution-accelerator",
     "title": "Building a Secure and Scalable Chatbot with Your Data: Azure Solution Accelerator",
