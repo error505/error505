@@ -334,31 +334,6 @@
         "type": "link",
         "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
         "text": "Azure Cosmos DB Overview"
-      },
-      {
-        "type": "link",
-        "href": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
-        "text": "Azure Monitor Overview"
-      },
-      {
-        "type": "link",
-        "href": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
-        "text": "Azure Front Door Overview"
-      },
-      {
-        "type": "link",
-        "href": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
-        "text": "Azure API Management Overview"
-      },
-      {
-        "type": "link",
-        "href": "https://learn.microsoft.com/en-us/azure/cosmos-db/introduction",
-        "text": "Azure Cosmos DB Overview"
-      },
-      {
-        "type": "link",
-        "href": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
-        "text": "Azure Monitor Overview"
       }
     ]
   },
