@@ -77,23 +77,6 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
           </li>
         </ul>
       </nav>
-{/* Sponsor Card Toggle Button */}
-      <div className="sponsor-card-section">
-        <button onClick={() => setShowSponsorCard(!showSponsorCard)} className="sponsor-toggle-button">
-          {showSponsorCard ? "Hide Sponsor Card" : "Show Sponsor Card"}
-        </button>
-        
-        {/* Conditional rendering of the sponsor card iframe */}
-        {showSponsorCard && (
-          <iframe
-            src="https://github.com/sponsors/error505/card"
-            title="Sponsor error505"
-            height="225"
-            width="100%"
-            style={{ border: "0", marginTop: "10px" }}
-          ></iframe>
-        )}
-      </div>
     </aside>
   );
 };
