@@ -15,6 +15,13 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
         <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
         <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
         <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
+        <iframe
+                  src="https://github.com/sponsors/error505/card"
+                  title="Sponsor error505"
+                  height="225"
+                  width="100%"
+                  style={{ border: "0" }}
+                ></iframe>
       </div>
       <nav className="navigation">
         <ul>
