@@ -15,6 +15,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
         <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
         <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
         <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
+        <iframe src="https://github.com/sponsors/error505/button" title="Sponsor error505" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
       </div>
       <nav className="navigation">
         <ul>
@@ -77,7 +78,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
         </ul>
       </nav>
 {/* Sponsor Card Toggle Button */}
-<div className="sponsor-card-section">
+      <div className="sponsor-card-section">
         <button onClick={() => setShowSponsorCard(!showSponsorCard)} className="sponsor-toggle-button">
           {showSponsorCard ? "Hide Sponsor Card" : "Show Sponsor Card"}
         </button>
