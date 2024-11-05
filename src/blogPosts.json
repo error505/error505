@@ -24,7 +24,7 @@
           },
           {
             "type": "paragraph",
-            "text": "The certification journey begins with **AZ-900: Azure Fundamentals**. This is a foundational certification that helps you understand core cloud concepts and services, as well as basic Azure offerings. It's a great way to get started, even if you have little or no experience with cloud technology."
+            "text": "The certification journey begins with AZ-900: Azure Fundamentals. This is a foundational certification that helps you understand core cloud concepts and services, as well as basic Azure offerings. It's a great way to get started, even if you have little or no experience with cloud technology."
           },
           {
             "type": "list",
@@ -50,7 +50,7 @@
           },
           {
             "type": "paragraph",
-            "text": "**AZ-104: Azure Administrator Associate** is the next certification, and it builds on the fundamentals you learned in AZ-900. This certification tests your skills in managing and monitoring Azure resources, setting up virtual networks, and managing identities."
+            "text": "AZ-104: Azure Administrator Associate is the next certification, and it builds on the fundamentals you learned in AZ-900. This certification tests your skills in managing and monitoring Azure resources, setting up virtual networks, and managing identities."
           },
           {
             "type": "list",
@@ -80,7 +80,7 @@
           },
           {
             "type": "paragraph",
-            "text": "**AZ-700: Azure Network Engineer Associate** is not mandatory to achive your Architect Cetrificate but it is importan next step for those focusing on network management in Azure. This certification is important for understanding how to design and implement secure and reliable networking solutions for Azure."
+            "text": "AZ-700: Azure Network Engineer Associate is not mandatory to achive your Architect Cetrificate but it is importan next step for those focusing on network management in Azure. This certification is important for understanding how to design and implement secure and reliable networking solutions for Azure."
           },
           {
             "type": "list",
@@ -110,7 +110,7 @@
           },
           {
             "type": "paragraph",
-            "text": "After gaining an understanding of administration and networking, the next step is **AZ-305: Designing Microsoft Azure Infrastructure Solutions**. This certification focuses on advanced topics like designing hybrid solutions, implementing governance strategies, and creating robust business continuity plans."
+            "text": "After gaining an understanding of administration and networking, the next step is AZ-305: Designing Microsoft Azure Infrastructure Solutions. This certification focuses on advanced topics like designing hybrid solutions, implementing governance strategies, and creating robust business continuity plans."
           },
           {
             "type": "list",
@@ -140,7 +140,7 @@
           },
           {
             "type": "paragraph",
-            "text": "After completing **AZ-104**, **AZ-700**, and **AZ-305**, you are ready to earn the **Azure Solutions Architect Expert** certification. This certification validates that you have the skills needed to design and implement solutions that run on Microsoft Azure, including aspects like compute, network, storage, and security."
+            "text": "After completing AZ-104, AZ-700, and AZ-305, you are ready to earn the Azure Solutions Architect Expert certification. This certification validates that you have the skills needed to design and implement solutions that run on Microsoft Azure, including aspects like compute, network, storage, and security."
           },
           {
             "type": "list",
@@ -170,14 +170,14 @@
           },
           {
             "type": "paragraph",
-            "text": "Once you've earned the **Azure Solutions Architect Expert** certification, you can pursue roles that involve designing, implementing, and managing cloud solutions. Here are some of the key career opportunities available:"
+            "text": "Once you've earned the Azure Solutions Architect Expert certification, you can pursue roles that involve designing, implementing, and managing cloud solutions. Here are some of the key career opportunities available:"
           },
           {
             "type": "list",
             "items": [
-              "**Cloud Solutions Architect**: Design and implement Azure cloud solutions that meet complex business requirements.",
-              "**Cloud Consultant**: Advise businesses on their cloud adoption journey and help design scalable and secure Azure-based architectures.",
-              "**Infrastructure Architect**: Focus on designing and optimizing infrastructure components, ensuring scalability, security, and cost-effectiveness."
+              "Cloud Solutions Architect: Design and implement Azure cloud solutions that meet complex business requirements.",
+              "Cloud Consultant: Advise businesses on their cloud adoption journey and help design scalable and secure Azure-based architectures.",
+              "Infrastructure Architect: Focus on designing and optimizing infrastructure components, ensuring scalability, security, and cost-effectiveness."
             ]
           },
           {
@@ -232,7 +232,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Setting up an **Azure free account** is essential for hands-on practice. The free account includes $200 in credits for the first month and offers free-tier access to various services, allowing you to experiment and practice without incurring costs. Use this account to deploy resources like virtual machines, set up virtual networks, and explore different Azure services that are part of the exam objectives."
+            "text": "Setting up an Azure free account is essential for hands-on practice. The free account includes $200 in credits for the first month and offers free-tier access to various services, allowing you to experiment and practice without incurring costs. Use this account to deploy resources like virtual machines, set up virtual networks, and explore different Azure services that are part of the exam objectives."
           },
           {
             "type": "heading",
@@ -241,7 +241,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Taking practice exams can help you identify areas where you need to focus your studies. Platforms like **MeasureUp**, **Whizlabs**, and **Udemy** offer practice tests specifically designed for Microsoft Azure certifications. Practice exams provide a feel of the actual exam and help build confidence."
+            "text": "Taking practice exams can help you identify areas where you need to focus your studies. Platforms like MeasureUp, Whizlabs, and Udemy offer practice tests specifically designed for Microsoft Azure certifications. Practice exams provide a feel of the actual exam and help build confidence."
           },
           {
             "type": "heading",
@@ -255,10 +255,10 @@
           {
             "type": "list",
             "items": [
-              "**Exam Ref AZ-900 Microsoft Azure Fundamentals**",
-              "**Exam Ref AZ-104 Microsoft Azure Administrator**",
-              "**Exam Ref AZ-700 Designing and Implementing Microsoft Azure Networking Solutions**",
-              "**Exam Ref AZ-305 Designing Microsoft Azure Infrastructure Solutions**"
+              "Exam Ref AZ-900 Microsoft Azure Fundamentals",
+              "Exam Ref AZ-104 Microsoft Azure Administrator",
+              "Exam Ref AZ-700 Designing and Implementing Microsoft Azure Networking Solutions",
+              "Exam Ref AZ-305 Designing Microsoft Azure Infrastructure Solutions"
             ]
           },
           {
@@ -277,7 +277,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Online communities are great for gaining insights and tips from others who are also preparing for these exams. Communities like **Reddit** (r/AzureCertification), **Microsoft Tech Community**, and LinkedIn Groups offer platforms where you can ask questions, share study materials, and learn from others’ experiences."
+            "text": "Online communities are great for gaining insights and tips from others who are also preparing for these exams. Communities like Reddit (r/AzureCertification), Microsoft Tech Community, and LinkedIn Groups offer platforms where you can ask questions, share study materials, and learn from others’ experiences."
           },
           {
             "type": "heading",
@@ -286,7 +286,7 @@
           },
           {
             "type": "paragraph",
-            "text": "If you prefer a guided learning approach, instructor-led courses are available on platforms like **Pluralsight**, **Udemy**, **A Cloud Guru**, and **LinkedIn Learning**. These courses are tailored to the certification exams and offer video tutorials, hands-on labs, and quizzes to reinforce learning."
+            "text": "If you prefer a guided learning approach, instructor-led courses are available on platforms like Pluralsight, Udemy, A Cloud Guru, and LinkedIn Learning. These courses are tailored to the certification exams and offer video tutorials, hands-on labs, and quizzes to reinforce learning."
           },
           {
             "type": "heading",
@@ -1085,7 +1085,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The journey begins with **AZ-900: Azure Fundamentals**. This certification is ideal for those starting out with cloud services and provides a general understanding of Azure concepts, services, and pricing. It is foundational for moving into more advanced certifications."
+        "text": "The journey begins with AZ-900: Azure Fundamentals. This certification is ideal for those starting out with cloud services and provides a general understanding of Azure concepts, services, and pricing. It is foundational for moving into more advanced certifications."
       },
       {
         "type": "list",
@@ -1111,7 +1111,7 @@
       },
       {
         "type": "paragraph",
-        "text": "After Azure Fundamentals, the next step is **AI-900: Azure AI Fundamentals**. This certification helps you gain foundational knowledge in machine learning and artificial intelligence concepts using Azure."
+        "text": "After Azure Fundamentals, the next step is AI-900: Azure AI Fundamentals. This certification helps you gain foundational knowledge in machine learning and artificial intelligence concepts using Azure."
       },
       {
         "type": "list",
@@ -1139,7 +1139,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The next step in the DevOps path is **AZ-204: Azure Developer Associate**. This certification is aimed at developers and focuses on the skills required to develop applications on Azure."
+        "text": "The next step in the DevOps path is AZ-204: Azure Developer Associate. This certification is aimed at developers and focuses on the skills required to develop applications on Azure."
       },
       {
         "type": "list",
@@ -1168,7 +1168,7 @@
       },
       {
         "type": "paragraph",
-        "text": "To advance your AI expertise, you can pursue **AI-102: Azure AI Engineer Associate**. This certification is ideal for those interested in designing and implementing AI solutions that leverage Azure Cognitive Services, Azure Machine Learning, and other AI tools."
+        "text": "To advance your AI expertise, you can pursue AI-102: Azure AI Engineer Associate. This certification is ideal for those interested in designing and implementing AI solutions that leverage Azure Cognitive Services, Azure Machine Learning, and other AI tools."
       },
       {
         "type": "list",
@@ -1196,7 +1196,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The pinnacle of the DevOps path is **AZ-400: Azure DevOps Engineer Expert**. This certification is aimed at professionals with expertise in both Azure administration and development, specializing in DevOps practices for continuous integration, delivery, and monitoring."
+        "text": "The pinnacle of the DevOps path is AZ-400: Azure DevOps Engineer Expert. This certification is aimed at professionals with expertise in both Azure administration and development, specializing in DevOps practices for continuous integration, delivery, and monitoring."
       },
       {
         "type": "list",
@@ -1234,7 +1234,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Each certification exam has specific objectives and skills measured. Microsoft publishes a detailed outline of these skills, which acts as your study guide. Make sure you go through the official certification page and understand the areas covered. For example, the **AZ-900** exam focuses on foundational cloud concepts, while **AZ-400** emphasizes DevOps practices and CI/CD implementation."
+        "text": "Each certification exam has specific objectives and skills measured. Microsoft publishes a detailed outline of these skills, which acts as your study guide. Make sure you go through the official certification page and understand the areas covered. For example, the AZ-900 exam focuses on foundational cloud concepts, while AZ-400 emphasizes DevOps practices and CI/CD implementation."
       },
       {
         "type": "heading",
@@ -1243,7 +1243,7 @@
       },
       {
         "type": "paragraph",
-        "text": "**Microsoft Learn** provides free, self-paced learning modules for all Azure certifications. These modules contain exercises, interactive examples, and hands-on labs, allowing you to gain practical experience with Azure services. Microsoft Learn paths are aligned with the objectives of each certification, making them an ideal starting point."
+        "text": "Microsoft Learn provides free, self-paced learning modules for all Azure certifications. These modules contain exercises, interactive examples, and hands-on labs, allowing you to gain practical experience with Azure services. Microsoft Learn paths are aligned with the objectives of each certification, making them an ideal starting point."
       },
       {
         "type": "list",
@@ -1262,7 +1262,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Theory alone is not enough—practical experience is key to understanding Azure services. Set up an **Azure free account** to explore and work hands-on with Azure services. The free account provides $200 in credits for the first month and continued access to free services. Use these credits to deploy virtual machines, create Azure Functions, or train a machine learning model."
+        "text": "Theory alone is not enough—practical experience is key to understanding Azure services. Set up an Azure free account to explore and work hands-on with Azure services. The free account provides $200 in credits for the first month and continued access to free services. Use these credits to deploy virtual machines, create Azure Functions, or train a machine learning model."
       },
       {
         "type": "heading",
@@ -1271,7 +1271,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Taking **practice tests** helps identify areas where you need more study and builds your confidence before the actual exam. Websites like **MeasureUp**, **Whizlabs**, and **Udemy** offer high-quality practice exams for Microsoft certifications. Microsoft also provides official practice assessments through their certification dashboard."
+        "text": "Taking practice tests helps identify areas where you need more study and builds your confidence before the actual exam. Websites like MeasureUp, Whizlabs, and Udemy offer high-quality practice exams for Microsoft certifications. Microsoft also provides official practice assessments through their certification dashboard."
       },
       {
         "type": "heading",
@@ -1280,7 +1280,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Joining online communities can provide support and answer your questions as you prepare for your exams. Platforms like **Reddit** (r/AzureCertification), **LinkedIn Groups**, and **Microsoft Tech Community** are great places to connect with others preparing for Azure certifications. You can share study tips, resources, and even find study partners."
+        "text": "Joining online communities can provide support and answer your questions as you prepare for your exams. Platforms like Reddit (r/AzureCertification), LinkedIn Groups, and Microsoft Tech Community are great places to connect with others preparing for Azure certifications. You can share study tips, resources, and even find study partners."
       },
       {
         "type": "heading",
@@ -1289,7 +1289,7 @@
       },
       {
         "type": "paragraph",
-        "text": "A **structured study plan** is essential to cover all exam objectives effectively. Break down the syllabus into manageable parts and set weekly goals. Allocate more time to areas you find challenging and revisit them regularly. On average, 4-6 weeks of study should be enough for each certification, depending on your experience level."
+        "text": "A structured study plan is essential to cover all exam objectives effectively. Break down the syllabus into manageable parts and set weekly goals. Allocate more time to areas you find challenging and revisit them regularly. On average, 4-6 weeks of study should be enough for each certification, depending on your experience level."
       },
       {
         "type": "heading",
@@ -1316,7 +1316,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you prefer a more structured approach, consider **instructor-led courses**. Platforms like **Pluralsight**, **LinkedIn Learning**, **A Cloud Guru**, and **Udemy** offer courses that cover Azure certification exams in-depth. These courses often provide a mix of theory, demos, and labs."
+        "text": "If you prefer a more structured approach, consider instructor-led courses. Platforms like Pluralsight, LinkedIn Learning, A Cloud Guru, and Udemy offer courses that cover Azure certification exams in-depth. These courses often provide a mix of theory, demos, and labs."
       },
       {
         "type": "heading",
@@ -1325,7 +1325,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Several books are available to help you prepare for Azure exams. Look for study guides specific to each certification, such as **'Exam Ref AZ-900 Microsoft Azure Fundamentals'** or **'Exam Ref AZ-204 Developing Solutions for Microsoft Azure'**. These guides provide exam tips, sample questions, and hands-on exercises."
+        "text": "Several books are available to help you prepare for Azure exams. Look for study guides specific to each certification, such as 'Exam Ref AZ-900 Microsoft Azure Fundamentals' or 'Exam Ref AZ-204 Developing Solutions for Microsoft Azure'. These guides provide exam tips, sample questions, and hands-on exercises."
       },
       {
         "type": "heading",
@@ -1334,7 +1334,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Azure services are constantly evolving, and staying updated is key to your success. Follow **Microsoft's Azure Blog**, attend **Microsoft Ignite**, and watch recorded sessions to stay informed about the latest Azure features. This knowledge will help you stay ahead and understand how updates impact the exams."
+        "text": "Azure services are constantly evolving, and staying updated is key to your success. Follow Microsoft's Azure Blog, attend Microsoft Ignite, and watch recorded sessions to stay informed about the latest Azure features. This knowledge will help you stay ahead and understand how updates impact the exams."
       },
       {
         "type": "heading",
@@ -1367,7 +1367,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Completing **AZ-204: Azure Developer Associate** positions you well for a role as a **Cloud Developer**. In this role, you will be responsible for building, deploying, and maintaining cloud-based applications. You'll work on developing solutions using Azure services like Azure Functions, App Services, and Cosmos DB."
+      "text": "Completing AZ-204: Azure Developer Associate positions you well for a role as a Cloud Developer. In this role, you will be responsible for building, deploying, and maintaining cloud-based applications. You'll work on developing solutions using Azure services like Azure Functions, App Services, and Cosmos DB."
     },
     {
       "type": "list",
@@ -1384,7 +1384,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Achieving **AI-102: Azure AI Engineer Associate** makes you well-prepared for a role as an **AI Engineer**. AI Engineers design, build, and integrate machine learning and AI solutions to create intelligent systems. You will leverage Azure Cognitive Services, Azure Machine Learning, and other Azure AI tools."
+      "text": "Achieving AI-102: Azure AI Engineer Associate makes you well-prepared for a role as an AI Engineer. AI Engineers design, build, and integrate machine learning and AI solutions to create intelligent systems. You will leverage Azure Cognitive Services, Azure Machine Learning, and other Azure AI tools."
     },
     {
       "type": "list",
@@ -1401,7 +1401,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Completing **AZ-400: Azure DevOps Engineer Expert** certifies you as a **DevOps Engineer**. DevOps Engineers are responsible for bridging the gap between development and IT operations by automating deployment processes, managing infrastructure as code, and ensuring the reliability of applications."
+      "text": "Completing AZ-400: Azure DevOps Engineer Expert certifies you as a DevOps Engineer. DevOps Engineers are responsible for bridging the gap between development and IT operations by automating deployment processes, managing infrastructure as code, and ensuring the reliability of applications."
     },
     {
       "type": "list",
@@ -1418,7 +1418,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Azure certifications, such as **AZ-900** and **AZ-204**, can pave the way for you to become a **Cloud Solutions Architect**. In this role, you will be responsible for designing and implementing cloud solutions that meet business needs. You'll work closely with stakeholders to ensure that solutions are scalable, secure, and optimized for performance."
+      "text": "Azure certifications, such as AZ-900 and AZ-204, can pave the way for you to become a Cloud Solutions Architect. In this role, you will be responsible for designing and implementing cloud solutions that meet business needs. You'll work closely with stakeholders to ensure that solutions are scalable, secure, and optimized for performance."
     },
     {
       "type": "list",
@@ -1435,7 +1435,7 @@
     },
     {
       "type": "paragraph",
-      "text": "With the skills gained from the **AZ-400: Azure DevOps Engineer Expert** certification, you can also pursue a role as a **Site Reliability Engineer (SRE)**. SREs are responsible for maintaining system reliability and improving infrastructure operations by applying software engineering practices to operations tasks."
+      "text": "With the skills gained from the AZ-400: Azure DevOps Engineer Expert certification, you can also pursue a role as a Site Reliability Engineer (SRE). SREs are responsible for maintaining system reliability and improving infrastructure operations by applying software engineering practices to operations tasks."
     },
     {
       "type": "list",
@@ -1452,7 +1452,7 @@
     },
     {
       "type": "paragraph",
-      "text": "As an **AI Solution Architect**, you will be responsible for designing AI-driven solutions for businesses using Azure AI technologies. After obtaining certifications like **AI-900** and **AI-102**, you will have the skills to help organizations leverage AI capabilities for business insights and automation."
+      "text": "As an AI Solution Architect, you will be responsible for designing AI-driven solutions for businesses using Azure AI technologies. After obtaining certifications like AI-900 and AI-102, you will have the skills to help organizations leverage AI capabilities for business insights and automation."
     },
     {
       "type": "list",
@@ -1469,7 +1469,7 @@
     },
     {
       "type": "paragraph",
-      "text": "An **Azure Cloud Consultant** provides advisory services to help clients understand Azure services and how to effectively use them for their business needs. Completing **AZ-900: Azure Fundamentals** will give you the foundational knowledge required to advise clients on cloud adoption and best practices."
+      "text": "An Azure Cloud Consultant provides advisory services to help clients understand Azure services and how to effectively use them for their business needs. Completing AZ-900: Azure Fundamentals will give you the foundational knowledge required to advise clients on cloud adoption and best practices."
     },
     {
       "type": "list",
@@ -1486,7 +1486,7 @@
     },
     {
       "type": "paragraph",
-      "text": "With a focus on data engineering, Azure certifications can help you pursue roles as a **Data Engineer**. In this role, you will be responsible for designing data pipelines and implementing data integration, storage, and processing solutions using Azure technologies like Azure Data Factory and Azure Synapse Analytics."
+      "text": "With a focus on data engineering, Azure certifications can help you pursue roles as a Data Engineer. In this role, you will be responsible for designing data pipelines and implementing data integration, storage, and processing solutions using Azure technologies like Azure Data Factory and Azure Synapse Analytics."
     },
     {
       "type": "list",
@@ -1503,7 +1503,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Choosing the right career path depends on your interests, skills, and long-term goals. If you're passionate about building software and deploying applications on the cloud, the **Azure Developer** or **Cloud Developer** path is ideal for you. If you're more interested in automating deployments and integrating software development with IT operations, consider the **DevOps Engineer** or **Site Reliability Engineer** role. On the other hand, if you love working with data, designing machine learning models, and exploring AI capabilities, roles like **AI Engineer** or **AI Solution Architect** are great options."
+      "text": "Choosing the right career path depends on your interests, skills, and long-term goals. If you're passionate about building software and deploying applications on the cloud, the Azure Developer or Cloud Developer path is ideal for you. If you're more interested in automating deployments and integrating software development with IT operations, consider the DevOps Engineer or Site Reliability Engineer role. On the other hand, if you love working with data, designing machine learning models, and exploring AI capabilities, roles like AI Engineer or AI Solution Architect are great options."
     },
     {
       "type": "paragraph",
@@ -1524,7 +1524,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Completing **AZ-204: Azure Developer Associate** positions you well for a role as a **Cloud Developer**. In this role, you will be responsible for building, deploying, and maintaining cloud-based applications. You'll work on developing solutions using Azure services like Azure Functions, App Services, and Cosmos DB."
+      "text": "Completing AZ-204: Azure Developer Associate positions you well for a role as a Cloud Developer. In this role, you will be responsible for building, deploying, and maintaining cloud-based applications. You'll work on developing solutions using Azure services like Azure Functions, App Services, and Cosmos DB."
     },
     {
       "type": "list",
@@ -1541,7 +1541,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Achieving **AI-102: Azure AI Engineer Associate** makes you well-prepared for a role as an **AI Engineer**. AI Engineers design, build, and integrate machine learning and AI solutions to create intelligent systems. You will leverage Azure Cognitive Services, Azure Machine Learning, and other Azure AI tools."
+      "text": "Achieving AI-102: Azure AI Engineer Associate makes you well-prepared for a role as an AI Engineer. AI Engineers design, build, and integrate machine learning and AI solutions to create intelligent systems. You will leverage Azure Cognitive Services, Azure Machine Learning, and other Azure AI tools."
     },
     {
       "type": "list",
@@ -1558,7 +1558,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Completing **AZ-400: Azure DevOps Engineer Expert** certifies you as a **DevOps Engineer**. DevOps Engineers are responsible for bridging the gap between development and IT operations by automating deployment processes, managing infrastructure as code, and ensuring the reliability of applications."
+      "text": "Completing AZ-400: Azure DevOps Engineer Expert certifies you as a DevOps Engineer. DevOps Engineers are responsible for bridging the gap between development and IT operations by automating deployment processes, managing infrastructure as code, and ensuring the reliability of applications."
     },
     {
       "type": "list",
@@ -1575,7 +1575,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Azure certifications, such as **AZ-900** and **AZ-204**, can pave the way for you to become a **Cloud Solutions Architect**. In this role, you will be responsible for designing and implementing cloud solutions that meet business needs. You'll work closely with stakeholders to ensure that solutions are scalable, secure, and optimized for performance."
+      "text": "Azure certifications, such as AZ-900 and AZ-204, can pave the way for you to become a Cloud Solutions Architect. In this role, you will be responsible for designing and implementing cloud solutions that meet business needs. You'll work closely with stakeholders to ensure that solutions are scalable, secure, and optimized for performance."
     },
     {
       "type": "list",
@@ -1592,7 +1592,7 @@
     },
     {
       "type": "paragraph",
-      "text": "With the skills gained from the **AZ-400: Azure DevOps Engineer Expert** certification, you can also pursue a role as a **Site Reliability Engineer (SRE)**. SREs are responsible for maintaining system reliability and improving infrastructure operations by applying software engineering practices to operations tasks."
+      "text": "With the skills gained from the AZ-400: Azure DevOps Engineer Expert certification, you can also pursue a role as a Site Reliability Engineer (SRE). SREs are responsible for maintaining system reliability and improving infrastructure operations by applying software engineering practices to operations tasks."
     },
     {
       "type": "list",
@@ -1609,7 +1609,7 @@
     },
     {
       "type": "paragraph",
-      "text": "As an **AI Solution Architect**, you will be responsible for designing AI-driven solutions for businesses using Azure AI technologies. After obtaining certifications like **AI-900** and **AI-102**, you will have the skills to help organizations leverage AI capabilities for business insights and automation."
+      "text": "As an AI Solution Architect, you will be responsible for designing AI-driven solutions for businesses using Azure AI technologies. After obtaining certifications like AI-900 and AI-102, you will have the skills to help organizations leverage AI capabilities for business insights and automation."
     },
     {
       "type": "list",
@@ -1626,7 +1626,7 @@
     },
     {
       "type": "paragraph",
-      "text": "An **Azure Cloud Consultant** provides advisory services to help clients understand Azure services and how to effectively use them for their business needs. Completing **AZ-900: Azure Fundamentals** will give you the foundational knowledge required to advise clients on cloud adoption and best practices."
+      "text": "An Azure Cloud Consultant provides advisory services to help clients understand Azure services and how to effectively use them for their business needs. Completing AZ-900: Azure Fundamentals will give you the foundational knowledge required to advise clients on cloud adoption and best practices."
     },
     {
       "type": "list",
@@ -1643,7 +1643,7 @@
     },
     {
       "type": "paragraph",
-      "text": "With a focus on data engineering, Azure certifications can help you pursue roles as a **Data Engineer**. In this role, you will be responsible for designing data pipelines and implementing data integration, storage, and processing solutions using Azure technologies like Azure Data Factory and Azure Synapse Analytics."
+      "text": "With a focus on data engineering, Azure certifications can help you pursue roles as a Data Engineer. In this role, you will be responsible for designing data pipelines and implementing data integration, storage, and processing solutions using Azure technologies like Azure Data Factory and Azure Synapse Analytics."
     },
     {
       "type": "list",
@@ -1660,7 +1660,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Choosing the right career path depends on your interests, skills, and long-term goals. If you're passionate about building software and deploying applications on the cloud, the **Azure Developer** or **Cloud Developer** path is ideal for you. If you're more interested in automating deployments and integrating software development with IT operations, consider the **DevOps Engineer** or **Site Reliability Engineer** role. On the other hand, if you love working with data, designing machine learning models, and exploring AI capabilities, roles like **AI Engineer** or **AI Solution Architect** are great options."
+      "text": "Choosing the right career path depends on your interests, skills, and long-term goals. If you're passionate about building software and deploying applications on the cloud, the Azure Developer or Cloud Developer path is ideal for you. If you're more interested in automating deployments and integrating software development with IT operations, consider the DevOps Engineer or Site Reliability Engineer role. On the other hand, if you love working with data, designing machine learning models, and exploring AI capabilities, roles like AI Engineer or AI Solution Architect are great options."
     },
     {
       "type": "paragraph",
@@ -2819,7 +2819,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Integrated Workbook\n\nThe integrated workbook in this solution accelerator helps visualize data flow, monitor processing stages, and analyze user interactions. It includes several sections:\n\n- **Overview**: Provides a summary of documents processed, user queries, and responses.\n- **Data Flow Monitoring**: Visualizes the flow of data from document ingestion to user interaction.\n- **Performance Metrics**: Displays processing time, response time, and other performance-related metrics.\n\n## How to Use the Workbook\n\n1. **Open the Workbook** in Azure Monitor.\n2. **Navigate through sections** to monitor and analyze various aspects of your data integration and user interaction.\n3. **Adjust parameters** to filter data for specific dates, document types, or user groups."
+        "text": "# Integrated Workbook\n\nThe integrated workbook in this solution accelerator helps visualize data flow, monitor processing stages, and analyze user interactions. It includes several sections:\n\n- Overview: Provides a summary of documents processed, user queries, and responses.\n- Data Flow Monitoring: Visualizes the flow of data from document ingestion to user interaction.\n- Performance Metrics: Displays processing time, response time, and other performance-related metrics.\n\n## How to Use the Workbook\n\n1. Open the Workbook in Azure Monitor.\n2. Navigate through sections to monitor and analyze various aspects of your data integration and user interaction.\n3. Adjust parameters to filter data for specific dates, document types, or user groups."
       },
       {
         "type": "image",
@@ -2838,7 +2838,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Web Applications for Chatbot Interaction\n\nThe web apps provided with this accelerator enable users to interact with the chatbot in a secure and responsive way. Key features include:\n\n- **User Authentication**: Ensures only authorized users can access the chatbot.\n- **Real-time Response**: Provides instant feedback based on data stored and indexed in Azure.\n- **Customizable Interface**: Allows for branding and user interface adjustments to fit your organization's needs.\n\n## Deployment Steps\n\n1. **Deploy the React Frontend** using the provided code in the repository.\n2. **Configure Azure AD B2C** for user authentication.\n3. **Integrate with Azure AI Search** to enable the chatbot to retrieve relevant information."
+        "text": "# Web Applications for Chatbot Interaction\n\nThe web apps provided with this accelerator enable users to interact with the chatbot in a secure and responsive way. Key features include:\n\n- User Authentication: Ensures only authorized users can access the chatbot.\n- Real-time Response: Provides instant feedback based on data stored and indexed in Azure.\n- Customizable Interface: Allows for branding and user interface adjustments to fit your organization's needs.\n\n## Deployment Steps\n\n1. Deploy the React Frontend using the provided code in the repository.\n2. Configure Azure AD B2C for user authentication.\n3. Integrate with Azure AI Search to enable the chatbot to retrieve relevant information."
       },
       {
         "type": "heading",
@@ -2872,7 +2872,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Microsoft Teams Extension\n\nThis solution accelerator includes an extension for Microsoft Teams, allowing users to interact with the chatbot directly within Teams. The integration supports:\n\n- **Chatbot Commands**: Enables predefined commands for quick access to data.\n- **Secure Access**: Utilizes Azure AD for secure authentication within Teams.\n- **Real-time Collaboration**: Facilitates team collaboration by providing shared access to chatbot responses.\n\n## Steps to Integrate\n\n1. **Deploy the Teams Extension** using the manifest file provided in the repository.\n2. **Configure Azure AD Permissions** to ensure secure access.\n3. **Test the Integration** to confirm that the chatbot responds correctly within the Teams environment."
+        "text": "# Microsoft Teams Extension\n\nThis solution accelerator includes an extension for Microsoft Teams, allowing users to interact with the chatbot directly within Teams. The integration supports:\n\n- Chatbot Commands: Enables predefined commands for quick access to data.\n- Secure Access: Utilizes Azure AD for secure authentication within Teams.\n- Real-time Collaboration: Facilitates team collaboration by providing shared access to chatbot responses.\n\n## Steps to Integrate\n\n1. Deploy the Teams Extension using the manifest file provided in the repository.\n2. Configure Azure AD Permissions to ensure secure access.\n3. Test the Integration to confirm that the chatbot responds correctly within the Teams environment."
       },
       {
         "type": "image",
@@ -2891,7 +2891,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Supported File Types\n\nThe solution supports multiple file types for document processing, including:\n\n- **PDF**: Processed through Azure AI Document Intelligence.\n- **Word (DOC/DOCX)**: Indexed for quick text retrieval.\n- **Excel (XLS/XLSX)**: Allows for data extraction and analysis.\n- **Text (TXT)**: Basic text files are processed for rapid search.\n\nThese formats are automatically detected and processed by the solution, ensuring compatibility with a wide range of data sources."
+        "text": "# Supported File Types\n\nThe solution supports multiple file types for document processing, including:\n\n- PDF: Processed through Azure AI Document Intelligence.\n- Word (DOC/DOCX): Indexed for quick text retrieval.\n- Excel (XLS/XLSX): Allows for data extraction and analysis.\n- Text (TXT): Basic text files are processed for rapid search.\n\nThese formats are automatically detected and processed by the solution, ensuring compatibility with a wide range of data sources."
       },
       {
         "type": "heading",
@@ -2905,7 +2905,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Advanced Image Processing\n\nThe accelerator includes advanced image processing capabilities to extract text and metadata from images:\n\n- **OCR (Optical Character Recognition)**: Converts text in images to searchable text.\n- **AI-based Image Analysis**: Identifies objects, text, and other elements within images.\n\n# Speech-to-Text\n\n- **Azure Cognitive Services**: Converts speech in audio files to text.\n- **Integration with Azure AI Search**: Makes spoken content searchable, enabling chatbots to respond to voice queries.\n\n## Implementation Steps\n\n1. **Upload Images or Audio Files** to the system.\n2. **Configure Azure AI Services** to process these files.\n3. **Use the Processed Data** in chatbot responses."
+        "text": "# Advanced Image Processing\n\nThe accelerator includes advanced image processing capabilities to extract text and metadata from images:\n\n- OCR (Optical Character Recognition): Converts text in images to searchable text.\n- AI-based Image Analysis: Identifies objects, text, and other elements within images.\n\n# Speech-to-Text\n\n- Azure Cognitive Services: Converts speech in audio files to text.\n- Integration with Azure AI Search: Makes spoken content searchable, enabling chatbots to respond to voice queries.\n\n## Implementation Steps\n\n1. Upload Images or Audio Files to the system.\n2. Configure Azure AI Services to process these files.\n3. Use the Processed Data in chatbot responses."
       },
       {
         "type": "heading",
@@ -2919,7 +2919,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Integrated Vectorization\n\nVectorization plays a key role in making data searchable and understandable by AI models. This solution leverages:\n\n- **Azure AI Embeddings**: Creates vector representations of documents for faster retrieval.\n- **Custom Vector Search**: Allows for more accurate and context-aware search results.\n\n## How to Use Integrated Vectorization\n\n1. **Ensure Vector Indexing is Enabled** in Azure AI Search.\n2. **Run Vectorization Jobs** for all new and existing documents.\n3. **Optimize Your Search Queries** to take advantage of vector-based indexing."
+        "text": "# Integrated Vectorization\n\nVectorization plays a key role in making data searchable and understandable by AI models. This solution leverages:\n\n- Azure AI Embeddings: Creates vector representations of documents for faster retrieval.\n- Custom Vector Search: Allows for more accurate and context-aware search results.\n\n## How to Use Integrated Vectorization\n\n1. Ensure Vector Indexing is Enabled in Azure AI Search.\n2. Run Vectorization Jobs for all new and existing documents.\n3. Optimize Your Search Queries to take advantage of vector-based indexing."
       },
       {
         "type": "heading",
@@ -3059,7 +3059,7 @@
       },
       {
         "type": "markdown",
-        "text": "# Sender Function\n\nThis directory contains the sender Azure Function implemented in Python, which sends messages to an Azure Service Bus queue.\n\n## Function Overview\n\nThe function connects to Azure Service Bus and sends a message to the configured queue.\n\n## Setup Instructions\n\n### 1. Prerequisites\n\n- Python 3.9+\n- Azure CLI installed and authenticated.\n- Docker installed.\n\n### 2. Build and Test Locally\n\n```bash\n# Install dependencies\npip install --no-cache-dir -r requirements.txt\n```\n\n## Test the Function Locally\n\nYou can use a tool like `curl` or Postman to send a POST request to your function to test it locally. Make sure your local environment is configured correctly with `SERVICE_BUS_CONNECTION_STRING` and `SERVICE_BUS_QUEUE_NAME`.\n\nExample `curl` command to test the API:\n\n```bash\ncurl -X POST http://localhost:7071/api/send-message \\\n   -H \"Content-Type: application/json\" \\\n   -d '{\"message\": \"Hello, this is a custom message!\"}'\n```\n\n### Note\n\n- **Environment Variables**: Ensure that the necessary environment variables (`SERVICE_BUS_CONNECTION_STRING` and `SERVICE_BUS_QUEUE_NAME`) are properly configured in your `local.settings.json` and in your cloud deployment.\n- **Deployment**: If you are deploying this as a Docker container, ensure the image is updated and pushed to the appropriate container registry.\n\n### 3. Build Docker Image\n\n## Build the Docker image locally\n\n```bash\ndocker build -t <acr_name>.azurecr.io/sender_function:latest .\n```\n\n### 4. Push to Azure Container Registry\n\nLog in to Azure Container Registry and push the image:\n\n```bash\naz acr login --name <acr_name>\ndocker push <acr_name>.azurecr.io/sender_function:latest\n```\n\n### 5. Deploy to AKS\n\nFollow the instructions in the k8s/README.md to deploy this function to AKS using the provided Kubernetes manifest."
+        "text": "# Sender Function\n\nThis directory contains the sender Azure Function implemented in Python, which sends messages to an Azure Service Bus queue.\n\n## Function Overview\n\nThe function connects to Azure Service Bus and sends a message to the configured queue.\n\n## Setup Instructions\n\n### 1. Prerequisites\n\n- Python 3.9+\n- Azure CLI installed and authenticated.\n- Docker installed.\n\n### 2. Build and Test Locally\n\n```bash\n# Install dependencies\npip install --no-cache-dir -r requirements.txt\n```\n\n## Test the Function Locally\n\nYou can use a tool like `curl` or Postman to send a POST request to your function to test it locally. Make sure your local environment is configured correctly with `SERVICE_BUS_CONNECTION_STRING` and `SERVICE_BUS_QUEUE_NAME`.\n\nExample `curl` command to test the API:\n\n```bash\ncurl -X POST http://localhost:7071/api/send-message \\\n   -H \"Content-Type: application/json\" \\\n   -d '{\"message\": \"Hello, this is a custom message!\"}'\n```\n\n### Note\n\n- Environment Variables: Ensure that the necessary environment variables (`SERVICE_BUS_CONNECTION_STRING` and `SERVICE_BUS_QUEUE_NAME`) are properly configured in your `local.settings.json` and in your cloud deployment.\n- Deployment: If you are deploying this as a Docker container, ensure the image is updated and pushed to the appropriate container registry.\n\n### 3. Build Docker Image\n\n## Build the Docker image locally\n\n```bash\ndocker build -t <acr_name>.azurecr.io/sender_function:latest .\n```\n\n### 4. Push to Azure Container Registry\n\nLog in to Azure Container Registry and push the image:\n\n```bash\naz acr login --name <acr_name>\ndocker push <acr_name>.azurecr.io/sender_function:latest\n```\n\n### 5. Deploy to AKS\n\nFollow the instructions in the k8s/README.md to deploy this function to AKS using the provided Kubernetes manifest."
       },      
       {
         "type": "heading",
@@ -6330,7 +6330,7 @@
           {
               "type": "code",
               "language": "yaml",
-              "text": "trigger:\n- main\n\npool:\n  vmImage: 'ubuntu-latest'\n\nsteps:\n- task: UsePythonVersion@0\n  inputs:\n    versionSpec: '3.x'\n  displayName: 'Use Python 3.x'\n\n- script: |\n    python -m pip install --upgrade pip\n    pip install -r requirements.txt\n  displayName: 'Install dependencies'\n\n- script: |\n    pytest\n  displayName: 'Run tests'\n\n- task: AzureWebApp@1\n  inputs:\n    azureSubscription: 'your-service-connection-name'\n    appName: 'my-app-name'\n    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'"
+              "text": "trigger:\n- main\n\npool:\n  vmImage: 'ubuntu-latest'\n\nsteps:\n- task: UsePythonVersion@0\n  inputs:\n    versionSpec: '3.x'\n  displayName: 'Use Python 3.x'\n\n- script: |\n    python -m pip install --upgrade pip\n    pip install -r requirements.txt\n  displayName: 'Install dependencies'\n\n- script: |\n    pytest\n  displayName: 'Run tests'\n\n- task: AzureWebApp@1\n  inputs:\n    azureSubscription: 'your-service-connection-name'\n    appName: 'my-app-name'\n    package: '$(Build.ArtifactStagingDirectory)//*.zip'"
           },
           {
               "type": "heading",
