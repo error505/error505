@@ -9,14 +9,27 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
   return (
     <aside className={`sidebar ${isSidebarClosed ? 'sidebar-closed' : ''}`}>
       <div className="sidebar-header">
-        <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="profile-image" />
-        <h2 className="sidebar-title">Igor Iric</h2>
-        <p className="subtitle">Hi, I'm Igor Iric, a Senior AI Cloud Solutions Architect with over 18 years of experience building advanced AI enterprise platforms.</p>
+        <div className="profile-container">
+          <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="profile-image" />
+          <div className="profile-info">
+            <h2 className="sidebar-title">Igor Iric</h2>
+            <p className="profile-role">Senior AI Cloud Solutions Architect</p>
+            <p className="profile-description">18+ years of experience building advanced AI enterprise platforms</p>
+          </div>
+        </div>
         <div className="social-icons">
-          <a href="https://www.linkedin.com/in/igor-iric"><FaLinkedin /></a>
-          <a href="https://github.com/error505"><FaGithub /></a>
-          <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
-          <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
+          <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer" title="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/error505" target="_blank" rel="noreferrer" title="GitHub">
+            <FaGithub />
+          </a>
+          <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer" title="Amazon">
+            <FaAmazon />
+          </a>
+          <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer" title="YouTube">
+            <FaYoutube />
+          </a>
         </div>
       </div>
       
