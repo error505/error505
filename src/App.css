@@ -1,7 +1,8 @@
 :root {
-  --main-theme-color: #1a855f; /* Default theme color */
+  --main-theme-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Updated theme color */
+  --main-theme-color-solid: #667eea; /* Solid color for borders/accents */
   --dark-mode-theme-collor: #151e29; /* Dark theme color */
-  --main-theme-color-hover: #21bd86;
+  --main-theme-color-hover: #764ba2;
 }
 
 body {
@@ -18,7 +19,7 @@ body.dark-mode {
 }
 
 .sidebar {
-  background-color: var(--main-theme-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 200px;
   height: 100vh;
   float: left;
@@ -67,6 +68,47 @@ body.dark-mode {
   transform: scale(
     1.1
   ); /* Add a slight scale effect on hover for a stylish appearance */
+}
+
+/* Social Icons Centering */
+.sidebar .social-icons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 20px 0 !important;
+  padding: 10px 0 !important;
+}
+
+.sidebar .social-icons a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.sidebar .social-icons a:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.sidebar .social-icons svg {
+  width: 22px !important;
+  height: 22px !important;
+  pointer-events: none !important;
 }
 
 /* Style for the introductory paragraph */
@@ -122,7 +164,7 @@ nav li a {
 
 .icon-button {
   padding: 10px 20px;
-  background-color: var(--main-theme-color); /* Use your theme color */
+  background-color: var(--main-theme-color-solid); /* Use your theme color */
   color: white;
   border: none;
   border-radius: 5px;
@@ -161,20 +203,24 @@ nav li a {
 .navigation li a {
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.822);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  font-weight: bold; /* Make the text bold */
-  padding: 5px; /* Add padding for a larger clickable area */
-  border-radius: 5px; /* Add rounded corners for a nicer look */
-  transition: background-color 0.3s ease; /* Add a smooth background color transition on hover */
+  font-weight: 500;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  gap: 12px;
 }
 
 .navigation li a span {
-  margin-left: 10px; /* Increase spacing between icon and text */
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
 }
 
 .navigation li a:hover {
-  color: #333; /* Change the background color on hover */
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateX(5px);
 }
 
 /* This class will hide the text when added to the navigation */
@@ -225,7 +271,7 @@ button:hover {
 
 /* CTA Buttons */
 .cta-buttons button {
-  background-color: var(--main-theme-color);
+  background-color: var(--main-theme-color-solid);
   color: #fff;
 }
 
@@ -353,7 +399,7 @@ input:checked + .slider.round:before {
 /* Additional styles for contained content */
 .service-icon {
   font-size: 40px;
-  color: var(--main-theme-color);
+  color: var(--main-theme-color-solid);
   margin-bottom: 20px;
 }
 
@@ -619,17 +665,17 @@ input:checked + .slider.round:before {
 }
 
 /* Using data-color attributes to set the background for each option */
-.color-option[data-color="#3498db"] {
-  background-color: #3498db;
+.color-option[data-color="#667eea"] {
+  background-color: #667eea;
 }
-.color-option[data-color="#e74c3c"] {
-  background-color: #e74c3c;
+.color-option[data-color="#764ba2"] {
+  background-color: #764ba2;
 }
-.color-option[data-color="#27ae60"] {
-  background-color: #27ae60;
+.color-option[data-color="#9b59b6"] {
+  background-color: #9b59b6;
 }
-.color-option[data-color="#1a855f"] {
-  background-color: #1a855f;
+.color-option[data-color="#5b73e8"] {
+  background-color: #5b73e8;
 }
 .portfolio-section {
   padding: 50px;
@@ -2311,4 +2357,123 @@ img {
 
 .mb-lg-0 {
   margin-bottom: 0 !important;
+}
+
+/* Sidebar Navigation Icon Centering - Override */
+.sidebar .navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .navigation ul li {
+  margin-bottom: 8px;
+}
+
+.sidebar .navigation ul li a,
+.sidebar .navigation ul li a[class*="button"],
+.sidebar .navigation ul li div[class*="button"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 15px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .navigation ul li a[class*="button"]:hover,
+.sidebar .navigation ul li div[class*="button"]:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateX(5px) !important;
+}
+
+.sidebar .navigation ul li svg {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+  color: #ffffff !important;
+}
+
+.sidebar .navigation ul li span {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+/* ScrollLink components styling */
+.sidebar .navigation .about-button,
+.sidebar .navigation .service-button,
+.sidebar .navigation .blog-button,
+.sidebar .navigation .contact-button,
+.sidebar .navigation .projects-button,
+.sidebar .navigation .testimonials-button,
+.sidebar .navigation .resume-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 15px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+}
+
+.sidebar .navigation .about-button:hover,
+.sidebar .navigation .service-button:hover,
+.sidebar .navigation .blog-button:hover,
+.sidebar .navigation .contact-button:hover,
+.sidebar .navigation .projects-button:hover,
+.sidebar .navigation .testimonials-button:hover,
+.sidebar .navigation .resume-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  transform: translateX(5px) !important;
+}
+
+/* Contact Section Social Icons */
+.contact-section .social-icons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 30px 0 20px 0 !important;
+  padding: 20px 0 !important;
+}
+
+.contact-section .social-icons a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid rgba(102, 126, 234, 0.3) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.contact-section .social-icons a:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  border-color: rgba(118, 75, 162, 0.5) !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25) !important;
+}
+
+.contact-section .social-icons svg {
+  width: 22px !important;
+  height: 22px !important;
+  pointer-events: none !important;
 }

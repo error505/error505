@@ -1,8 +1,7 @@
 // src/components/HeroSection.js
 import React from 'react';
 import { ReactTyped as Typed } from 'react-typed';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
 const HeroSection = () => {
@@ -14,8 +13,8 @@ const HeroSection = () => {
         <div className="container my-auto">
           <div className="row">
             <div className="col-12 text-center">
-              <p className="text-7 fw-500 text-white mb-2 mb-md-3">Welcome</p>
-              <h2 className="text-16 fw-600 text-white mb-2 mb-md-3">
+              <p className="text-7 fw-500 text-white mb-2 mb-md-3 fade-in-up">Welcome</p>
+              <h2 className="text-16 fw-600 text-white mb-2 mb-md-3 fade-in-up">
                 <Typed
                   strings={[
                     "I'm Igor Iric",
@@ -31,8 +30,8 @@ const HeroSection = () => {
                   loop
                 />
               </h2>
-              <p className="text-light mb-4">based in Frankfurt, Hesse, Germany.</p>
-              <Link to="contact" smooth className="btn btn-outline-primary rounded-pill shadow-none smooth-scroll mt-2">
+              <p className="text-light mb-4 fade-in-up">based in Frankfurt, Hesse, Germany.</p>
+              <Link to="contact" smooth className="btn btn-gradient rounded-pill shadow-none smooth-scroll mt-2 pulse-animation">
                 Hire Me
               </Link>
             </div>
@@ -40,7 +39,7 @@ const HeroSection = () => {
         </div>
         <Link to="what-i-do" smooth className="scroll-down-arrow text-white">
           <span className="animated">
-            <FontAwesomeIcon icon={faChevronDown} />
+            <FaChevronDown />
           </span>
         </Link>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './components/modern-enhancements.css';
+import { FaCog, FaArrowUp } from 'react-icons/fa';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/home/Header';
 import Sidebar from './components/home/Sidebar';
@@ -15,6 +16,9 @@ import BlogList from './components/blog/BlogList';
 import Resume from './components/resume/Resume';
 import HeroSection from './components/home/HeroSection';
 import Footer from './components/home/Footer';
+import TestimonialsSection from './components/home/TestimonialsSection';
+import ProjectShowcase from './components/home/ProjectShowcase';
+import ScrollIndicator from './components/ScrollIndicator';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -100,6 +104,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollIndicator />
       <div className={isDarkMode ? 'dark-mode' : ''}>
         <Header />
         <Sidebar isSidebarClosed={isSidebarClosed} toggleSidebar={toggleSidebar} />
@@ -112,8 +117,10 @@ function App() {
               <>
               <HeroSection />
                 <WhatIDo />
+                <ProjectShowcase />
                 <BlogSection />
                 <PricingSection />
+                <TestimonialsSection />
                 {/* <PortfolioSection /> */}
                 <ContactSection />
                 <Footer />
@@ -123,10 +130,10 @@ function App() {
         </div>
         <div id="color-options" className="color-panel" style={{ left: colorPanelVisible ? '20px' : '-300px' }}>
           <h3>Choose Theme Color</h3>
-          <div className="color-option" data-color="#3498db" onClick={() => changeColor('#3498db')}></div>
-          <div className="color-option" data-color="#e74c3c" onClick={() => changeColor('#e74c3c')}></div>
-          <div className="color-option" data-color="#27ae60" onClick={() => changeColor('#27ae60')}></div>
-          <div className="color-option" data-color="#1a855f" onClick={() => changeColor('#1a855f')}></div>
+          <div className="color-option" data-color="#667eea" onClick={() => changeColor('#667eea')}></div>
+          <div className="color-option" data-color="#764ba2" onClick={() => changeColor('#764ba2')}></div>
+          <div className="color-option" data-color="#9b59b6" onClick={() => changeColor('#9b59b6')}></div>
+          <div className="color-option" data-color="#5b73e8" onClick={() => changeColor('#5b73e8')}></div>
           <h4>Dark Mode</h4>
           <label className="switch">
             <input type="checkbox" id="dark-mode-toggle" checked={isDarkMode} onChange={toggleDarkMode} />
@@ -135,10 +142,10 @@ function App() {
         </div>
 
         <button id="settings-btn" className="floating-btn" onClick={toggleColorPanel}>
-          <FontAwesomeIcon icon="cog" />
+          <FaCog />
         </button>
         <button id="backToTop" title="Go to top" onClick={() => window.scrollTo(0, 0)}>
-          <FontAwesomeIcon icon="arrow-up" />
+          <FaArrowUp />
         </button>
       </div>
     </Router>

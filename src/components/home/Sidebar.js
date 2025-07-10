@@ -1,7 +1,8 @@
 // src/components/Sidebar.js
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaHome, FaUser, FaDollarSign, FaBlog, FaEnvelope, FaFileAlt, FaLinkedin, FaGithub, FaAmazon, FaYoutube, FaUsers, FaCode } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
@@ -11,14 +12,14 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
       <h2 className="sidebar-title">Igor Iric</h2>
       <p className="subtitle">Hi, I'm Igor Iric, a Senior AI Cloud Solutions Architect with over 18 years of experience building advanced AI enterprise platforms.</p>
       <div className="social-icons">
-        <a href="https://www.linkedin.com/in/igor-iric"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
-        <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
-        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
-        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
+        <a href="https://www.linkedin.com/in/igor-iric"><FaLinkedin /></a>
+        <a href="https://github.com/error505"><FaGithub /></a>
+        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
+        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
       </div>
       <nav className="navigation">
         <ul>
-        <li><a href="/error505" className="home-button"><FontAwesomeIcon icon="home" /><span> Home</span></a></li>
+        <li><a href="/error505" className="home-button"><FaHome /><span> Home</span></a></li>
           <li>
             <ScrollLink
               to="what-i-do"
@@ -26,21 +27,21 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               duration={500}
               className="about-button"
             >
-              <FontAwesomeIcon icon="user" />
+              <FaUser />
               <span> About Me</span>
             </ScrollLink>
           </li>
-          {/* <li>
+          <li>
             <ScrollLink
-              to="portfolio"
+              to="projects"
               smooth={true}
               duration={500}
-              className="portfolio-button"
+              className="projects-button"
             >
-              <FontAwesomeIcon icon="briefcase" />
-              <span> Portfolio</span>
+              <FaCode />
+              <span> Projects</span>
             </ScrollLink>
-          </li> */}
+          </li>
           <li>
             <ScrollLink
               to="services"
@@ -48,8 +49,19 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               duration={500}
               className="service-button"
             >
-              <FontAwesomeIcon icon="dollar-sign" />
+              <FaDollarSign />
               <span> Services & Pricing</span>
+            </ScrollLink>
+          </li>
+          <li>
+            <ScrollLink
+              to="testimonials"
+              smooth={true}
+              duration={500}
+              className="testimonials-button"
+            >
+              <FaUsers />
+              <span> Testimonials</span>
             </ScrollLink>
           </li>
           <li>
@@ -59,9 +71,18 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               duration={500}
               className="blog-button"
             >
-              <FontAwesomeIcon icon="blog" />
+              <FaBlog />
               <span> Blog</span>
             </ScrollLink>
+          </li>
+          <li>
+            <Link
+              to="/resume"
+              className="resume-button"
+            >
+              <FaFileAlt />
+              <span> Resume</span>
+            </Link>
           </li>
           <li>
             <ScrollLink
@@ -70,7 +91,7 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
               duration={500}
               className="contact-button"
             >
-              <FontAwesomeIcon icon="envelope" />
+              <FaEnvelope />
               <span> Contact</span>
             </ScrollLink>
           </li>

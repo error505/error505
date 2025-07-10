@@ -1,7 +1,7 @@
 // src/components/Resume.js
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import './Resume.css';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGlobe, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Resume = () => {
   return (
@@ -14,13 +14,13 @@ const Resume = () => {
 
       {/* Contact Information */}
       <div className="resume-contact">
-        <p><FontAwesomeIcon icon={faEnvelope} /> iric_i@hotmail.com</p>
-        <p><FontAwesomeIcon icon={faPhone} /> +49 (Mobile)</p>
-        <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Frankfurt, Hesse, Germany</p>
-        <p><FontAwesomeIcon icon={faGlobe} /> <a href="https://error505.github.io/error505/" target="_blank" rel="noopener noreferrer">error505.github.io/error505</a></p>
-        <p><FontAwesomeIcon icon={faGlobe} /> <a href="https://www.error505.com" target="_blank" rel="noopener noreferrer">www.error505.com</a></p>
-        <p><FontAwesomeIcon icon={['fab', 'linkedin']} /> <a href="https://www.linkedin.com/in/igor-iric/" target="_blank" rel="noopener noreferrer">linkedin.com/in/igor-iric</a></p>
-        <p><FontAwesomeIcon icon={['fab', 'github']} /> <a href="https://github.com/error505" target="_blank" rel="noopener noreferrer">github.com/error505</a></p>
+        <p><FaEnvelope /> iric_i@hotmail.com</p>
+        <p><FaPhone /> +49 (Mobile)</p>
+        <p><FaMapMarkerAlt /> Frankfurt, Hesse, Germany</p>
+        <p><FaGlobe /> <a href="https://error505.github.io/error505/" target="_blank" rel="noopener noreferrer">error505.github.io/error505</a></p>
+        <p><FaGlobe /> <a href="https://www.error505.com" target="_blank" rel="noopener noreferrer">www.error505.com</a></p>
+        <p><FaLinkedin /> <a href="https://www.linkedin.com/in/igor-iric/" target="_blank" rel="noopener noreferrer">linkedin.com/in/igor-iric</a></p>
+        <p><FaGithub /> <a href="https://github.com/error505" target="_blank" rel="noopener noreferrer">github.com/error505</a></p>
       </div>
 
       {/* Professional Summary Section */}

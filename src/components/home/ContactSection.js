@@ -1,6 +1,6 @@
 // src/components/ContactSection.js
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaLinkedin, FaGithub, FaGlobe, FaAmazon, FaYoutube } from 'react-icons/fa';
 
 const ContactSection = () => {
   return (
@@ -42,11 +42,11 @@ const ContactSection = () => {
         </form>
       </div>
       <div className="social-icons">
-        <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
-        <a href="https://github.com/error505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'github']} /></a>
-        <a href="https://www.error505.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon="globe" /></a>
-        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
-        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
+        <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+        <a href="https://github.com/error505" target="_blank" rel="noreferrer"><FaGithub /></a>
+        <a href="https://www.error505.com" target="_blank" rel="noreferrer"><FaGlobe /></a>
+        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
+        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
       </div>
     </section>
   );

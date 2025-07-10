@@ -2,8 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FaSearch } from 'react-icons/fa';
 import blogPosts from '../../blogPosts.json';
 /* eslint-enable no-unused-vars */
 const BlogList = () => {
@@ -44,7 +43,7 @@ const BlogList = () => {
           <h2 className='text-light'>Blog</h2>
           <p>All Blog Posts<span className="heading-separator-line"></span></p>
           <div className="search-wrapper">
-        <FontAwesomeIcon icon={faSearch} className="search-icon" />
+        <FaSearch className="search-icon" />
         <input 
           type="text" 
           className="form-control search-input" 

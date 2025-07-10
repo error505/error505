@@ -6,8 +6,8 @@ import { FaBrain, FaCode, FaCheck } from 'react-icons/fa';
 const PricingSection = () => {
   return (
     <section className="pricing-section" id="service">
-      <div className="pricing-card">
-        <div className="service-icon">
+      <div className="pricing-card fade-in-up">
+        <div className="service-icon floating-element">
           <SiMicrosoft />
         </div>
         <h2>Azure AI</h2>
@@ -19,10 +19,10 @@ const PricingSection = () => {
         </ul>
         <p className="price">$150</p>
         <p className="users">per hour</p>
-        <button className="signup-button">Book</button>
+        <button className="signup-button btn-gradient">Book</button>
       </div>
-      <div className="pricing-card">
-        <div className="service-icon">
+      <div className="pricing-card fade-in-up stagger-animation">
+        <div className="service-icon floating-element">
           <FaBrain />
         </div>
         <h2>AI Consulting</h2>
@@ -34,10 +34,10 @@ const PricingSection = () => {
         </ul>
         <p className="price">$180</p>
         <p className="users">per hour</p>
-        <button className="signup-button">Book</button>
+        <button className="signup-button btn-gradient">Book</button>
       </div>
-      <div className="pricing-card">
-        <div className="service-icon">
+      <div className="pricing-card fade-in-up stagger-animation">
+        <div className="service-icon floating-element">
           <SiGithub />
         </div>
         <h2>DevOps & Training</h2>
@@ -49,10 +49,10 @@ const PricingSection = () => {
         </ul>
         <p className="price">$130</p>
         <p className="users">per hour</p>
-        <button className="signup-button">Book</button>
+        <button className="signup-button btn-gradient">Book</button>
       </div>
-      <div className="pricing-card">
-        <div className="service-icon">
+      <div className="pricing-card fade-in-up stagger-animation">
+        <div className="service-icon floating-element">
           <FaCode />
         </div>
         <h2>Development</h2>
@@ -64,7 +64,7 @@ const PricingSection = () => {
         </ul>
         <p className="price">$120</p>
         <p className="users">per hour</p>
-        <button className="signup-button">Book</button>
+        <button className="signup-button btn-gradient">Book</button>
       </div>
     </section>
   );
