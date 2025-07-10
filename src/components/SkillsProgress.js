@@ -1,7 +1,7 @@
 // src/components/SkillsProgress.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FaAws, FaReact, FaDocker, FaNodeJs, FaPython, FaJava, FaDatabase, FaCloud, FaMicrosoft } from 'react-icons/fa';
-import { SiMicrosoftazure, SiKubernetes, SiTensorflow, SiPytorch, SiOpenai } from 'react-icons/si';
+import { FaAws, FaReact, FaDocker, FaNodeJs, FaPython, FaDatabase, FaCloud, FaMicrosoft } from 'react-icons/fa';
+import { SiMicrosoftazure, SiKubernetes, SiTensorflow, SiOpenai } from 'react-icons/si';
 
 const SkillsProgress = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,6 +23,8 @@ const SkillsProgress = () => {
   ];
 
   useEffect(() => {
+    const currentRef = ref.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,13 +34,13 @@ const SkillsProgress = () => {
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
