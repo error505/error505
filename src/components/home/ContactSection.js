@@ -24,7 +24,7 @@ const ContactSection = () => {
         </div>
         <div className="get-in-touch-item email">
           <i className=""></i>
-          <p>iric_i@hotmail.com</p>
+          <p>info@error505.com</p>
           <label>Email Me</label>
         </div>
       </div>

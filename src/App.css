@@ -29,6 +29,55 @@ body.dark-mode {
   flex-basis: 25%; /* Adjust as needed based on design preference */
   padding-right: 20px; /* Adds padding to the right side of the sidebar */
   transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent main sidebar from scrolling */
+}
+
+.sidebar-header {
+  flex-shrink: 0;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: inherit;
+}
+
+.sidebar-navigation {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  max-height: calc(100vh - 320px); /* Adjust based on header height */
+  padding-bottom: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling for sidebar navigation */
+.sidebar-navigation {
+  scroll-behavior: smooth;
+}
+
+.sidebar-navigation::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .dark-mode .sidebar {
@@ -186,8 +235,9 @@ nav li a {
 }
 
 .navigation {
-  padding-left: 10px;
-  padding-block: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
   padding-bottom: 10px;
 }
 
@@ -504,6 +554,11 @@ input:checked + .slider.round:before {
 .sidebar-closed .close-sidebar {
   display: none;
 }
+.sidebar-closed .sidebar-header,
+.sidebar-closed .sidebar-navigation {
+  display: none;
+}
+
 .sidebar-closed .social-icons {
   display: none;
 }
@@ -2476,4 +2531,39 @@ img {
   width: 22px !important;
   height: 22px !important;
   pointer-events: none !important;
+}
+
+/* Enhanced Sidebar Scrolling */
+.sidebar {
+  overflow: hidden; /* Prevent main sidebar from scrolling */
+}
+
+.sidebar-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: inherit;
+}
+
+.sidebar-navigation {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  max-height: calc(100vh - 320px); /* Adjust based on header height */
+  padding-bottom: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling for sidebar navigation */
+.sidebar-navigation {
+  scroll-behavior: smooth;
+}
+
+/* Better mobile sidebar handling */
+@media (max-width: 768px) {
+  .sidebar-navigation {
+    max-height: calc(100vh - 280px);
+  }
 }

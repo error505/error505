@@ -19,6 +19,9 @@ import Footer from './components/home/Footer';
 import TestimonialsSection from './components/home/TestimonialsSection';
 import ProjectShowcase from './components/home/ProjectShowcase';
 import ScrollIndicator from './components/ScrollIndicator';
+import SkillsProgress from './components/SkillsProgress';
+import ParticleBackground from './components/ParticleBackground';
+import NewsletterSignup from './components/NewsletterSignup';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faHome, faBriefcase, faDollarSign, faBlog, faEnvelope, faBars, faX, faEye, faFileAlt, faCog, faArrowUp, faCode, faCheck, faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -104,6 +107,7 @@ function App() {
 
   return (
     <Router>
+      <ParticleBackground />
       <ScrollIndicator />
       <div className={isDarkMode ? 'dark-mode' : ''}>
         <Header />
@@ -117,10 +121,12 @@ function App() {
               <>
               <HeroSection />
                 <WhatIDo />
+                <SkillsProgress />
                 <ProjectShowcase />
                 <BlogSection />
                 <PricingSection />
                 <TestimonialsSection />
+                <NewsletterSignup />
                 {/* <PortfolioSection /> */}
                 <ContactSection />
                 <Footer />

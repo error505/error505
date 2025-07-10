@@ -14,7 +14,7 @@ const Resume = () => {
 
       {/* Contact Information */}
       <div className="resume-contact">
-        <p><FaEnvelope /> iric_i@hotmail.com</p>
+        <p><FaEnvelope /> info@error505.com</p>
         <p><FaPhone /> +49 (Mobile)</p>
         <p><FaMapMarkerAlt /> Frankfurt, Hesse, Germany</p>
         <p><FaGlobe /> <a href="https://error505.github.io/error505/" target="_blank" rel="noopener noreferrer">error505.github.io/error505</a></p>

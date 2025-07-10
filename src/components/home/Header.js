@@ -1,6 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import { FaHome, FaUser, FaDollarSign, FaBlog, FaEnvelope, FaFileAlt, FaUsers, FaCode } from 'react-icons/fa';
+import { FaHome, FaUser, FaDollarSign, FaBlog, FaEnvelope, FaFileAlt, FaUsers, FaCode, FaCogs } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -17,6 +17,15 @@ const Header = () => {
         className="about-button open-sidebar1"
       >
         <FaUser />
+        <span></span>
+      </ScrollLink>
+      <ScrollLink
+        to="skills"
+        smooth={true}
+        duration={500}
+        className="skills-button open-sidebar1"
+      >
+        <FaCogs />
         <span></span>
       </ScrollLink>
       <ScrollLink
@@ -69,24 +78,6 @@ const Header = () => {
         className="contact-button open-sidebar1"
       >
         <FaEnvelope />
-        <span></span>
-      </ScrollLink>
-      <ScrollLink
-        to="testimonials"
-        smooth={true}
-        duration={500}
-        className="testimonials-button open-sidebar1"
-      >
-        <FaUsers />
-        <span></span>
-      </ScrollLink>
-      <ScrollLink
-        to="projects"
-        smooth={true}
-        duration={500}
-        className="projects-button open-sidebar1"
-      >
-        <FaCode />
         <span></span>
       </ScrollLink>
     </header>

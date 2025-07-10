@@ -210,6 +210,93 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Modern Loading Spinner */
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-spinner-small .loading-spinner {
+  width: 30px;
+  height: 30px;
+  border-width: 2px;
+}
+
+.loading-spinner-large .loading-spinner {
+  width: 80px;
+  height: 80px;
+  border-width: 6px;
+}
+
+.spinner-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.spinner-dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.spinner-dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.loading-text {
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Page Transition Effects */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 300ms, transform 300ms;
+}
+
 /* Enhanced Dark Mode */
 .dark-mode .pricing-card {
   background: rgba(255, 255, 255, 0.1);
@@ -631,6 +718,297 @@
   }
 }
 
+/* Skills Progress Section */
+.skills-progress-section {
+  padding: 40px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .skills-progress-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.skills-progress-section::before {
+  content: "SKILLS";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(102, 126, 234, 0.05);
+  z-index: 1;
+  pointer-events: none;
+  letter-spacing: 0.2em;
+}
+
+.skills-progress-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Compact Skills Grid for Better Space Usage */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skill-item {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.dark-mode .skill-item {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.skill-icon {
+  font-size: 1.6rem;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(102, 126, 234, 0.1);
+  flex-shrink: 0;
+}
+
+.skill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.skill-info h4 {
+  margin: 0 0 2px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dark-mode .skill-info h4 {
+  color: #ffffff;
+}
+
+.skill-percentage {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.skill-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e9ecef;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dark-mode .skill-progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Enhanced Glass Morphism Effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Advanced 3D Hover Effects */
+.card-3d {
+  perspective: 1000px;
+  transition: all 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Cursor Trail Effect */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.8), transparent);
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease;
+}
+
+/* Advanced Loading Animation */
+.loading-dots {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loading-dots div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #667eea;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading-dots div:nth-child(1) {
+  left: 8px;
+  animation: loading-dots1 0.6s infinite;
+}
+
+.loading-dots div:nth-child(2) {
+  left: 8px;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(3) {
+  left: 32px;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(4) {
+  left: 56px;
+  animation: loading-dots3 0.6s infinite;
+}
+
+@keyframes loading-dots1 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes loading-dots3 {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+@keyframes loading-dots2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 0); }
+}
+
+/* Mobile Responsiveness for Skills */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .skill-item {
+    padding: 12px;
+  }
+  
+  .skill-icon {
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+  
+  .skill-info h4 {
+    font-size: 0.9rem;
+  }
+  
+  .skill-percentage {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .skill-item {
+    padding: 10px;
+  }
+  
+  .skill-icon {
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  
+  .skill-info h4 {
+    font-size: 0.8rem;
+  }
+  
+  .skill-percentage {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
 /* Responsive Enhancements */
 @media (max-width: 768px) {
   .modern-heading {
@@ -678,15 +1056,6 @@
   .testimonials-section::before {
     display: none;
   }
-}
-
-/* Glassmorphism Effect */
-.glass-card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 /* Enhanced Navigation */
@@ -798,4 +1167,449 @@
 .testimonials-section .heading-container {
   position: relative;
   z-index: 2;
+}
+
+/* Modern Search Bar */
+.search-container {
+  margin: 30px 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  padding: 15px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.search-container.focused .search-input-wrapper {
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+}
+
+.dark-mode .search-input-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-icon {
+  color: #667eea;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.search-input-modern {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #333;
+}
+
+.dark-mode .search-input-modern {
+  color: #ffffff;
+}
+
+.search-input-modern::placeholder {
+  color: #999;
+}
+
+.clear-search-btn {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  background: #f0f0f0;
+  color: #667eea;
+}
+
+.dark-mode .clear-search-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-results-indicator {
+  margin-top: 10px;
+  text-align: center;
+  color: #667eea;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Newsletter Signup Section */
+.newsletter-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: float 20s ease-in-out infinite;
+}
+
+.newsletter-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-header {
+  margin-bottom: 40px;
+}
+
+.newsletter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.newsletter-header h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #ffffff, #f8f9fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.newsletter-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 5px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  border-radius: 45px;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-btn {
+  background: white;
+  color: #667eea;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.newsletter-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-btn.loading {
+  animation: spin 1s linear infinite;
+}
+
+.newsletter-btn.success {
+  background: #28a745;
+  color: white;
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(40, 167, 69, 0.2);
+  border-radius: 10px;
+  border: 2px solid rgba(40, 167, 69, 0.3);
+  color: #28a745;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.newsletter-disclaimer {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Enhanced Particle Effects */
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(120deg); }
+  66% { transform: translateY(10px) rotate(240deg); }
+}
+
+.floating-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(102, 126, 234, 0.6);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+/* Advanced Hover Effects for Cards */
+.advanced-card {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.advanced-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.advanced-card:hover::before {
+  transform: translateX(100%);
+}
+
+.advanced-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Newsletter */
+@media (max-width: 768px) {
+  .newsletter-header h3 {
+    font-size: 2rem;
+  }
+  
+  .newsletter-header p {
+    font-size: 1rem;
+  }
+  
+  .input-group {
+    max-width: 100%;
+    margin: 0 20px;
+  }
+  
+  .newsletter-input {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .newsletter-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Responsive Modern Enhancements */
+@media (max-width: 768px) {
+  .loading-spinner-container {
+    padding: 20px;
+  }
+  
+  .tooltip {
+    width: 100px;
+    margin-left: -50px;
+    font-size: 11px;
+  }
+  
+  .error-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .error-icon {
+    font-size: 3rem;
+  }
+  
+  .error-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Modern Tooltip */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  width: 120px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-5px);
+}
+
+/* Enhanced Error States */
+.error-container {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  border-radius: 20px;
+  border: 2px solid #fc8181;
+  margin: 20px 0;
+}
+
+.error-icon {
+  font-size: 4rem;
+  color: #e53e3e;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e53e3e;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #744210;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.error-retry-btn {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.error-retry-btn:hover {
+  background: #c53030;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+}
+
+/* Additional Compact Skills Grid Improvements */
+@media (min-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+}
+
+/* Ensure skills section doesn't take excessive vertical space */
+.skills-progress-section {
+  padding: 30px 0;
+}
+
+.skills-progress-section .heading-container {
+  margin-bottom: 20px;
+}
+
+.skills-progress-section .heading-container h2 {
+  margin-bottom: 10px;
+}
+
+.skills-progress-section .heading-container p {
+  margin-bottom: 0;
 }

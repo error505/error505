@@ -1,6 +1,6 @@
 // src/components/Sidebar.js
 import React from 'react';
-import { FaHome, FaUser, FaDollarSign, FaBlog, FaEnvelope, FaFileAlt, FaLinkedin, FaGithub, FaAmazon, FaYoutube, FaUsers, FaCode } from 'react-icons/fa';
+import { FaHome, FaUser, FaDollarSign, FaBlog, FaEnvelope, FaFileAlt, FaLinkedin, FaGithub, FaAmazon, FaYoutube, FaUsers, FaCode, FaCogs } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 
@@ -8,17 +8,21 @@ import { Link } from 'react-router-dom';
 const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
   return (
     <aside className={`sidebar ${isSidebarClosed ? 'sidebar-closed' : ''}`}>
-      <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="profile-image" />
-      <h2 className="sidebar-title">Igor Iric</h2>
-      <p className="subtitle">Hi, I'm Igor Iric, a Senior AI Cloud Solutions Architect with over 18 years of experience building advanced AI enterprise platforms.</p>
-      <div className="social-icons">
-        <a href="https://www.linkedin.com/in/igor-iric"><FaLinkedin /></a>
-        <a href="https://github.com/error505"><FaGithub /></a>
-        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
-        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
+      <div className="sidebar-header">
+        <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="profile-image" />
+        <h2 className="sidebar-title">Igor Iric</h2>
+        <p className="subtitle">Hi, I'm Igor Iric, a Senior AI Cloud Solutions Architect with over 18 years of experience building advanced AI enterprise platforms.</p>
+        <div className="social-icons">
+          <a href="https://www.linkedin.com/in/igor-iric"><FaLinkedin /></a>
+          <a href="https://github.com/error505"><FaGithub /></a>
+          <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
+          <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
+        </div>
       </div>
-      <nav className="navigation">
-        <ul>
+      
+      <div className="sidebar-navigation">
+        <nav className="navigation">
+          <ul>
         <li><a href="/error505" className="home-button"><FaHome /><span> Home</span></a></li>
           <li>
             <ScrollLink
@@ -29,6 +33,17 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
             >
               <FaUser />
               <span> About Me</span>
+            </ScrollLink>
+          </li>
+          <li>
+            <ScrollLink
+              to="skills"
+              smooth={true}
+              duration={500}
+              className="skills-button"
+            >
+              <FaCogs />
+              <span> Skills</span>
             </ScrollLink>
           </li>
           <li>
@@ -96,7 +111,8 @@ const Sidebar = ({ isSidebarClosed, toggleSidebar }) => {
             </ScrollLink>
           </li>
         </ul>
-      </nav>
+        </nav>
+      </div>
     </aside>
   );
 };
