@@ -1,7 +1,7 @@
 // src/components/home/ProjectShowcase.js
 import React from 'react';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaBrain, FaCloud } from 'react-icons/fa';
-import { SiMicrosoft, SiReact, SiPython, SiDocker } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaRocket, FaBrain, FaCloud } from 'react-icons/fa';
+import { SiMicrosoft } from 'react-icons/si';
 
 const ProjectShowcase = () => {
   const projects = [
