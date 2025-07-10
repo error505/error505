@@ -19,10 +19,11 @@ const HeroSection = () => {
                 <Typed
                   strings={[
                     "I'm Igor Iric",
-                    "I'm a Senior Cloud Architect.",
-                    "I'm a Senior Software Engineer.",
-                    "I'm a Book Author.",
-                    "I'm a Technology Enthusiast.",
+                    "I'm a Senior AI Cloud Solutions Architect.",
+                    "I'm an AI Solutions Expert.",
+                    "I'm a GitHub Book Author.",
+                    "I'm an Agentic AI Specialist.",
+                    "I'm a Technology Innovator.",
                   ]}
                   typeSpeed={40}
                   backSpeed={50}
@@ -30,7 +31,7 @@ const HeroSection = () => {
                   loop
                 />
               </h2>
-              <p className="text-light mb-4">based in Frankfurt, Germany.</p>
+              <p className="text-light mb-4">based in Frankfurt, Hesse, Germany.</p>
               <Link to="contact" smooth className="btn btn-outline-primary rounded-pill shadow-none smooth-scroll mt-2">
                 Hire Me
               </Link>

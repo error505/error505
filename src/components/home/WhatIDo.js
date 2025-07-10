@@ -1,6 +1,7 @@
 // src/components/WhatIDo.js
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SiMicrosoft, SiGithub } from 'react-icons/si';
+import { FaBrain, FaCloud, FaShieldAlt, FaChartLine } from 'react-icons/fa';
 
 const WhatIDo = () => {
   return (
@@ -12,64 +13,64 @@ const WhatIDo = () => {
         </div>
         {/* Heading end */}
       <div className="row gy-5 about-content">
-          <h2 className="text-7 fw-600 mb-3">I'm <span className="text-primary">Igor Iric,</span> a Cloud Solutions Architect</h2>
+          <h2 className="text-7 fw-600 mb-3">I'm <span className="text-primary">Igor Iric,</span> an AI Solutions Architect</h2>
          <p>
-          I have more than 15 years' experience building software for clients all over the world. As an experienced Azure Solutions Architect Expert, I am responsible for making key decisions that relate to architecture, development, and continuous improvement of the product development cycle. I have a proven track record of leading and managing teams of highly skilled and motivated developers, and providing training and workshops to enhance their skills.
+          I have over 18 years of extensive experience in designing, developing, and deploying advanced Agentic AI enterprise-grade platforms primarily on Microsoft Azure. As a Senior AI Cloud Solutions Architect, I specialize in implementing scalable cloud-based AI solutions, leveraging Azure OpenAI, Retrieval-Augmented Generation (RAG), Power BI integration, and advanced analytics. I'm passionate about automating complex workflows and empowering businesses through transformative AI strategies. Author of "GitHub for Next-Generation Coders" and creator of no-code platforms for AI agent development.
           </p>
         </div>
       <div className="services-grid">
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon={['fab', 'microsoft']} />
+            <SiMicrosoft />
           </div>
           <div className="service-description">
-            <h3>Azure</h3>
-            <p>Microsoft Certified: Cybersecurity Architect Expert & Azure Solutions Architect Expert</p>
+            <h3>Azure AI</h3>
+            <p>Azure OpenAI, AI Search, Machine Learning, and Agentic AI Solutions</p>
           </div>
         </div>
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon="code" />
+            <FaBrain />
           </div>
           <div className="service-description">
-            <h3>C# .net</h3>
-            <p>More than years of experience working with C# .net</p>
+            <h3>AI & RAG</h3>
+            <p>Retrieval-Augmented Generation and Multi-Agent AI Systems</p>
           </div>
         </div>
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon={['fab', 'github']} />
+            <SiGithub />
           </div>
           <div className="service-description">
             <h3>GitHub</h3>
-            <p>Certified GitHub Partner Trainer and GitHub Book Author</p>
+            <p>Certified GitHub Partner Trainer and "GitHub for Next-Generation Coders" Author</p>
           </div>
         </div>
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon={['fab', 'aws']} />
+            <FaChartLine />
           </div>
           <div className="service-description">
-            <h3>AWS</h3>
-            <p>Experienced AWS Cloud Architect</p>
+            <h3>Power BI</h3>
+            <p>Advanced Analytics, Data Visualization, and Business Intelligence</p>
           </div>
         </div>
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon={['fab', 'react']} />
+            <FaCloud />
           </div>
           <div className="service-description">
-            <h3>React</h3>
-            <p>Frontend Developer using React, Vue, and Angular</p>
+            <h3>Cloud Platforms</h3>
+            <p>Multi-cloud expertise: Azure, AWS, GCP architectures</p>
           </div>
         </div>
         <div className="service">
           <div className="service-icon">
-            <FontAwesomeIcon icon={['fab', 'google']} />
+            <FaShieldAlt />
           </div>
           <div className="service-description">
-            <h3>GCP</h3>
-            <p>Experienced Google Cloud Platform Architect.</p>
+            <h3>Cybersecurity</h3>
+            <p>Azure Cybersecurity Architect Expert & Security Operations</p>
           </div>
         </div>
       </div>

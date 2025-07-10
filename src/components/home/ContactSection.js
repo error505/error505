@@ -14,17 +14,17 @@ const ContactSection = () => {
       <div className="get-in-touch-grid">
         <div className="get-in-touch-item address">
           <i className=""></i>
-          <p>Frankfurt am Main, Germany, Hessen</p>
+          <p>Frankfurt, Hesse, Germany</p>
           <label>Address</label>
         </div>
         <div className="get-in-touch-item phone">
           <i className=""></i>
-          <p>+49173</p>
+          <p>+49 (Mobile)</p>
           <label>Call Us</label>
         </div>
         <div className="get-in-touch-item email">
           <i className=""></i>
-          <p>email@email.com</p>
+          <p>iric_i@hotmail.com</p>
           <label>Email Me</label>
         </div>
       </div>
@@ -42,10 +42,11 @@ const ContactSection = () => {
         </form>
       </div>
       <div className="social-icons">
-        <a href="https://www.x.com"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
-        <a href="https://www.linkedin.com/in/igor-iric"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
-        <a href="https://github.com/error505"><FontAwesomeIcon icon={['fab', 'github']} /></a>
+        <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
+        <a href="https://github.com/error505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'github']} /></a>
+        <a href="https://www.error505.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon="globe" /></a>
         <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'amazon']} /></a>
+        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={['fab', 'youtube']} /></a>
       </div>
     </section>
   );
