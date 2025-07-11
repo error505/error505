@@ -8,8 +8,13 @@ const Resume = () => {
     <div className="resume">
       {/* Header Section */}
       <div className="resume-header">
-        <h1>Igor Iric</h1>
-        <p>Senior AI Cloud Solutions Architect</p>
+        <div className="resume-profile">
+          <img src="./static/images/1674712595713-plava2.jpg" alt="Igor Iric" className="resume-profile-image" />
+          <div className="resume-title-info">
+            <h1>Igor Iric</h1>
+            <p>Senior AI Cloud Solutions Architect</p>
+          </div>
+        </div>
       </div>
 
       {/* Contact Information */}
