@@ -949,11 +949,20 @@
   100% { transform: translate(24px, 0); }
 }
 
-/* Mobile Responsiveness for Skills */
+/* Mobile Skills Section Improvements */
 @media (max-width: 768px) {
+  .skills-progress-section {
+    padding: 25px 0;
+  }
+  
+  .skills-progress-section .container {
+    padding: 0 20px;
+  }
+  
   .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    margin-top: 25px;
   }
   
   .skill-item {
@@ -961,24 +970,28 @@
   }
   
   .skill-icon {
-    font-size: 1.4rem;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
     margin-right: 10px;
   }
   
   .skill-info h4 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   
   .skill-percentage {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .skill-progress-bar {
+    height: 3px;
   }
 }
 
 @media (max-width: 480px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
   
@@ -987,9 +1000,9 @@
   }
   
   .skill-icon {
-    font-size: 1.2rem;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
     margin-right: 8px;
   }
   
@@ -998,14 +1011,36 @@
   }
   
   .skill-percentage {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 }
 
-@media (max-width: 320px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
+/* Better mobile layout for all sections */
+@media (max-width: 768px) {
+  .project-showcase,
+  .testimonials-section,
+  .pricing-section {
+    padding: 30px 0;
+  }
+  
+  .project-showcase::before,
+  .testimonials-section::before {
+    font-size: 3rem;
+    opacity: 0.02;
+  }
+  
+  .project-card,
+  .testimonial-card,
+  .pricing-card {
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-signup {
+    padding: 20px;
+  }
+  
+  .newsletter-signup input {
+    margin-bottom: 10px;
   }
 }
 

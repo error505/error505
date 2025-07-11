@@ -10,7 +10,7 @@ const TestimonialsSection = () => {
       role: "CTO at TechCorp",
       content: "Igor's expertise in AI and cloud architecture transformed our business. His agentic AI solutions increased our efficiency by 40%. Highly recommend!",
       rating: 5,
-      avatar: "https://via.placeholder.com/80x80/667eea/ffffff?text=SJ"
+      avatar: "https://github.com/error505/MyFirstRepo/blob/main/images/sarah.png?raw=true"
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const TestimonialsSection = () => {
       role: "Lead Developer at InnovateLabs",
       content: "Working with Igor on our Azure migration was seamless. His deep knowledge of both technical and business aspects made the project a huge success.",
       rating: 5,
-      avatar: "https://via.placeholder.com/80x80/764ba2/ffffff?text=MC"
+      avatar: "https://github.com/error505/MyFirstRepo/blob/main/images/chen.png?raw=true"
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const TestimonialsSection = () => {
       role: "Product Manager at CloudFirst",
       content: "Igor's GitHub training sessions were exceptional. Our team's productivity improved significantly after implementing his DevOps best practices.",
       rating: 5,
-      avatar: "https://via.placeholder.com/80x80/667eea/ffffff?text=ER"
+      avatar: "https://github.com/error505/MyFirstRepo/blob/main/images/emily.png?raw=true"
     }
   ];
 

@@ -37,13 +37,84 @@ body.dark-mode {
 .sidebar-header {
   flex-shrink: 0;
   text-align: center;
-  padding-bottom: 20px;
+  padding: 25px 20px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 20px;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 10;
   background: inherit;
+}
+
+.profile-container {
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: block;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.sidebar-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.profile-role {
+  color: #e0e6ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  opacity: 0.9;
+}
+
+.profile-description {
+  color: #c4d1ff;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icons a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar-navigation {
@@ -83,40 +154,6 @@ body.dark-mode {
 .dark-mode .sidebar {
   background-color: #1e2a3a;
   color: #ffffff;
-}
-.profile-image {
-  width: 150px;
-  height: 150px; /* Add a fixed height for proper centering */
-  border-radius: 50%;
-  margin: 0 auto;
-  display: block; /* Center horizontally and vertically */
-}
-
-.social-icons {
-  margin-top: 15px;
-  display: flex;
-}
-
-.social-icons a {
-  display: inline-flex; /* Ensures the circular background spans the icon */
-  align-items: center;
-  justify-content: center;
-  width: 40px; /* Set the width and height to create a circular background */
-  height: 40px;
-  border-radius: 50%; /* Make the background circular */
-  background-color: #333; /* Background color for the circle */
-  margin: 0 5px;
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transitions for hover effect */
-}
-
-.social-icons a:hover {
-  background-color: #555; /* Change the background color on hover */
-  transform: scale(
-    1.1
-  ); /* Add a slight scale effect on hover for a stylish appearance */
 }
 
 /* Social Icons Centering */
@@ -1170,6 +1207,7 @@ img {
 .mobile-header {
   display: none;
 }
+
 @media only screen and (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -1183,26 +1221,70 @@ img {
   }
   .mobile-header {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    padding: 10px;
-    background-color: var(--main-theme-color);
-    color: white; /* adjust as needed */
     position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--main-theme-color) 0%, rgba(102, 126, 234, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .open-sidebar1 {
-    background-color: transparent;
-    border: none;
-    font-size: 24px; /* adjust as needed */
+  .mobile-nav-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .mobile-nav-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px;
+    min-width: 45px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    flex-shrink: 0;
     cursor: pointer;
-    color: inherit; /* use the color of the parent element */
+  }
+
+  .nav-item:hover,
+  .nav-item:focus {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .nav-item svg {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  .nav-item span {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1;
   }
 
   .main-content {
-    margin-left: 0; /* remove the margin */
-    padding: 45px 0px 0px 0px; /* add padding at the top to avoid overlap with header */
+    margin-left: 0;
+    padding: 20px 0 70px 0; /* Add bottom padding for mobile nav */
     transition: padding 0.3s ease;
   }
 
@@ -2565,5 +2647,123 @@ img {
 @media (max-width: 768px) {
   .sidebar-navigation {
     max-height: calc(100vh - 280px);
+  }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media only screen and (max-width: 480px) {
+  .nav-item {
+    padding: 6px 4px;
+    min-width: 40px;
+  }
+
+  .nav-item svg {
+    font-size: 16px;
+  }
+
+  .nav-item span {
+    font-size: 9px;
+  }
+
+  .mobile-nav-container {
+    padding: 6px 8px;
+  }
+
+  .main-content {
+    padding: 15px 0 60px 0;
+  }
+
+  /* Sidebar profile adjustments for mobile */
+  .sidebar-header {
+    padding: 20px 15px 15px;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .sidebar-title {
+    font-size: 1.3rem;
+  }
+
+  .profile-role {
+    font-size: 0.9rem;
+  }
+
+  .profile-description {
+    font-size: 0.8rem;
+  }
+
+  .social-icons a {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .nav-item span {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 8px 4px;
+  }
+
+  .mobile-nav-container {
+    padding: 8px 4px;
+  }
+}
+
+/* Improve overall mobile experience */
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Better section spacing on mobile */
+  .section {
+    padding: 40px 0;
+  }
+
+  .skills-progress-section {
+    padding: 30px 0;
+  }
+
+  .skills-progress-section::before {
+    font-size: 4rem;
+    opacity: 0.03;
+  }
+
+  /* Improve text readability */
+  .heading-container h2 {
+    font-size: 2rem;
+  }
+
+  .heading-container p {
+    font-size: 1rem;
+  }
+}
+/* Landscape mobile improvements */
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-header {
+    padding: 4px 8px;
+  }
+
+  .nav-item {
+    padding: 4px 6px;
+  }
+
+  .nav-item svg {
+    font-size: 14px;
+  }
+
+  .nav-item span {
+    font-size: 8px;
+  }
+
+  .main-content {
+    padding: 10px 0 50px 0;
   }
 }
