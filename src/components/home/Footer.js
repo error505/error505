@@ -62,11 +62,11 @@ const Footer = () => {
             <div className="contact-info">
               <div className="contact-item">
                 <FaEnvelope className="contact-icon" />
-                <span>igor.iric@example.com</span>
+                <span>info@error505.com</span>
               </div>
               <div className="contact-item">
                 <FaPhone className="contact-icon" />
-                <span>+1 (555) 123-4567</span>
+                <span>+49 173 1234567</span>
               </div>
               <div className="contact-item">
                 <FaMapMarkerAlt className="contact-icon" />
