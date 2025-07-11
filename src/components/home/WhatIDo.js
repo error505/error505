@@ -1,15 +1,12 @@
 // src/components/WhatIDo.js
 import React from 'react';
 import { SiMicrosoft, SiGithub } from 'react-icons/si';
-import { FaBrain, FaCloud, FaShieldAlt, FaChartLine } from 'react-icons/fa';
+import { FaBrain, FaCloud, FaShieldAlt, FaChartLine, FaDownload } from 'react-icons/fa';
+import { generateResumePDF } from '../../utils/enhancedPdfGenerator';
 
 const WhatIDo = () => {
   const handleDownloadCV = () => {
-    // Create a link to download the CV/Resume as PDF
-    const link = document.createElement('a');
-    link.href = '/path-to-your-cv.pdf'; // You'll need to add your actual CV PDF to the public folder
-    link.download = 'Igor_Iric_CV.pdf';
-    link.click();
+    generateResumePDF();
   };
 
   return (
@@ -55,7 +52,7 @@ const WhatIDo = () => {
               </div>
               
               <button className="download-cv-btn" onClick={handleDownloadCV}>
-                Download CV
+                <FaDownload /> Download CV
               </button>
             </div>
           </div>

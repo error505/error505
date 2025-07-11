@@ -1,6 +1,19 @@
 // src/components/ContactSection.js
 import React, { useState } from 'react';
-import { FaLinkedin, FaGithub, FaGlobe, FaAmazon, FaYoutube, FaCheck, FaSpinner } from 'react-icons/fa';
+import { 
+  FaLinkedin, 
+  FaGithub, 
+  FaGlobe, 
+  FaAmazon, 
+  FaYoutube, 
+  FaCheck, 
+  FaSpinner,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+  FaTwitter,
+  FaFacebook
+} from 'react-icons/fa';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -57,108 +70,131 @@ const ContactSection = () => {
 
   return (
     <section className="contact-section" id="contact">
-      {/* Heading */}
-      <div className="heading-container">
-        <h2 className='text-light'>Contact me</h2>
-        <p>Get in Touch<span className="heading-separator-line"></span></p>
-      </div>
-      {/* Heading end */}
-      
-      <div className="get-in-touch-grid">
-        <div className="get-in-touch-item address">
-          <i className=""></i>
-          <p>Frankfurt, Hesse, Germany</p>
-          <label>Address</label>
+      <div className="contact-container">
+        {/* Heading */}
+        <div className="heading-container">
+          <h2 className='contact-heading'>Get in Touch</h2>
         </div>
-        <div className="get-in-touch-item phone">
-          <i className=""></i>
-          <p>+49 (Mobile)</p>
-          <label>Call Us</label>
-        </div>
-        <div className="get-in-touch-item email">
-          <i className=""></i>
-          <p>info@error505.com</p>
-          <label>Email Me</label>
-        </div>
-      </div>
+        {/* Heading end */}
+        
+        <div className="contact-content">
+          {/* Address Section */}
+          <div className="contact-info">
+            <div className="contact-info-section">
+              <h3>ADDRESS</h3>
+              <div className="address-details">
+                <p>Guiollett Str. 22</p>
+                <p>Hessen</p>
+                <p>Frankfurt, Germany 60329</p>
+              </div>
+              
+              <div className="contact-details">
+                <div className="contact-item">
+                  <FaPhone />
+                  <span>+49 (Mobile)</span>
+                </div>
+                <div className="contact-item">
+                  <FaPhone />
+                  <span>+49 555 545 555</span>
+                </div>
+                <div className="contact-item">
+                  <FaEnvelope />
+                  <span>info@error505.com</span>
+                </div>
+              </div>
+              
+              <div className="social-section">
+                <h4>FOLLOW ME</h4>
+                <div className="social-icons">
+                  <a href="https://www.error505.com" target="_blank" rel="noreferrer" title="Website">
+                    <FaGlobe />
+                  </a>
+                  <a href="https://twitter.com/igor_iric" target="_blank" rel="noreferrer" title="Twitter">
+                    <FaTwitter />
+                  </a>
+                  <a href="https://facebook.com/igor.iric" target="_blank" rel="noreferrer" title="Facebook">
+                    <FaFacebook />
+                  </a>
+                  <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer" title="LinkedIn">
+                    <FaLinkedin />
+                  </a>
+                  <a href="https://github.com/error505" target="_blank" rel="noreferrer" title="GitHub">
+                    <FaGithub />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div className="contact-form">
-        <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            name="name" 
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name *" 
-            required 
-            disabled={isSubmitting}
-          />
-          <input 
-            type="email" 
-            name="email" 
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Your Email *" 
-            required 
-            disabled={isSubmitting}
-          />
-          <input 
-            type="text" 
-            name="subject" 
-            value={formData.subject}
-            onChange={handleChange}
-            placeholder="Your Subject.." 
-            disabled={isSubmitting}
-          />
-          <textarea 
-            name="message" 
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your message..."
-            disabled={isSubmitting}
-          ></textarea>
-          
-          {error && (
-            <div className="form-message error-message">
-              {error}
-            </div>
-          )}
-          
-          {isSubmitted && (
-            <div className="form-message success-message">
-              <FaCheck /> Message sent successfully! I'll get back to you soon.
-            </div>
-          )}
-          
-          <p className="text-center mt-4 mb-0">
-            <button 
-              id="submit-btn" 
-              className="btn btn-primary rounded-pill d-inline-flex" 
-              type="submit"
-              disabled={isSubmitting || isSubmitted}
-            >
-              {isSubmitting ? (
-                <>
-                  <FaSpinner className="fa-spin" /> Sending...
-                </>
-              ) : isSubmitted ? (
-                <>
-                  <FaCheck /> Sent!
-                </>
-              ) : (
-                'Send Message'
+          {/* Contact Form */}
+          <div className="contact-form-section">
+            <h3>SEND US A NOTE</h3>
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="form-row">
+                <input 
+                  type="text" 
+                  name="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name" 
+                  required 
+                  disabled={isSubmitting}
+                  className="form-control"
+                />
+                <input 
+                  type="email" 
+                  name="email" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email" 
+                  required 
+                  disabled={isSubmitting}
+                  className="form-control"
+                />
+              </div>
+              
+              <textarea 
+                name="message" 
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell us more about your needs......."
+                disabled={isSubmitting}
+                className="form-control message-area"
+                rows="6"
+              ></textarea>
+              
+              {error && (
+                <div className="contact-message error-message">
+                  {error}
+                </div>
               )}
-            </button>
-          </p>
-        </form>
-      </div>
-
-      <div className="social-icons">
-        <a href="https://www.linkedin.com/in/igor-iric" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-        <a href="https://github.com/error505" target="_blank" rel="noreferrer"><FaGithub /></a>
-        <a href="https://www.error505.com" target="_blank" rel="noreferrer"><FaGlobe /></a>
-        <a href="https://amzn.eu/d/dKxnIuh" target="_blank" rel="noreferrer"><FaAmazon /></a>
-        <a href="https://www.youtube.com/@iric505" target="_blank" rel="noreferrer"><FaYoutube /></a>
+              
+              {isSubmitted && (
+                <div className="contact-message success-message">
+                  <FaCheck /> Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting || isSubmitted}
+                className={`btn-submit ${isSubmitting ? 'loading' : ''} ${isSubmitted ? 'success' : ''}`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <FaSpinner className="fa-spin" /> Sending...
+                  </>
+                ) : isSubmitted ? (
+                  <>
+                    <FaCheck /> Sent!
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );
