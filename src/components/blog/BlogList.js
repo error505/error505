@@ -77,11 +77,11 @@ const BlogList = () => {
       </div>
       {visibleCount < blogPosts.length && (
         <div className="view-all">
-          <button className="btn back-button" onClick={handleShowMore}>Load More</button>
+          <button className="signup-button btn-gradient" onClick={handleShowMore}>Load More</button>
         </div>
       )}
       <div className="view-all">
-      <Link to="/" className="back-button">Back to Home</Link>
+      <Link to="/" className="signup-button btn-gradient">Back to Home</Link>
         </div>
       
     </section>

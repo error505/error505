@@ -87,7 +87,7 @@ const BlogPost = () => {
           <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
         </noscript>
       </div>
-      <Link to="/" className="back-button">Back to Home</Link>
+      <Link to="/" className="signup-button btn-gradient">Back to Home</Link>
     </div>
   );
 };

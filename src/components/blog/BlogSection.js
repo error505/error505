@@ -32,7 +32,7 @@ const BlogSection = () => {
         ))}
       </div>
       <div className="view-all">
-        <Link to="/blog" className="back-button">View All Posts</Link>
+        <Link to="/blog" className="signup-button btn-gradient">View All Posts</Link>
       </div>
     </section>
   );

@@ -31,7 +31,7 @@ const HeroSection = () => {
                 />
               </h2>
               <p className="text-light mb-4 fade-in-up">based in Frankfurt, Hesse, Germany.</p>
-              <Link to="contact" smooth className="btn btn-gradient rounded-pill shadow-none smooth-scroll mt-2 pulse-animation">
+              <Link to="contact" className="signup-button btn-gradient">
                 Hire Me
               </Link>
             </div>
