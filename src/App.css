@@ -695,8 +695,8 @@ input:checked + .slider.round:before {
 /* Floating Button Styling */
 .floating-btn {
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  right: 20px;
+  top: 20px;
   background-color: #2c3e50;
   color: white;
   border: none;
@@ -727,12 +727,12 @@ input:checked + .slider.round:before {
 /* Color Options Panel Styling */
 .color-panel {
   position: fixed;
-  left: -300px; /* Hide by default */
-  bottom: 10%;
+  right: -300px; /* Hide by default */
+  top: 10%;
   width: 250px;
   background-color: #fff;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-  transition: left 0.3s;
+  transition: right 0.3s;
   z-index: 999; /* Ensure it's below the floating button */
   padding: 10px;
   border-radius: 8px;

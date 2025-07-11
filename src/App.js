@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './components/modern-enhancements.css';
-import { FaCog, FaArrowUp } from 'react-icons/fa';
+import { FaMoon, FaArrowUp, FaSun } from 'react-icons/fa';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/home/Header';
 import Sidebar from './components/home/Sidebar';
@@ -32,7 +32,6 @@ library.add(fab, faHome, faUser, faBriefcase, faDollarSign, faBlog, faEnvelope, 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSidebarClosed, setIsSidebarClosed] = useState(false);
-  const [colorPanelVisible, setColorPanelVisible] = useState(false);
 
   useEffect(() => {
     // Retrieve stored settings on initial load
@@ -58,15 +57,6 @@ function App() {
 
   const toggleSidebar = () => {
     setIsSidebarClosed(!isSidebarClosed);
-  };
-
-  const toggleColorPanel = () => {
-    setColorPanelVisible(!colorPanelVisible);
-  };
-
-  const changeColor = (color) => {
-    document.documentElement.style.setProperty('--main-theme-color', color);
-    localStorage.setItem('themeColor', color);
   };
 
   useScrollIntoView({
@@ -134,21 +124,9 @@ function App() {
             } />
           </Routes>
         </div>
-        <div id="color-options" className="color-panel" style={{ left: colorPanelVisible ? '20px' : '-300px' }}>
-          <h3>Choose Theme Color</h3>
-          <div className="color-option" data-color="#667eea" onClick={() => changeColor('#667eea')}></div>
-          <div className="color-option" data-color="#764ba2" onClick={() => changeColor('#764ba2')}></div>
-          <div className="color-option" data-color="#9b59b6" onClick={() => changeColor('#9b59b6')}></div>
-          <div className="color-option" data-color="#5b73e8" onClick={() => changeColor('#5b73e8')}></div>
-          <h4>Dark Mode</h4>
-          <label className="switch">
-            <input type="checkbox" id="dark-mode-toggle" checked={isDarkMode} onChange={toggleDarkMode} />
-            <span className="slider round"></span>
-          </label>
-        </div>
 
-        <button id="settings-btn" className="floating-btn" onClick={toggleColorPanel}>
-          <FaCog />
+        <button id="settings-btn" className="floating-btn" checked={isDarkMode} onClick={toggleDarkMode}>
+          {isDarkMode ? <FaSun /> : <FaMoon />}
         </button>
         <button id="backToTop" title="Go to top" onClick={() => window.scrollTo(0, 0)}>
           <FaArrowUp />
