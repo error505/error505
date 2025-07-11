@@ -1,27 +1,48 @@
 // src/components/NewsletterSignup.js
 import React, { useState } from 'react';
-import { FaEnvelope, FaPaperPlane, FaCheck } from 'react-icons/fa';
+import { FaEnvelope, FaPaperPlane, FaCheck, FaSpinner } from 'react-icons/fa';
 
 const NewsletterSignup = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
 
     setIsLoading(true);
+    setError('');
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Using Formspree for newsletter signup - Replace 'YOUR_NEWSLETTER_FORM_ID' with your actual Formspree form ID
+      const response = await fetch('https://formspree.io/f/xyzjrdzr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          type: 'newsletter_signup',
+          _replyto: email
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubscribed(true);
+        setEmail('');
+        
+        // Reset after 5 seconds
+        setTimeout(() => setIsSubscribed(false), 5000);
+      } else {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (err) {
+      setError('Failed to subscribe. Please try again.');
+    } finally {
       setIsLoading(false);
-      setIsSubscribed(true);
-      setEmail('');
-      
-      // Reset after 3 seconds
-      setTimeout(() => setIsSubscribed(false), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -53,12 +74,7 @@ const NewsletterSignup = () => {
                 disabled={isLoading || isSubscribed}
               >
                 {isLoading ? (
-                  <div className="loading-dots">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  <FaSpinner className="fa-spin" />
                 ) : isSubscribed ? (
                   <FaCheck />
                 ) : (
@@ -67,15 +83,36 @@ const NewsletterSignup = () => {
               </button>
             </div>
             
+            {error && (
+              <div className="newsletter-message error-message">
+                {error}
+              </div>
+            )}
+            
             {isSubscribed && (
-              <div className="success-message">
-                <FaCheck /> Thank you for subscribing!
+              <div className="newsletter-message success-message">
+                <FaCheck /> Successfully subscribed! Welcome to the newsletter.
               </div>
             )}
           </form>
           
+          <div className="newsletter-features">
+            <div className="feature">
+              <FaCheck className="feature-icon" />
+              <span>Weekly AI & Cloud insights</span>
+            </div>
+            <div className="feature">
+              <FaCheck className="feature-icon" />
+              <span>Latest technology trends</span>
+            </div>
+            <div className="feature">
+              <FaCheck className="feature-icon" />
+              <span>No spam, unsubscribe anytime</span>
+            </div>
+          </div>
+          
           <p className="newsletter-disclaimer">
-            No spam, unsubscribe at any time. Privacy policy compliant.
+            Privacy policy compliant and secure.
           </p>
         </div>
       </div>
