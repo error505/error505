@@ -61,7 +61,7 @@ const AboutSection = () => {
             { label: "Name", value: "Igor Iric" },
             { label: "Email", value: "info@error505.com" },
             { label: "Age", value: "38" },
-            { label: "From", value: "Frankfurt, Germany" },
+            { label: "From", value: "Bern, Switzerland" },
           ].map((item) => (
             <div key={item.label}>
               <span className="text-muted-foreground text-sm">{item.label}:</span>
