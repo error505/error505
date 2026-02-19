@@ -47,6 +47,10 @@ jobs:
           npm install
           CI=false npm run build
 
+      - name: Run PowerShell cleanup and report script
+        run: |
+          pwsh -NoProfile -NonInteractive -File .github/scripts/cleanup_and_report.ps1
+
       - name: Diagnose build size and remove blog images from build output
         run: |
           echo "--- Build size diagnostics (before cleanup) ---"
