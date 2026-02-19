@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Sidebar from "@/components/Sidebar";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { Mail, Phone, MapPin, Globe, Linkedin, Github, Briefcase, GraduationCap, Award, Star, ArrowLeft } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Linkedin, Github, Briefcase, GraduationCap, Award, Star, ArrowLeft, Code } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const contactInfo = [
@@ -38,8 +38,8 @@ const experience = [
   },
   {
     title: "Founder & Principal Architect",
-    company: "Error 505",
-    period: "June 2006 – Present",
+    company: "CortexGrid (Error505)",
+    period: "August 2025 – Present",
     location: "Global",
     bullets: [
       "Developed innovative, secure, and scalable AI-driven solutions, including automated AI crypto trading bots.",
@@ -81,10 +81,10 @@ const experience = [
 ];
 
 const certifications = [
-  "Microsoft Certified: Azure Solutions Architect Expert (Valid until Mar 2026)",
-  "Microsoft Certified: Cybersecurity Architect Expert (Valid until Feb 2026)",
-  "Accredited GitHub Partner Trainer: Advanced Security & Admin (Valid until Jun 2026)",
-  "Microsoft Certified: Security Operations Analyst Associate (Valid until Feb 2026)",
+  "Microsoft Certified: Azure Solutions Architect Expert (Valid until Mar 2027)",
+  "Microsoft Certified: Cybersecurity Architect Expert (Valid until Feb 2027)",
+  "Accredited GitHub Partner Trainer: Advanced Security & Admin (Valid until Jun 2027)",
+  "Microsoft Certified: Security Operations Analyst Associate (Valid until Feb 2027)",
   "Microsoft Copilot for Security Ninja",
   "Microsoft AI Solutions (Azure OpenAI, Vision, NLP, Machine Learning)",
   "AZ-700: Microsoft Azure Networking Solutions",
@@ -164,7 +164,7 @@ const Resume = () => {
             <SectionCard>
               <SectionTitle icon={Star} title="Professional Summary" />
               <p className="text-muted-foreground leading-relaxed">
-                Actively sharing Cloud and AI expertise with a community of over 25,000 followers on LinkedIn, accompanied by extensive GitHub repositories demonstrating practical implementations.
+                Actively sharing Cloud and AI expertise with a community of over 26,000 followers on LinkedIn, accompanied by extensive GitHub repositories demonstrating practical implementations.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 Innovative and results-driven AI Solutions Architect with over 18 years of extensive experience in designing, developing, and deploying advanced Agentic AI enterprise-grade platforms primarily on Microsoft Azure. Proven expertise in implementing scalable cloud-based AI solutions, leveraging Azure OpenAI, Retrieval-Augmented Generation (RAG), Power BI integration, and advanced analytics. Author of <em>GitHub for Next-Generation Coders</em> and creator of no-code platforms for AI agent development.
@@ -267,6 +267,49 @@ const Resume = () => {
               <p className="text-muted-foreground text-sm">
                 <span className="font-medium text-foreground">GitHub for Next-Generation Coders</span> — Author of a comprehensive guide to GitHub, covering topics from basic concepts to advanced features.
               </p>
+            </SectionCard>
+          </motion.div>
+
+          {/* Selected Projects & Demos */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.7 }}>
+            <SectionCard>
+              <SectionTitle icon={Code} title="Selected Projects & Demos" />
+
+              <div className="space-y-4 text-sm text-muted-foreground">
+                <div>
+                  <h4 className="font-medium text-foreground">Agent Canvas — AI-Agent-Studio</h4>
+                  <p className="text-muted-foreground mt-1">Visual builder for Microsoft Agent Framework (MAF) solutions. Used for prototyping, evaluating and exporting multi-agent systems with a paired FastAPI backend + React frontend.</p>
+                  <div className="mt-2 grid gap-1">
+                    <span>Highlights:</span>
+                    <ul className="list-disc ml-5 mt-1">
+                      <li>Prompt-to-canvas flow with seeded chat handoff.</li>
+                      <li>Document-grounded prompts and drag-and-drop authoring for agents, tools and MCP connectors.</li>
+                      <li>Live Preview sandbox (WebContainers), playbooks, evaluation harness and Azure deploy button.</li>
+                      <li>Supabase-backed auth & persistence (GitHub / Microsoft Entra / email magic links).</li>
+                    </ul>
+                    <a href="https://github.com/cortex-grid/AI-Agent-Studio" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline mt-2 inline-block">View repository on GitHub</a>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground">Cloud Visualizer Pro</h4>
+                  <p className="text-muted-foreground mt-1">Open-source tool for visually designing Azure architectures, generating grounded IaC (Bicep/Terraform) and orchestrating deployments. Integrates MAF and MCP grounding for validated IaC output.</p>
+                  <div className="mt-2 grid gap-1">
+                    <span>Highlights:</span>
+                    <ul className="list-disc ml-5 mt-1">
+                      <li>Visual diagram editor with grounded IaC generation and MCP-backed validation.</li>
+                      <li>Agent-backed architecture critic + fixer producing validated Bicep code snippets.</li>
+                      <li>Docker & local dev flows, plus optional Azure deploy automation.</li>
+                    </ul>
+                    <a href="https://github.com/error505/azure-cloud-ai-visualizer" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline mt-2 inline-block">View repository on GitHub</a>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground">AI Architecture Critic — Workshop</h4>
+                  <p className="text-muted-foreground mt-1">Conference demo and workshop covering Agentic AI design, MCP grounding and IaC generation. Demonstrates end-to-end critique, fix and visualizer pipelines used in live sessions.</p>
+                </div>
+              </div>
             </SectionCard>
           </motion.div>
         </div>
