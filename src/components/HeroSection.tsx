@@ -36,7 +36,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-muted-foreground text-lg mb-10"
         >
-          based in Frankfurt, Hesse, Germany.
+          based in Bern, Bern, Switzerland.
         </motion.p>
 
         <motion.a

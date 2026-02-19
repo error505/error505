@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const contactInfo = [
   { icon: Mail, text: "info@error505.com", href: "mailto:info@error505.com" },
-  { icon: Phone, text: "+49 (Mobile)" },
-  { icon: MapPin, text: "Frankfurt, Hesse, Germany" },
+  { icon: Phone, text: "+41 (Mobile)" },
+  { icon: MapPin, text: "Bern, Bern, Switzerland" },
   { icon: Globe, text: "www.error505.com", href: "https://www.error505.com" },
   { icon: Linkedin, text: "linkedin.com/in/igor-iric", href: "https://www.linkedin.com/in/igor-iric" },
   { icon: Github, text: "github.com/error505", href: "https://github.com/error505" },
