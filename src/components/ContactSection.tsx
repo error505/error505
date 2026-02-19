@@ -65,13 +65,13 @@ const ContactSection = () => {
             <div className="flex items-start gap-3">
               <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
               <div>
-                <p>Guiollett Str. 22</p>
-                <p>Frankfurt, Germany 60329</p>
+                <p>Bern</p>
+                <p>Switzerland 3000</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Phone size={18} className="text-primary shrink-0" />
-              <p>+49 555 545 555</p>
+              <p>+41 31 555 5555</p>
             </div>
             <div className="flex items-center gap-3">
               <Mail size={18} className="text-primary shrink-0" />
