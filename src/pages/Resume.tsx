@@ -308,6 +308,7 @@ const Resume = () => {
                 <div>
                   <h4 className="font-medium text-foreground">AI Architecture Critic — Workshop</h4>
                   <p className="text-muted-foreground mt-1">Conference demo and workshop covering Agentic AI design, MCP grounding and IaC generation. Demonstrates end-to-end critique, fix and visualizer pipelines used in live sessions.</p>
+                  <a href="https://github.com/error505/AgentCon-Cloud-Repo" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline mt-2 inline-block">View repository on GitHub</a>
                 </div>
               </div>
             </SectionCard>
