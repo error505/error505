@@ -107,4 +107,33 @@
   .social-icon {
     @apply w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-200;
   }
+
+  /* Modern slim scrollbar for sidebar */
+  .scrollbar-modern {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.12) transparent;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.08);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255,255,255,0.16);
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }

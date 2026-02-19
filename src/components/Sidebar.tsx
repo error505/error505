@@ -77,7 +77,7 @@ const Sidebar = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-4 py-4 overflow-y-auto">
+        <nav className="flex-1 px-4 py-4 overflow-y-auto scrollbar-modern">
           {navItems.map((item) => {
             if (item.type === "route") {
               return (
