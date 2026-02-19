@@ -5,22 +5,22 @@ const services = [
   {
     title: "Azure AI",
     features: ["Azure OpenAI", "Agentic AI Solutions", "RAG Implementation", "AI Search Integration"],
-    price: "$150",
+    price: "CHF250",
   },
   {
     title: "AI Consulting",
     features: ["AI Strategy", "Multi-Agent Systems", "Power BI Integration", "AI Process Automation"],
-    price: "$180",
+    price: "CHF250",
   },
   {
     title: "DevOps & Training",
     features: ["GitHub Actions", "Azure DevOps", "GitHub Training", "Terraform"],
-    price: "$130",
+    price: "CHF200",
   },
   {
     title: "Development",
     features: ["C# .NET", "Python", "React", "TypeScript"],
-    price: "$120",
+    price: "CHF200",
   },
 ];
 
