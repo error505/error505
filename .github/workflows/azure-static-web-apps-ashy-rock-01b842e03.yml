@@ -57,6 +57,28 @@ jobs:
           if [ -d dist ]; then du -ah dist | sort -rh | head -n 50 || true; fi
           if [ -d build ]; then du -ah build | sort -rh | head -n 50 || true; fi
 
+          # Aggressive cleanup: remove common static/image/video folders and build artifacts
+          echo "--- Removing known large folders ---"
+          rm -rf dist/static || true
+          rm -rf dist/public || true
+          rm -rf dist/assets/images || true
+          rm -rf build/static || true
+          rm -rf out/static || true
+
+          # Remove source maps and media files which can bloat artifact size
+          echo "--- Removing source maps and media files ---"
+          find dist -type f -name "*.map" -print -delete || true
+          find dist -type f \( -iname "*.mp4" -o -iname "*.mov" -o -iname "*.avi" -o -iname "*.mkv" \) -print -delete || true
+
+          # Remove any remaining very large files (>5MB)
+          echo "--- Removing files larger than 5MB ---"
+          find dist -type f -size +5M -print -exec rm -f {} \; || true
+
+          echo "--- Removed files summary ---"
+          if [ -d dist ]; then du -sh dist || true; fi
+          if [ -d build ]; then du -sh build || true; fi
+          if [ -d out ]; then du -sh out || true; fi
+
           # Remove blog image folder from common build output locations to reduce artifact size
           rm -rf dist/static/images/blog || true
           rm -rf dist/public/static/images/blog || true
