@@ -3,7 +3,7 @@
         "id": "azure-solutions-architect-certification-path",
         "title": "Your Path to Becoming an Azure Solutions Architect Expert",
         "category": "Cloud",
-        "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Solutions_Architect_Path.gif",
+        "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Solutions_Architect_Path.gif",
         "date": "Published 05.11.2024",
         "readTime": "10 min read",
         "comments": "0 comments",
@@ -14,7 +14,7 @@
           },
           {
             "type": "image",
-            "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Solutions_Architect_Path.gif",
+            "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Solutions_Architect_Path.gif",
             "alt": "Azure Solutions Architect Expert Certification Path Diagram"
           },
           {
@@ -389,7 +389,7 @@
     "id": "azure-gatekeeper-pattern",
     "title": "Understanding the Azure Gatekeeper Pattern: A Comprehensive Guide",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Gatekeeper_Pattern.gif",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Gatekeeper_Pattern.gif",
     "date": "Published 01.11.2024",
     "readTime": "15 min read",
     "comments": "0 comments",
@@ -409,7 +409,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Gatekeeper_Pattern.gif",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Gatekeeper_Pattern.gif",
         "alt": "Azure Gatekeeper Pattern Diagram"
       },
       {
@@ -457,7 +457,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/API_Management_Security.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/API_Management_Security.png",
         "alt": "Azure API Management Security Layer"
       },
       {
@@ -479,7 +479,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Backend_Services.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Backend_Services.png",
         "alt": "Backend Service"
       },
       {
@@ -505,7 +505,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Data_Layer.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Data_Layer.png",
         "alt": "Azure Data Layer Services"
       },
       {
@@ -527,7 +527,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Monitoring_Tools.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Monitoring_Tools.png",
         "alt": "Monitoring Tools for Azure Gatekeeper Pattern"
       },
       {
@@ -627,7 +627,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Backend_Deployment.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Backend_Deployment.png",
         "alt": "Deploying Backend Services"
       },
       {
@@ -668,7 +668,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Monitoring_Deployment.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Monitoring_Deployment.png",
         "alt": "Enabling Monitoring for Backend Services"
       },
       {
@@ -728,7 +728,7 @@
     "id": "azure-sidecar-pattern",
     "title": "Implementing the Azure Sidecar Pattern: A Complete Guide",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Sidecar_Pattern.gif",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Sidecar_Pattern.gif",
     "date": "Published 22.10.2024",
     "readTime": "10 min read",
     "comments": "0 comments",
@@ -748,7 +748,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Sidecar_Pattern.gif",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Sidecar_Pattern.gif",
         "alt": "Azure Sidecar Pattern Diagram"
       },
       {
@@ -794,7 +794,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Sidecar_Functions.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Sidecar_Functions.png",
         "alt": "Sidecar Functions for Logging and Authentication"
       },
       {
@@ -849,7 +849,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Monitoring_Services.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Monitoring_Services.png",
         "alt": "Monitoring Services for Azure Sidecar Pattern"
       },
       {
@@ -1064,7 +1064,7 @@
     "id": "azure-devops-ai-certification-path",
     "title": "Mastering Azure DevOps & AI: Your Certification Path and Applied Skills",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/DevOps_and_AI_Cert_Path.gif",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/DevOps_and_AI_Cert_Path.gif",
     "date": "Published 18.10.2024",
     "readTime": "10 min read",
     "comments": "0 comments",
@@ -1075,7 +1075,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/DevOps_and_AI_Cert_Path.gif",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/DevOps_and_AI_Cert_Path.gif",
         "alt": "Azure DevOps & AI Certification Path Diagram"
       },
       {
@@ -1720,7 +1720,7 @@
     "id": "publisher-subscriber-pattern-on-azure",
     "title": "Implementing the Publisher-Subscriber Pattern on Azure: A Complete Guide",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Pub_Sub_Pattern.png",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Pub_Sub_Pattern.png",
     "date": "Published 12.09.2024",
     "readTime": "85 min read",
     "comments": "0 comments",
@@ -1757,7 +1757,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Pub_Sub_Pattern.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Pub_Sub_Pattern.png",
         "alt": "Architecture of Publisher-Subscriber Pattern on Azure"
         },
         {
@@ -1863,7 +1863,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Application_Insights_Configuration.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Application_Insights_Configuration.png",
         "alt": "Application Insights Configuration for Azure Functions"
         },
         {
@@ -1907,7 +1907,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Ecommerce_Order_Processing.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Ecommerce_Order_Processing.png",
         "alt": "E-commerce Order Processing with Publisher-Subscriber Pattern"
         },
         {
@@ -1933,7 +1933,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/IoT_Data_Ingestion.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/IoT_Data_Ingestion.png",
         "alt": "IoT Data Ingestion and Processing with Publisher-Subscriber Pattern"
         },
         {
@@ -1959,7 +1959,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Multi_Tier_Applications.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Multi_Tier_Applications.png",
         "alt": "Multi-Tier Application Communication with Publisher-Subscriber Pattern"
         },
         {
@@ -2147,7 +2147,7 @@
     "id": "build-your-personal-portfolio-website",
     "title": "Build Your Personal Portfolio Website with React JS and GitHub Pages",
     "category": "Web Development",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/live_web_page.png",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/live_web_page.png",
     "date": "Published 10.09.2024",
     "readTime": "30 min read",
     "comments": "0 comments",
@@ -2184,7 +2184,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/fork_repo.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/fork_repo.png",
         "alt": "Forking the repo"
         },
         {
@@ -2216,7 +2216,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/edit_in_vscode.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/edit_in_vscode.png",
         "alt": "Screenshot of the code editor with React components being edited"
         },
         {
@@ -2277,7 +2277,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/gh_pages_deploy_package.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/gh_pages_deploy_package.png",
         "alt": "Screenshot of modified package.json file"
         },
         {
@@ -2295,7 +2295,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/npm_run_deploy.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/npm_run_deploy.png",
         "alt": "Terminal screenshot showing npm run deploy command"
         },
         {
@@ -2326,7 +2326,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/GitHub_Actions_Workflow.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/GitHub_Actions_Workflow.png",
         "alt": "Screenshot of the GitHub Actions editor with the workflow code"
         },
         {
@@ -2358,7 +2358,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/custom_domain.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/custom_domain.png",
         "alt": "Screenshot of the GitHub Pages Custom Domain"
         },
         {
@@ -2369,7 +2369,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/live_web_page.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/live_web_page.png",
         "alt": "Screenshot of the Live Web Site"
         },
         {
@@ -2406,7 +2406,7 @@
     "id": "strangler-fig-pattern-on-azure",
     "title": "Using the Strangler Fig Pattern on Azure: A Step-by-Step Guide to Modernizing Legacy Applications",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Strangler_Fig_Azure.png",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Strangler_Fig_Azure.png",
     "date": "Published 05.09.2024",
     "readTime": "75 min read",
     "comments": "0 comments",
@@ -2417,7 +2417,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Strangler_Fig_Azure.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Strangler_Fig_Azure.png",
         "alt": "Strangler Fig Azure Architecture"
         },
         {
@@ -2448,7 +2448,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Monolith_vs_Microservices.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Monolith_vs_Microservices.png",
         "alt": "Comparison between Monolithic and Microservices Architectures"
         },
         {
@@ -2492,7 +2492,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Orders_Microservices.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Orders_Microservices.png",
         "alt": "Orders Microservice"
         },
         {
@@ -2520,7 +2520,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Extract_Microservice.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Extract_Microservice.png",
         "alt": "Extract Microservice"
         },
         {
@@ -2560,7 +2560,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/APIM_Policy.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/APIM_Policy.png",
         "alt": "APIM Cofig policy"
         },
         {
@@ -2574,7 +2574,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Ways_to_decomisson.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Ways_to_decomisson.png",
         "alt": "Testing and Monitoring of Microservices"
         },
         {
@@ -2605,7 +2605,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Event_Sourcing_Pattern.jpg",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Event_Sourcing_Pattern.jpg",
         "alt": "Event-Driven Architecture in Microservices"
         },
         {
@@ -2627,7 +2627,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Gatekeeper_Pattern.jpg",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Gatekeeper_Pattern.jpg",
         "alt": "Security Best Practices for Microservices"
         },
         {
@@ -2649,7 +2649,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Service_Mesh_Architecture.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Service_Mesh_Architecture.png",
         "alt": "Service Mesh Architecture for Managing Microservices Communication"
         },
         {
@@ -2671,7 +2671,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Health_Endpoint_Monitoring.jpg",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Health_Endpoint_Monitoring.jpg",
         "alt": "Distributed Tracing in Microservices Architecture"
         },
         {
@@ -2693,7 +2693,7 @@
         },
         {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Deployment_Stamps.jpg",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Deployment_Stamps.jpg",
         "alt": "Deployment Strategies for Microservices"
         },
         {
@@ -2769,7 +2769,7 @@
     "id": "chat-with-your-own-data-solution-accelerator",
     "title": "Building a Secure and Scalable Chatbot with Your Data: Azure Solution Accelerator",
     "category": "AI",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Chat_With_Your_Own_Data.png",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Chat_With_Your_Own_Data.png",
     "date": "Published 02.09.2024",
     "readTime": "15 min read",
     "comments": "0 comments",
@@ -2800,7 +2800,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Chat_With_Your_Own_Data_Flow.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Chat_With_Your_Own_Data_Flow.png",
         "alt": "Chat with Your Own Data Architecture Diagram"
       },
       {
@@ -2823,7 +2823,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/workbook-json.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/workbook-json.png",
         "alt": "Workbook"
       },
       {
@@ -2833,7 +2833,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/chat-app.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/chat-app.png",
         "alt": "Chat App"
       },
       {
@@ -2847,7 +2847,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/web-app-authentication.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/web-app-authentication.png",
         "alt": "App Authentication"
       },
       {
@@ -2857,7 +2857,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/admin-site.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/admin-site.png",
         "alt": "Admin App"
       },
       {
@@ -2867,7 +2867,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/teams-cwyd.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/teams-cwyd.png",
         "alt": "Your rag boot in Teams"
       },
       {
@@ -2876,12 +2876,12 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/teams-deploy-env.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/teams-deploy-env.png",
         "alt": "Your rag boot in Teams"
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/teams-20.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/teams-20.png",
         "alt": "Your rag boot in Teams"
       },
       {
@@ -2900,7 +2900,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/enable_advanced_image_processing.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/enable_advanced_image_processing.png",
         "alt": "Advanced Image Processing"
       },
       {
@@ -2914,7 +2914,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/rag-accelerator/delete-search-index.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/rag-accelerator/delete-search-index.png",
         "alt": "Integrated Vectorization"
       },
       {
@@ -2955,7 +2955,7 @@
     "id": "comprehensive-microservices-architecture-on-azure",
     "title": "Building a Comprehensive Microservices Architecture on Azure with AKS, Azure Functions, and More!",
     "category": "Cloud",
-    "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/azure_microservices_architecture.png",
+    "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/azure_microservices_architecture.png",
     "date": "Published 29.08.2024",
     "readTime": "45 min read",
     "comments": "0 comments",
@@ -2966,7 +2966,7 @@
       },
       {
         "type": "image",
-        "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/azure_microservices_architecture.png",
+        "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/azure_microservices_architecture.png",
         "alt": "Reliability Checklist"
     },
       {
@@ -3159,7 +3159,7 @@
       "id": "understanding-reliability-in-azure",
       "title": "Understanding the Importance of Reliability in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Reliability_Checklist.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Reliability_Checklist.png",
       "date": "Published 19.08.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -3352,7 +3352,7 @@
       "id": "kickstart-azure-infrastructure-template",
       "title": "Kickstart Your Azure Infrastructure with a Comprehensive ARM Template",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Infrastructure_Template.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Infrastructure_Template.png",
       "date": "Published 17.08.2024",
       "readTime": "30 min read",
       "comments": "0 comments",
@@ -3400,7 +3400,7 @@
           },
           {
               "type": "image",
-              "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Infrastructure_Overview.png",
+              "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Infrastructure_Overview.png",
               "alt": "Overview Diagram"
           },
           {
@@ -3482,7 +3482,7 @@
           },
           {
               "type": "image",
-              "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Detailed_Network_Security.png",
+              "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Detailed_Network_Security.png",
               "alt": "Detailed Network and Security Diagram"
           },
           {
@@ -3904,7 +3904,7 @@
       "id": "securing-azure-workloads-key-recommendations-checklist",
       "title": "Securing Your Azure Workloads: Key Recommendations Checklist",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Security_Checklist.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Security_Checklist.png",
       "date": "Published 09.08.2024",
       "readTime": "25 min read",
       "comments": "0 comments",
@@ -4391,7 +4391,7 @@
       "id": "azure-cost-optimization-checklist",
       "title": "Azure Cost Optimization: A Comprehensive Checklist",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Cost_Optimization_Checklist.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Cost_Optimization_Checklist.png",
       "date": "Published 06.08.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -4441,7 +4441,7 @@
           },
           {
               "type": "image",
-              "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Cost_Model.png",
+              "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Cost_Model.png",
               "alt": "Cost Model"
           },
           {
@@ -4718,7 +4718,7 @@
       "id": "cost-optimization-tradeoffs",
       "title": "Cost Optimization Tradeoffs in Azure: Balancing Reliability, Security, Operational Excellence, and Performance Efficiency",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Cost_Optimisation_Tradeoffs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Cost_Optimisation_Tradeoffs.png",
       "date": "Published 03.08.2024",
       "readTime": "10 min read",
       "comments": "0 comments",
@@ -5025,7 +5025,7 @@
       "id": "reliability-tradeoffs-in-azure-well-architected-framework",
       "title": "Balancing Reliability Tradeoffs in the Azure Well-Architected Framework",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Reliability_Tradeoffs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Reliability_Tradeoffs.png",
       "date": "Published 27.07.2024",
       "readTime": "40 min read",
       "comments": "0 comments",
@@ -5285,7 +5285,7 @@
       "id": "security-tradeoffs-in-azure",
       "title": "Balancing Security Tradeoffs in Azure: Reliability, Cost Optimization, Operational Excellence, and Performance Efficiency",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Security_Tradeoffs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Security_Tradeoffs.png",
       "date": "Published 24.07.2024",
       "readTime": "30 min read",
       "comments": "0 comments",
@@ -5436,7 +5436,7 @@
       "id": "operational-excellence-tradeoffs",
       "title": "Operational Excellence Tradeoffs in Azure: Balancing Reliability, Security, Cost Optimization, and Performance Efficiency",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Operational_Excellence_Tradeoffs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Operational_Excellence_Tradeoffs.png",
       "date": "Published 22.07.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -5744,7 +5744,7 @@
       "id": "azure-performance-efficiency-tradeoffs",
       "title": "Understanding Performance Efficiency Tradeoffs in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Performance_Efficency_Tradeoffs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Performance_Efficency_Tradeoffs.png",
       "date": "Published 17.07.2024",
       "readTime": "25 min read",
       "comments": "0 comments",
@@ -5801,7 +5801,7 @@
           },
           {
               "type": "image",
-              "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/plan_for_security.png",
+              "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/plan_for_security.png",
               "alt": "Security vs Performance"
           },
           {
@@ -5824,7 +5824,7 @@
           },
           {
               "type": "image",
-              "src": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Operational_Excelence.png",
+              "src": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Operational_Excelence.png",
               "alt": "Operational Excellence"
           },
           {
@@ -5931,7 +5931,7 @@
       "id": "boost-operational-efficiency-in-azure",
       "title": "Want to boost operational efficiency in Azure?",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Operational_Excelence.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Operational_Excelence.png",
       "date": "Published 16.07.2024",
       "readTime": "5 min read",
       "comments": "8 comments",
@@ -6006,7 +6006,7 @@
       "id": "make-your-cloud-apps-more-robust",
       "title": "Make Your Cloud Apps More Robust by Understanding What a Mission-Critical Workload Is",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Mission_Critical_Workloads.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Mission_Critical_Workloads.png",
       "date": "Published 15.07.2024",
       "readTime": "5 min read",
       "comments": "8 comments",
@@ -6110,7 +6110,7 @@
       "id": "github-actions-vs-azure-pipelines",
       "title": "GitHub Actions for Azure vs Azure Pipelines: Detailed Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/GitHub_Actions_vs_Azure_Pipelines.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/GitHub_Actions_vs_Azure_Pipelines.jpg",
       "date": "Published 12.07.2024",
       "readTime": "30 min read",
       "comments": "0 comments",
@@ -6391,7 +6391,7 @@
       "id": "messaging-bridge-pattern",
       "title": "Seamlessly Transfer Messages with the Messaging Bridge Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Messaging_Bridge_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Messaging_Bridge_Pattern.jpg",
       "date": "Published 06.07.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -6560,7 +6560,7 @@
       "id": "performance-efficiency-principles",
       "title": "Mastering Performance Efficiency in Azure: Key Principles and Best Practices",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Performance_Efficency.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Performance_Efficency.png",
       "date": "Published 05.07.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -6736,7 +6736,7 @@
       "id": "plan-your-security-readiness",
       "title": "Are You Overwhelmed with Preparing Your Azure Security Strategy Following the Azure Well Architected Framework?",
       "category": "Security",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/plan_for_security.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/plan_for_security.png",
       "date": "Published 03.07.2024",
       "readTime": "5 min read",
       "comments": "8 comments",
@@ -6810,7 +6810,7 @@
       "id": "anti-corruption-layer-pattern",
       "title": "Streamline System Migration with the Anti-Corruption Layer Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Anti_Corruption_Layer_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Anti_Corruption_Layer_Pattern.jpg",
       "date": "Published 25.06.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -6958,7 +6958,7 @@
       "id": "azure-bastion-vs-jump-hosts",
       "title": "Azure Bastion vs Jump Hosts: Comprehensive Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Bastion_vs_Jump_Hosts.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Bastion_vs_Jump_Hosts.jpg",
       "date": "Published 18.06.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -7231,7 +7231,7 @@
       "id": "azure-firewall-vs-web-application-firewall",
       "title": "Azure Firewall vs Web Application Firewall (WAF): Detailed Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Firewall_vs_WAF.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Firewall_vs_WAF.jpg",
       "date": "Published 17.06.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -7519,7 +7519,7 @@
       "id": "azure-disk-snapshot-vs-azure-backup",
       "title": "Azure Disk Snapshot vs Azure Backup: A Comprehensive Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Disk_Snapshot_vs_Azure_Backup.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Disk_Snapshot_vs_Azure_Backup.jpg",
       "date": "Published 07.06.2024",
       "readTime": "35 min read",
       "comments": "0 comments",
@@ -7806,7 +7806,7 @@
       "id": "cqrs-pattern",
       "title": "Mastering the CQRS Pattern for Scalable and Efficient Systems",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/CQRS_Pattern.gif",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/CQRS_Pattern.gif",
       "date": "Published 06.06.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -7962,7 +7962,7 @@
       "id": "quarantine-pattern",
       "title": "Enhance Data Integrity with the Quarantine Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Quarantine_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Quarantine_Pattern.jpg",
       "date": "Published 04.06.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -8116,7 +8116,7 @@
       "id": "leader-election-pattern",
       "title": "Mastering Task Coordination with the Leader Election Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Leader_Election_Pattern.gif",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Leader_Election_Pattern.gif",
       "date": "Published 01.06.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -8250,7 +8250,7 @@
       "id": "rate-limiting-pattern",
       "title": "Master the Rate Limiting Pattern on Azure for Optimal Traffic Flow",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Rate_Limiting_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Rate_Limiting_Pattern.jpg",
       "date": "Published 29.05.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -8382,7 +8382,7 @@
       "id": "gateway-routing-pattern",
       "title": "Mastering the Gateway Routing Pattern on Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Gateway_Routing_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Gateway_Routing_Pattern.jpg",
       "date": "Published 19.05.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -8514,7 +8514,7 @@
       "id": "pipes-and-filters-pattern",
       "title": "Enhance Your Data Processing with the Pipes and Filters Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Pipes_Filters_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Pipes_Filters_Pattern.jpg",
       "date": "Published 17.05.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -8653,7 +8653,7 @@
       "id": "event-sourcing-pattern",
       "title": "Mastering Event Sourcing Pattern on Azure for Robust Data Management",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Event_Sourcing_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Event_Sourcing_Pattern.jpg",
       "date": "Published 14.05.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -8820,7 +8820,7 @@
       "id": "federated-identity-pattern",
       "title": "Understanding the Federated Identity Pattern on Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Federated_Identity_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Federated_Identity_Pattern.jpg",
       "date": "Published 12.05.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -8962,7 +8962,7 @@
       "id": "gatekeeper-pattern",
       "title": "Securing Your Azure Environment with the Gatekeeper Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Gatekeeper_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Gatekeeper_Pattern.jpg",
       "date": "Published 06.05.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -9118,7 +9118,7 @@
       "id": "throttling-pattern",
       "title": "Managing Traffic with the Throttling Pattern on Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Throttling_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Throttling_Pattern.jpg",
       "date": "Published 28.04.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -9253,7 +9253,7 @@
       "id": "gateway-offloading-pattern",
       "title": "Optimize Your Microservices Architecture with the Gateway Offloading Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Gateway_Offloading_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Gateway_Offloading_Pattern.jpg",
       "date": "Published 27.04.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -9409,7 +9409,7 @@
       "id": "sidecar-pattern",
       "title": "Enhance Your Application with the Sidecar Pattern on Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Sidecar_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Sidecar_Pattern.jpg",
       "date": "Published 24.04.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -9529,7 +9529,7 @@
       "id": "strangler-fig-pattern",
       "title": "Smoothly Transition from Legacy Systems with the Strangler Fig Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Strangler_Fig_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Strangler_Fig_Pattern.jpg",
       "date": "Published 22.04.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -9725,7 +9725,7 @@
       "id": "publisher-subscriber-pattern",
       "title": "Mastering the Publisher-Subscriber Pattern on Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Publisher_Subscriber_Pattern.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Publisher_Subscriber_Pattern.png",
       "date": "Published 19.04.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -9863,7 +9863,7 @@
       "id": "gateway-aggregation-pattern",
       "title": "Simplifying Client Requests with the Gateway Aggregation Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Gateway_Aggregation_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Gateway_Aggregation_Pattern.jpg",
       "date": "Published 18.04.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -10025,7 +10025,7 @@
       "id": "cost-optimization-in-azure",
       "title": "Mastering Cost Optimization in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Develop_costs.png",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Develop_costs.png",
       "date": "Published 15.04.2024",
       "readTime": "7 min read",
       "comments": "0 comments",
@@ -10143,7 +10143,7 @@
       "id": "n-tier-architecture-in-azure",
       "title": "Understanding N-tier Architecture in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/N_Tier_Architecture.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/N_Tier_Architecture.jpg",
       "date": "Published 12.04.2024",
       "readTime": "10 min read",
       "comments": "0 comments",
@@ -10271,7 +10271,7 @@
       "id": "understanding-deployment-stamps-pattern",
       "title": "Understanding Deployment Stamps Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Deployment_Stamps.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Deployment_Stamps.jpg",
       "date": "Published 10.04.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -10400,7 +10400,7 @@
       "id": "understanding-materialized-view-pattern",
       "title": "Understanding Materialized View Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Materialized_View.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Materialized_View.jpg",
       "date": "Published 07.04.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -10519,7 +10519,7 @@
       "id": "understanding-sharding-pattern",
       "title": "Understanding Sharding Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Sharding_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Sharding_Pattern.jpg",
       "date": "Published 26.03.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -10638,7 +10638,7 @@
       "id": "understanding-priority-queue-pattern",
       "title": "Understanding Priority Queue Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Priority_Queue.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Priority_Queue.jpg",
       "date": "Published 23.03.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -10757,7 +10757,7 @@
       "id": "understanding-retrieval-augmented-generation-pattern",
       "title": "Understanding Retrieval-Augmented Generation Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/RAG_Pattern.gif",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/RAG_Pattern.gif",
       "date": "Published 09.03.2024",
       "readTime": "20 min read",
       "comments": "0 comments",
@@ -10955,7 +10955,7 @@
       "id": "queue-based-load-leveling",
       "title": "Managing Workloads Efficiently with Queue-Based Load Leveling",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Queue_Based_Load_Leveling.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Queue_Based_Load_Leveling.jpg",
       "date": "Published 01.03.2024",
       "readTime": "7 min read",
       "comments": "0 comments",
@@ -11028,7 +11028,7 @@
       "id": "index-table-pattern",
       "title": "Enhance Your Search Performance with the Index Table Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Index_Table_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Index_Table_Pattern.jpg",
       "date": "Published 26.02.2024",
       "readTime": "10 min read",
       "comments": "0 comments",
@@ -11161,7 +11161,7 @@
       "id": "external-configuration-store-pattern",
       "title": "Simplify and Secure Your Configuration with the External Configuration Store Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/External_Configuration_Store.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/External_Configuration_Store.jpg",
       "date": "Published 25.02.2024",
       "readTime": "10 min read",
       "comments": "0 comments",
@@ -11293,7 +11293,7 @@
       "id": "compensating-transaction-pattern",
       "title": "Ensuring Consistency in Distributed Systems with the Compensating Transaction Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Compensating_Transaction_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Compensating_Transaction_Pattern.jpg",
       "date": "Published 14.02.2024",
       "readTime": "10 min read",
       "comments": "0 comments",
@@ -11398,7 +11398,7 @@
       "id": "hub-spoke-topology",
       "title": "Mastering Azure's Hub-Spoke Topology for Efficient Network Management",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Hub_Spoke_Topology_Azure.gif",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Hub_Spoke_Topology_Azure.gif",
       "date": "Published 13.02.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -11528,7 +11528,7 @@
       "id": "multi-cloud-integrations-architecture",
       "title": "Implement Hybrid and Multi-Cloud with Cloud Adoption Framework",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Multi_Cloud_Integrations_Architecture.gif",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Multi_Cloud_Integrations_Architecture.gif",
       "date": "Published 12.02.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -11660,7 +11660,7 @@
       "id": "scheduler-agent-supervisor-pattern",
       "title": "Efficient Task Management with the Scheduler Agent Supervisor Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Scheduler_Agent_Supervisor_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Scheduler_Agent_Supervisor_Pattern.jpg",
       "date": "Published 05.02.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -11783,7 +11783,7 @@
       "id": "saga-pattern",
       "title": "Managing Distributed Transactions with the Saga Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Saga_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Saga_Pattern.jpg",
       "date": "Published 01.02.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -11906,7 +11906,7 @@
       "id": "valet-key-pattern",
       "title": "Implementing Secure Resource Access with the Valet Key Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Valet_Key_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Valet_Key_Pattern.jpg",
       "date": "Published 30.01.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -12038,7 +12038,7 @@
       "id": "health-endpoint-monitoring",
       "title": "Ensuring Service Reliability with the Health Endpoint Monitoring Pattern",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Health_Endpoint_Monitoring.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Health_Endpoint_Monitoring.jpg",
       "date": "Published 17.01.2024",
       "readTime": "12 min read",
       "comments": "0 comments",
@@ -12194,7 +12194,7 @@
       "id": "messaging-bridge-pattern",
       "title": "Seamlessly Transfer Messages with the Messaging Bridge Pattern in Azure",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Messaging_Bridge_Pattern.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Messaging_Bridge_Pattern.jpg",
       "date": "Published 13.01.2024",
       "readTime": "15 min read",
       "comments": "0 comments",
@@ -12363,7 +12363,7 @@
       "id": "azure-operator-insights-vs-network-watcher",
       "title": "Comparing Azure Operator Insights and Azure Network Watcher: Key Differences and Use Cases",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_Operator_Insights_vs_Network_Watcher.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_Operator_Insights_vs_Network_Watcher.jpg",
       "date": "Published 07.01.2024",
       "readTime": "20 min read",
       "comments": "0 comments",
@@ -12586,7 +12586,7 @@
       "id": "azure-sql-database-vs-azure-sql-edge",
       "title": "Azure SQL Database vs Azure SQL Edge: A Detailed Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_SQL_Comparison.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_SQL_Comparison.jpg",
       "date": "Published 04.01.2024",
       "readTime": "20 min read",
       "comments": "0 comments",
@@ -12862,7 +12862,7 @@
       "id": "azure-devtest-labs-vs-azure-test-plans",
       "title": "Azure DevTest Labs vs Azure Test Plans: Detailed Comparison",
       "category": "Cloud",
-      "image": "https://raw.githubusercontent.com/error505/error505/main/static/images/blog/Azure_DevTest_Labs_vs_Azure_Test_Plans.jpg",
+      "image": "https://raw.githubusercontent.com/error505/error505/refs/heads/main/public/static/images/blog/Azure_DevTest_Labs_vs_Azure_Test_Plans.jpg",
       "date": "Published 01.01.2024",
       "readTime": "30 min read",
       "comments": "0 comments",
