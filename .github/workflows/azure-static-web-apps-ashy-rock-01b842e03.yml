@@ -47,11 +47,27 @@ jobs:
           npm install
           CI=false npm run build
 
-      - name: Remove blog images from build output
+      - name: Diagnose build size and remove blog images from build output
         run: |
-          # Ensure blog image folder is not included in the artifact uploaded to Azure Static Web Apps
+          echo "--- Build size diagnostics (before cleanup) ---"
+          if [ -d dist ]; then du -sh dist || true; fi
+          if [ -d build ]; then du -sh build || true; fi
+          if [ -d out ]; then du -sh out || true; fi
+          echo "--- Top files (before cleanup) ---"
+          if [ -d dist ]; then du -ah dist | sort -rh | head -n 50 || true; fi
+          if [ -d build ]; then du -ah build | sort -rh | head -n 50 || true; fi
+
+          # Remove blog image folder from common build output locations to reduce artifact size
           rm -rf dist/static/images/blog || true
           rm -rf dist/public/static/images/blog || true
+          rm -rf dist/assets/static/images/blog || true
+          rm -rf build/static/images/blog || true
+          rm -rf out/static/images/blog || true
+
+          echo "--- Build size diagnostics (after cleanup) ---"
+          if [ -d dist ]; then du -sh dist || true; fi
+          if [ -d build ]; then du -sh build || true; fi
+          if [ -d out ]; then du -sh out || true; fi
 
       - name: Build And Deploy
         id: builddeploy
