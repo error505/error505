@@ -122,8 +122,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          output_location: "artifact" # Built app content directory - optional (use minimal artifact)
+          # Deploy directly from the cleaned artifact folder to ensure only minimal files are uploaded
+          app_location: "artifact" # App source code path (cleaned artifact)
+          output_location: "." # Built app content directory inside `artifact`
           skip_app_build: true # Skip the internal build since we built it manually above
           ###### End of Repository/Build Configurations ######
 
