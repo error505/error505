@@ -30,15 +30,28 @@ jobs:
         run: |
           sed -i 's|"homepage": "https://error505.github.io/error505"|"homepage": ""|' package.json
 
-      - name: Update src paths in blogPosts.json
+      - name: Update blog image paths to GitHub raw URLs
         run: |
-          sed -i 's|"src": "/error505/|"src": "./|' src/data/blogPosts.json
+          # Replace local blog image references with raw GitHub URLs in primary blogPosts.json
+          if [ -f src/blogPosts.json ]; then
+            sed -i "s|\"\.\/static\/images\/blog\/|\"https://raw.githubusercontent.com/error505/error505/main/static/images/blog/|g" src/blogPosts.json || true
+          fi
+          # Also adjust if a data copy exists
+          if [ -f src/data/blogPosts.json ]; then
+            sed -i "s|\"\.\/static\/images\/blog\/|\"https://raw.githubusercontent.com/error505/error505/main/static/images/blog/|g" src/data/blogPosts.json || true
+          fi
 
       # Add build step that ignores lint errors
       - name: Install dependencies and Build
         run: |
           npm install
           CI=false npm run build
+
+      - name: Remove blog images from build output
+        run: |
+          # Ensure blog image folder is not included in the artifact uploaded to Azure Static Web Apps
+          rm -rf dist/static/images/blog || true
+          rm -rf dist/public/static/images/blog || true
 
       - name: Build And Deploy
         id: builddeploy
