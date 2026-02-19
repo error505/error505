@@ -103,6 +103,16 @@ jobs:
           echo "--- Top files in cleaned artifact ---"
           if [ -d dist_clean ]; then du -ah dist_clean | sort -rh | head -n 50 || true; fi
 
+          # Create a minimal artifact directory containing only cleaned site files
+          echo "--- Preparing final artifact folder 'artifact' ---"
+          rm -rf artifact || true
+          mkdir -p artifact || true
+          if [ -d dist_clean ]; then cp -a dist_clean/. artifact/ || true; fi
+          # Safety: ensure no repo files are accidentally included
+          rm -rf artifact/..* 2>/dev/null || true
+          echo "FINAL_ARTIFACT_SIZE:"; du -sh artifact || true
+          if [ -d artifact ]; then du -ah artifact | sort -rh | head -n 50 || true; fi
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -113,7 +123,7 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
-          output_location: "dist_clean" # Built app content directory - optional (use cleaned artifact)
+          output_location: "artifact" # Built app content directory - optional (use minimal artifact)
           skip_app_build: true # Skip the internal build since we built it manually above
           ###### End of Repository/Build Configurations ######
 
