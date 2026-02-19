@@ -30,17 +30,9 @@ jobs:
         run: |
           sed -i 's|"homepage": "https://error505.github.io/error505"|"homepage": ""|' package.json
 
-      - name: Update src paths in blogposts.json
+      - name: Update src paths in blogPosts.json
         run: |
-          sed -i 's|"src": "/error505/|"src": "./|' src/blogPosts.json
-
-      - name: Update link in Header.js
-        run: |
-          sed -i 's|<a href="/error505" className="home-button open-sidebar1">|<a href="/" className="home-button open-sidebar1">|' src/components/home/Header.js
-
-      - name: Update link in Sidebar.js
-        run: |
-          sed -i 's|<li><a href="/error505" className="home-button"><FontAwesomeIcon icon="home" /><span> Home</span></a></li>|<li><a href="/" className="home-button"><FontAwesomeIcon icon="home" /><span> Home</span></a></li>|' src/components/home/Sidebar.js
+          sed -i 's|"src": "/error505/|"src": "./|' src/data/blogPosts.json
 
       # Add build step that ignores lint errors
       - name: Install dependencies and Build
