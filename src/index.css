@@ -136,4 +136,18 @@
   .scrollbar-modern::-webkit-scrollbar-corner {
     background: transparent;
   }
+
+  /* Typewriter caret */
+  .typewriter-caret {
+    display: inline-block;
+    line-height: 1;
+    opacity: 1;
+    animation: blink-caret 1s steps(2, start) infinite;
+  }
+
+  @keyframes blink-caret {
+    from { opacity: 1; }
+    50% { opacity: 0; }
+    to { opacity: 1; }
+  }
 }

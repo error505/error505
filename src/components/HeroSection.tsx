@@ -1,8 +1,44 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
 const HeroSection = () => {
+  const Typewriter: React.FC<{ texts: string[]; speed?: number; pause?: number }> = ({ texts, speed = 70, pause = 1500 }) => {
+    const [index, setIndex] = useState(0);
+    const [display, setDisplay] = useState("");
+    const [deleting, setDeleting] = useState(false);
+
+    useEffect(() => {
+      const full = texts[index];
+      let timer: ReturnType<typeof setTimeout>;
+
+      if (!deleting) {
+        if (display.length < full.length) {
+          timer = setTimeout(() => setDisplay(full.slice(0, display.length + 1)), speed);
+        } else {
+          timer = setTimeout(() => setDeleting(true), pause);
+        }
+      } else {
+        if (display.length > 0) {
+          timer = setTimeout(() => setDisplay(full.slice(0, display.length - 1)), Math.max(30, Math.floor(speed / 2)));
+        } else {
+          setDeleting(false);
+          setIndex((prev) => (prev + 1) % texts.length);
+        }
+      }
+
+      return () => clearTimeout(timer);
+    }, [display, deleting, index, texts, speed, pause]);
+
+    return (
+      <span className="inline-flex items-center">
+        <span>{display}</span>
+        <span className="typewriter-caret ml-1">|</span>
+      </span>
+    );
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background image */}
@@ -27,7 +63,12 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-5xl md:text-7xl font-heading font-bold text-foreground mb-6"
         >
-          I'm Igor Iric
+          <div className="flex flex-col items-center">
+            <span>I'm Igor Iric</span>
+            <span className="text-lg md:text-2xl text-primary mt-2">
+              <Typewriter texts={["an AI Solutions Architect"]} />
+            </span>
+          </div>
         </motion.h1>
 
         <motion.p
