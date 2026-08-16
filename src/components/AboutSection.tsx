@@ -5,7 +5,7 @@ const stats = [
   { value: "18+", label: "Years Experience" },
   { value: "250+", label: "Happy Clients" },
   { value: "650+", label: "Projects Done" },
-  { value: "25K+", label: "LinkedIn Followers" },
+  { value: "27K+", label: "LinkedIn Followers" },
 ];
 
 const expertise = [
