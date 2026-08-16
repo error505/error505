@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const posts = [
   {
@@ -39,6 +40,8 @@ const posts = [
   },
 ];
 
+const MotionLink = motion(Link);
+
 const BlogSection = () => {
   return (
     <section id="blog" className="py-20 px-6 md:px-12 bg-card/50">
@@ -54,9 +57,9 @@ const BlogSection = () => {
 
       <div className="space-y-4 max-w-3xl">
         {posts.map((post, i) => (
-          <motion.a
+          <MotionLink
             key={post.id}
-            href={`/blog/${post.id}`}
+            to={`/blog/${post.id}`}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -80,7 +83,7 @@ const BlogSection = () => {
               </span>
             </div>
             <ArrowRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors shrink-0 hidden sm:block" />
-          </motion.a>
+          </MotionLink>
         ))}
       </div>
     </section>
